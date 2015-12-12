@@ -221,6 +221,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="EbayManagement\EbayApiContext.cs" />
     <Compile Include="EbayManagement\EbayCategoriesManager.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="UserManagment\ApplicationUser.cs" />
     <Compile Include="UserManagment\GenderEnum.cs" />
     <Compile Include="UserManagment\Repository\AuthRepository.cs" />
+    <Compile Include="UserManagment\Repository\EbayDataRepository.cs" />
     <Compile Include="UserManagment\Repository\IUserRepository.cs" />
     <Compile Include="UserManagment\UserBindingModel.cs" />
   </ItemGroup>
@@ -247,6 +249,7 @@
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\wisher.pubxml" />
     <None Include="Web.Debug.config">

@@ -10,6 +10,5 @@ namespace Wisher.UserManagment.Repository
         Task<IdentityResult> RegisterUser(UserBindingModel userModel);
         Task<IdentityUser> FindUser(string userName, string password);
         Task<ApplicationUser> FindByEmailAsync(string email);
-
     }
 }
