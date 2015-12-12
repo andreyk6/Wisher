@@ -6,7 +6,8 @@
 	var onDomReady = function(){
 
 		$pageSlider.fullpage({
-			sectionSelector: '.slide-page'
+			sectionSelector: '.page-section',
+			slidesNavigation: false
 		});
 
 		$countdown.countdown({
