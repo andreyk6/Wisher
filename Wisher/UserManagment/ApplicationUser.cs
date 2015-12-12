@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Wisher.UserManagment
 {
@@ -16,6 +14,12 @@ namespace Wisher.UserManagment
         public string Name { get; set; }
         [Required]
         public override string Email { get; set; }
+
+        public int Age { get; set; }
+        [Required]
+        // converter enum
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GenderEnum Gender { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
