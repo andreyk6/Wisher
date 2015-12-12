@@ -1,1 +1,1 @@
-!function(){var n=$("#preloader"),e=function(){n.hide()};e()}();
+!function(){var e=$("#preloader"),a=$("#pageSlider"),i=function(){e.hide(),a.fullpage()};i()}();
