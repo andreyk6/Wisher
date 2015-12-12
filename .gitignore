@@ -79,3 +79,4 @@ layout/.bowerrc
 layout/gulpfile.js
 layout/bower.json
 layout/package.json
+layout/.sass-cache
