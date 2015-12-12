@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Wisher.Data;
 using Wisher.EbayManagement;
+using Wisher.Models;
 
 namespace Wisher.UserManagment.Repository
 {
@@ -34,6 +35,11 @@ namespace Wisher.UserManagment.Repository
         public List<int> GetCategoriesId()
         {
             return _applicationDbContext.EbayCategories.Select(c => c.EbayCategoryId).ToList();
+        }
+
+        public List<CategoryInfo> GetCategories()
+        {
+            return _applicationDbContext.EbayCategories.ToList();
         } 
 
         public void Dispose(bool disposing)
