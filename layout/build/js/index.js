@@ -7,8 +7,13 @@
 
 		$pageSlider.fullpage({
 			sectionSelector: '.page-section',
-			slidesNavigation: false
+			slideSelector: '.page-slide',
+			slidesNavigation: false,
+			controlArrows: false
 		});
+
+		$.fn.fullpage.setKeyboardScrolling(false, 'all');
+		$.fn.fullpage.setAllowScrolling(false, 'all');
 
 		$countdown.countdown({
 			date: "January 01, 2016 00:00:00",
