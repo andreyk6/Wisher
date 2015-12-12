@@ -47,7 +47,7 @@ button { background-color: transparent; cursor: pointer; }
 
 .row { margin: 0 20px; overflow: hidden; text-align: center; margin: 2% 0; }
 
-.button { margin: 0 10px; display: inline-block; text-decoration: none; font-size: 9px; font-weight: 700; line-height: 1em; letter-spacing: 0.2em; text-transform: uppercase; color: #161a1b; background: transparent; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); border-radius: 4px; padding: 15px 25px; -o-transition: all 0.9s; transition: all 0.9s; }
+.button { margin: 0 10px; display: inline-block; text-decoration: none; font-size: 14px; font-weight: 700; line-height: 1em; letter-spacing: 0.2em; text-transform: uppercase; color: #161a1b; background: transparent; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); border-radius: 4px; padding: 15px 40px; -o-transition: all 0.9s; transition: all 0.9s; }
 .button:hover { background: #171a1c; color: #fff; border: 1px solid #171a1c; -o-transition: all 0.5s; transition: all 0.5s; }
 
 .righ-side-block { float: left; box-sizing: border-box; display: block; padding: 0 20px; }
