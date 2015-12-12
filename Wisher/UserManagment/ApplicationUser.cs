@@ -36,7 +36,11 @@ namespace Wisher.UserManagment
             return userIdentity;
         }
 
+        public ApplicationUser()
+        {
+              FavCategories = new PersistableIntCollection();
+        }
         //Data for AI
-        public virtual PersistableIntCollection FavCategories { get; set; }
-    }
+        public PersistableIntCollection FavCategories { get; set; }
+  }
 }

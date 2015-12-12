@@ -26,6 +26,15 @@ namespace Wisher.UserManagment.Repository
                 Email = userModel.Email,
                 UserName = userModel.Name
             };
+
+            var ebayRepo = new EbayDataRepository();
+            var categoriesCodes = ebayRepo.GetCategoriesId();
+
+            foreach (int categoriesCode in categoriesCodes)
+            {
+                user.FavCategories.Add(categoriesCode);
+            }
+            
             var result = await _userManager.CreateAsync(user, userModel.Password);
 
             return result;

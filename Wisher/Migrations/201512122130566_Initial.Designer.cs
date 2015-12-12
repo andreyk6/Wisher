@@ -13,7 +13,7 @@ namespace Wisher.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512121500296_Initial"; }
+            get { return "201512122130566_Initial"; }
         }
         
         string IMigrationMetadata.Source

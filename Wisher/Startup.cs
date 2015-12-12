@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using Owin;
+using Wisher.Data;
 using Wisher.Providers;
 
 [assembly: OwinStartup(typeof(Wisher.Startup))]
@@ -13,6 +15,7 @@ namespace Wisher
     {
         public void Configuration(IAppBuilder app)
         {
+
             HttpConfiguration httpConfig = new HttpConfiguration();
             ConfigureWebApi(httpConfig);
             ConfigureOAuth(app);
@@ -20,6 +23,7 @@ namespace Wisher
 
             app.UseWebApi(httpConfig);
 
+            Database.SetInitializer<ApplicationDbContext>(null);
             /*
             app.UseTwitterAuthentication(
                 consumerKey: "8NpXC8v84DRas4qsn2KCBMQRb",

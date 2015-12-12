@@ -8,6 +8,20 @@ namespace Wisher.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.CategoryInfoes",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Details = c.String(),
+                        PictureUrl = c.String(),
+                        Level = c.Int(nullable: false),
+                        EbayCategoryId = c.Int(nullable: false),
+                        EbayParrentCategoryId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -37,6 +51,8 @@ namespace Wisher.Migrations
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false),
                         Email = c.String(nullable: false, maxLength: 256),
+                        Age = c.Int(nullable: false),
+                        Gender = c.Int(nullable: false),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),
@@ -95,6 +111,7 @@ namespace Wisher.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.CategoryInfoes");
         }
     }
 }

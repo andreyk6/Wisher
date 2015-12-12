@@ -31,6 +31,11 @@ namespace Wisher.UserManagment.Repository
             _applicationDbContext.SaveChanges();
         }
 
+        public List<int> GetCategoriesId()
+        {
+            return _applicationDbContext.EbayCategories.Select(c => c.EbayCategoryId).ToList();
+        } 
+
         public void Dispose(bool disposing)
         {
             if (!_disposed)

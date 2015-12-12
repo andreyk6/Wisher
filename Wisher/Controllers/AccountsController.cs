@@ -39,7 +39,7 @@ namespace Wisher.Controllers
             {
                 return errorResult;
             }
-
+            
             return Ok();
         }
         private IHttpActionResult GetErrorResult(IdentityResult result)

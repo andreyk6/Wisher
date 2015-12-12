@@ -232,9 +232,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512121500296_Initial.cs" />
-    <Compile Include="Migrations\201512121500296_Initial.Designer.cs">
-      <DependentUpon>201512121500296_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201512122130566_Initial.cs" />
+    <Compile Include="Migrations\201512122130566_Initial.Designer.cs">
+      <DependentUpon>201512122130566_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryInfo.cs" />
@@ -270,8 +270,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512121500296_Initial.resx">
-      <DependentUpon>201512121500296_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512122130566_Initial.resx">
+      <DependentUpon>201512122130566_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

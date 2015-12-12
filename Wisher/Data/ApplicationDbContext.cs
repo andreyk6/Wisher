@@ -10,10 +10,15 @@ namespace Wisher.Data
     {
         public DbSet<CategoryInfo> EbayCategories { get; set; }
 
-        public ApplicationDbContext() : base("wisher_db")
+        public ApplicationDbContext() : base("wisher_db", throwIfV1Schema:false)
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
+
     }
 }
