@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -225,6 +225,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="EbayManagement\EbayApiContext.cs" />
     <Compile Include="EbayManagement\EbayCategoriesManager.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="UserManagment\ApplicationUser.cs" />
     <Compile Include="UserManagment\GenderEnum.cs" />
     <Compile Include="UserManagment\Repository\AuthRepository.cs" />
+    <Compile Include="UserManagment\Repository\EbayDataRepository.cs" />
     <Compile Include="UserManagment\Repository\IUserRepository.cs" />
     <Compile Include="UserManagment\UserBindingModel.cs" />
   </ItemGroup>
@@ -251,6 +253,7 @@
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Properties\PublishProfiles\wisher.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
