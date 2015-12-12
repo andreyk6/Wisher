@@ -20,6 +20,14 @@ namespace Wisher
 
             app.UseWebApi(httpConfig);
 
+            app.UseTwitterAuthentication(
+                consumerKey: "8NpXC8v84DRas4qsn2KCBMQRb",
+                consumerSecret: "ckND9vF3Kr8KBJ3BQXVn9zzEXCZCefMYAGIqtNScUijoFcAgKH");
+
+            app.UseFacebookAuthentication(
+                appId: "",
+                appSecret: "");
+           
         }
         public void ConfigureOAuth(IAppBuilder app)
         {
