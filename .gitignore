@@ -74,3 +74,8 @@ _[Ss]cripts
 *.dot[Cc]over
 .vs
 layout/source/
+layout/node_modules/
+layout/.bowerrc
+layout/gulpfile.js
+layout/bower.json
+layout/package.json
