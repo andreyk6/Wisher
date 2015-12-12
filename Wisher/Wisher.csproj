@@ -226,6 +226,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\WishController.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="EbayManagement\EbayApiContext.cs" />
     <Compile Include="EbayManagement\EbayCategoriesManager.cs" />
