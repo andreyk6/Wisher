@@ -5,7 +5,7 @@ namespace Wisher.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() : base("LocalDbUsers")
+        public ApplicationDbContext() : base("wisher_db")
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;

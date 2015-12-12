@@ -257,7 +257,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\EBayApiTest\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512121500296_Initial.resx">
