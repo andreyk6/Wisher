@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Wisher</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+
+    <form id="signIn" action="#">
+        <div class="form-line">
+            <label>E-mail</label>
+            <input id="signInEmail" type="email" placeholder="Enter your e-mail" title="Enter your e-mail" required />
+            <div id="signInEmail_error"></div>
+        </div>
+        <div class="form-line">
+            <label>Password</label>
+            <input id="signInPassword" type="password" placeholder="Enter your password" title="Enter your password" required />
+            <div id="signInPassword_error"></div>
+        </div>
+        <div class="form-line">
+            <button id="signInBtn" type="button">sign in</button>
+        </div>
+        <div class="form-line">
+            <button id="goToSignUp" type="button">create new account</button>
+        </div>
+    </form>
+
+    <br>
+
+
+    <form id="signUp" action="#">
+        <div class="form-line">
+            <label>E-mail</label>
+            <input id="signUpEmail" type="email" placeholder="Enter your e-mail" title="Enter your e-mail" required />
+        </div>
+        <div class="form-line">
+            <label>Full Name</label>
+            <input id="signUpFullName" type="text" placeholder="Enter your full name" title="Enter your full name" required />
+        </div>
+        <div class="form-line">
+            <label>Password</label>
+            <input id="signUpPasswordTrue" type="password" placeholder="Enter your password" title="Enter your password" required />
+            <span id="signUpPassword_error"></span>
+        </div>
+        <div class="form-line">
+            <label>Confirm Password</label>
+            <input id="signUpConfirmation" type="password" placeholder="Confirm your password" title="Confirm your password" required />
+            <span id="signUpPasswordConfirmation_error"></span>
+        </div>
+        <div class="form-line">
+            <button id="signUpBtn" type="button">sign up</button>
+        </div>
+    </form>
+    <script src="~/scripts/jquery.js"></script>
+    <script src="~/scripts/CustomScripts/authorization.js"></script>
+    <script src="~/scripts/CustomScripts/main.js"></script>
+
+
+
+</body>
+</html>
