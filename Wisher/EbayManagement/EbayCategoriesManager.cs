@@ -49,50 +49,7 @@ namespace Wisher.EbayManagement
                     EbayCategoryId = int.Parse(category.CategoryID)
                 });
             }
-
             return result;
         }
-        
-        private static void TransformXMLToNested(CategoryTypeCollection cats)
-        {
-            XmlElement topLevelElement = null;
-            XmlElement childLevelElement = null;
-            XmlNode parentNode = null;
-            string categoryString = "";
-            XmlDocument returnDoc = new XmlDocument();
-            XmlElement root = returnDoc.CreateElement("CategoryArray");
-            returnDoc.AppendChild(root);
-            XmlNode rootNode = returnDoc.SelectSingleNode("/CategoryArray");
-            //Loop through CategoryTypeCollection 
-            foreach (CategoryType category in cats)
-            {
-                if (category.CategoryLevel == 1)
-                {
-                    //Top-level category, so we know we can just add it 
-                    topLevelElement = returnDoc.CreateElement("Category");
-                    topLevelElement.SetAttribute("Name", category.CategoryName);
-                    topLevelElement.SetAttribute("ID", category.CategoryID);
-                    rootNode.AppendChild(topLevelElement);
-                }
-                else
-                {
-                    // Level number will determine how many Category nodes we are deep 
-                    categoryString = "";
-                    for (int x = 1; x < category.CategoryLevel; x++)
-                    {
-                        categoryString += "/Category";
-                    }
-                    parentNode =
-                        returnDoc.SelectSingleNode("/CategoryArray" + categoryString + "[@ID='" +
-                                                   category.CategoryParentID[0] + "']");
-                    childLevelElement = returnDoc.CreateElement("Category");
-                    childLevelElement.SetAttribute("Name", category.CategoryName);
-                    childLevelElement.SetAttribute("ID", category.CategoryID);
-                    parentNode.AppendChild(childLevelElement);
-                }
-            }
-            returnDoc.Save(@"C:\Temp\EbayCategories-Modified.xml");
-        }
-
     }
 }
