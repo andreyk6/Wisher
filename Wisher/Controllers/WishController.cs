@@ -18,12 +18,13 @@ namespace Wisher.Controllers
         public WishController()
         {
             _ebayRepository = new EbayDataRepository();
+            _dbContext = new ApplicationDbContext();
         }
 
         [HttpPost]
         public IHttpActionResult MakeWish(WishRequestModel wishRequest)
         {
-            var user = _dbContext.Users.FirstOrDefault(u => u.Name == wishRequest.UserId);
+            var user = _dbContext.Users.FirstOrDefault(u => u.Id == wishRequest.UserId);
             var categories = _ebayRepository.GetCategories();
 
             if (wishRequest.TrueCategoryId != -1)
@@ -64,6 +65,7 @@ namespace Wisher.Controllers
                     {
                         secondLevelCats.Add(user.FavCategories.ElementAt(index));
                     }
+                    index++;
                 }
                 if (secondLevelCats.Count == 2)
                 {
@@ -84,6 +86,7 @@ namespace Wisher.Controllers
                     {
                         firstLevelCats.Add(user.FavCategories.ElementAt(index));
                     }
+                    index++;
                 }
                 return Ok(new {catId1 = firstLevelCats[0], catId2 = firstLevelCats[1], progress = progressValue});
             }
