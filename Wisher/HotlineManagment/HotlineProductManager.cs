@@ -14,15 +14,24 @@ namespace Wisher.HotlineManagment
         {
             HtmlWeb web = new HtmlWeb();
 
-            var document = web.Load(@"http://m.hotline.ua" + category.EbayCategoryId);
+            HtmlDocument document;
+
+            if (category.EbayCategoryId.Contains("hotline"))
+            {
+                document = web.Load(category.EbayCategoryId);
+            }
+            else
+            {
+                document = web.Load(@"http://m.hotline.ua" + category.EbayCategoryId);
+            }
             var topItemNode = ElementsByClass(document, "a", "list_tovar")[0];
-            var topItemData = topItemNode.ChildNodes[0].ChildNodes[0].ChildNodes[0];
+            var topItemData = topItemNode.ChildNodes[1].ChildNodes[1];
             return new HotlineProductModel()
             {
                 HotlineUrl = topItemNode.Attributes["href"].Value,
-                ImageUrl = topItemData.ChildNodes[0].ChildNodes[0].ChildNodes[0].Attributes["src"].Value,
-                Name = topItemData.ChildNodes[0].ChildNodes[1].InnerText,
-                Price = topItemData.ChildNodes[0].ChildNodes[4].InnerText,
+                ImageUrl = topItemData.ChildNodes[1].ChildNodes[0].ChildNodes[0].Attributes["src"].Value,
+                Name = topItemData.ChildNodes[3].ChildNodes[1].InnerText,
+                Price = topItemData.ChildNodes[3].ChildNodes[8].InnerText,
             };
         }
 

@@ -14,20 +14,23 @@ namespace Wisher
         public static List<CategoryInfo> GetCategories()
         {
             List<CategoryInfo> categories = new List<CategoryInfo>();
-
+            int index = 0;
             HtmlWeb web = new HtmlWeb();
             var document = web.Load(@"http://m.hotline.ua/catalog/");
             var firstLevel = ElementsByClass(document, "h3","katalog_list grey_gr");
 
             foreach (HtmlNode firstCatNode in firstLevel)
             {
+                index++;
                 //Get category
                 var firstCat = new CategoryInfo()
                 {
                     EbayCategoryId = firstCatNode.ChildNodes[0].Attributes["href"].Value,
                     EbayParrentCategoryId = firstCatNode.ChildNodes[0].Attributes["href"].Value,
+                    EbayParrentIntValue = index,
                     Level = 1,
-                    Name = firstCatNode.ChildNodes[0].ChildNodes[0].InnerText
+                    Name = firstCatNode.ChildNodes[0].ChildNodes[0].InnerText,
+                    EbayCategoryIntValue = index
                 };
                 categories.Add(firstCat);
 
@@ -36,14 +39,18 @@ namespace Wisher
                 var secondLevel = ElementsByClass(secondLevelDoc,"h5", "title_razd");
                 var thirdLevel = ElementsByClass(secondLevelDoc,"ul" ,"razd_kat");
 
+
                 foreach (HtmlNode secondCatListNode in secondLevel)
                 {
+                    index++;
                     var secondCat = new CategoryInfo()
                     {
                         EbayCategoryId = secondCatListNode.Attributes["id"].Value,
                         EbayParrentCategoryId = firstCat.EbayCategoryId,
+                        EbayParrentIntValue = firstCat.EbayParrentIntValue,
                         Level = 2,
-                        Name = secondCatListNode.ChildNodes[0].ChildNodes[0].InnerText
+                        Name = secondCatListNode.ChildNodes[0].ChildNodes[0].InnerText,
+                        EbayCategoryIntValue = index
                     };
                     categories.Add(secondCat);
 
@@ -55,12 +62,15 @@ namespace Wisher
                             {
                                 if (thirdCatNode.Name != "#text")
                                 {
+                                    index++;
                                     var thirdCat = new CategoryInfo()
                                     {
                                         EbayCategoryId = thirdCatNode.ChildNodes[0].Attributes["href"].Value,
                                         EbayParrentCategoryId = secondCat.EbayCategoryId,
+                                        EbayParrentIntValue = secondCat.EbayParrentIntValue,
                                         Level = 3,
-                                        Name = thirdCatNode.ChildNodes[0].ChildNodes[0].InnerText
+                                        Name = thirdCatNode.ChildNodes[0].ChildNodes[0].InnerText,
+                                        EbayCategoryIntValue = index
                                     };
                                     categories.Add(thirdCat);
                                 }

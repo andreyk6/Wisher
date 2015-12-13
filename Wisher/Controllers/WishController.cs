@@ -29,25 +29,33 @@ namespace Wisher.Controllers
             var categories = _hotlineRepository.GetCategories();
 
             //Remove bad cats and nested cats from user wishlist
-            if (wishRequest.FalseCategoryId != "-1")
+            if (wishRequest.FalseCategoryId != -1)
             {
-                var nestedCats = categories.Where(c => c.EbayParrentCategoryId == wishRequest.FalseCategoryId)
-                        .Select(c => c.EbayCategoryId);
-                var nestedNestedCats =
-                    categories.Where(c => nestedCats.Contains(c.EbayParrentCategoryId)).Select(c => c.EbayCategoryId);
+                //var nestedCats = (from cats in categories
+                //    where cats.EbayParrentIntValue == wishRequest.FalseCategoryId
+                //    select cats.EbayCategoryId).ToList();
+                var nestedCats = categories.Select(c => c.EbayCategoryIntValue).Where(id => id == wishRequest.FalseCategoryId).ToList();
+
+                //var nestedNestedCats = (from cats in categories
+                //    where nestedCats.Contains(cats.EbayCategoryId)
+                //    select cats.EbayCategoryId).ToList();
+                var nestedNestedCats = categories.Select(c => c.EbayCategoryIntValue).Where(id => nestedCats.Contains(id)).ToList();
 
                 var catsToRemove = nestedCats.Concat(nestedNestedCats);
 
-                var updCategories = user.CategoryInfo
-                    .Select(
-                        my => my
-                    )
-                    .Where(my => my.EbayCategoryId != wishRequest.FalseCategoryId &&
-                                 catsToRemove.Contains(my.EbayCategoryId) == false)
-                    .ToList();
+                if (catsToRemove.Count() > 0)
+                {
+                    var updCategories = user.CategoryInfo
+                        .Select(
+                            my => my
+                        )
+                        .Where(my => my.EbayCategoryIntValue != wishRequest.FalseCategoryId &&
+                                     catsToRemove.Contains(my.EbayCategoryIntValue) == false)
+                        .ToList();
 
-                user.CategoryInfo = updCategories;
-                _dbContext.SaveChanges();
+                    user.CategoryInfo = updCategories;
+                    _dbContext.SaveChanges();
+                }
             }
 
             int targetLevel = 0;
@@ -78,10 +86,10 @@ namespace Wisher.Controllers
             var rndCats = GetTwoRandomCategories(user.CategoryInfo, targetLevel);
             return Ok(new
             {
-                cat1_id = rndCats[0].EbayCategoryId,
+                cat1_id = rndCats[0].EbayCategoryIntValue,
                 cat1_name = rndCats[0].Name,
-                cat2_id = rndCats[1].EbayCategoryId,
-                cat2_name = rndCats[1].EbayCategoryId,
+                cat2_id = rndCats[1].EbayCategoryIntValue,
+                cat2_name = rndCats[1].Name,
                 progress = 100 - ((user.CategoryInfo.Count * 100) / categories.Count)
             });
         }

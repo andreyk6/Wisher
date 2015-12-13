@@ -22,8 +22,11 @@ namespace Wisher.UserManagment.Repository
         public void UpdateDbFromHotline()
         {
             var data = HotlineCategoryManager.GetCategories();
-            _applicationDbContext.EbayCategories.AddRange(data);
-            _applicationDbContext.SaveChanges();
+            if (_applicationDbContext.EbayCategories.Count() == 0)
+            {
+                _applicationDbContext.EbayCategories.AddRange(data.GetRange(0, 500));
+                _applicationDbContext.SaveChanges();
+            }
         }
 
         public List<CategoryInfo> GetCategories()
