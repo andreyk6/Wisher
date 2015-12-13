@@ -125,6 +125,10 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 
 .button { margin: 0 10px; display: inline-block; text-decoration: none; font-size: 14px; font-weight: 700; line-height: 1em; letter-spacing: 0.2em; text-transform: uppercase; color: #161a1b; background: transparent; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); border-radius: 20px; line-height: 46px; padding: 0 40px; height: 46px; -o-transition: all 0.9s; transition: all 0.9s; box-sizing: border-box; }
 .button:hover { background: #171a1c; color: #fff; border: 1px solid #171a1c; -o-transition: all 0.5s; transition: all 0.5s; box-shadow: 0 0 25px #fff; }
+
+.taste-definition__taste-image-wrap { border-radius: 10px; display: inline-block; width: 30%; margin: 30px 5%; padding-bottom: 30%; cursor: pointer; position: relative; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); overflow: hidden; }
+.taste-definition__taste-image-wrap:hover { box-shadow: 0 0 25px #666 inset, 0 0 25px 5px #fff; }
+.taste-definition__taste-image-wrap img { width: 100%; height: auto; position: absolute; left: 0; top: 0; }
 @media screen and (min-width: 767px) and (max-width: 1023px) {
 
  .righ-side-block { padding: 0 12px; } }
