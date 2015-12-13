@@ -26,15 +26,17 @@ namespace Wisher.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> MakeWish(WishRequestModel wishRequest)
         {
-            var user = _dbContext.Users.Include(u => u.CategoryInfo).FirstOrDefault(u => u.Id == wishRequest.UserId);
+            var user = _dbContext.Users.FirstOrDefault(u => u.Id == wishRequest.UserId);
             var categories = await _hotlineRepository.GetCategories();
 
+            var tempUserCats = categories.Where(c => user.FavCats.Contains(c.Id)).ToList();
             //Remove bad cats and nested cats from user wishlist
             if (wishRequest.FalseCategoryId != -1)
             {
                 //var nestedCats = (from cats in categories
                 //    where cats.EbayParrentIntValue == wishRequest.FalseCategoryId
                 //    select cats.EbayCategoryId).ToList();
+
                 var nestedCats = categories.Where(c => c.EbayParrentIntValue == wishRequest.FalseCategoryId).Select(c => c.EbayCategoryIntValue).ToList();
 
                 //var nestedNestedCats = (from cats in categories
@@ -42,11 +44,11 @@ namespace Wisher.Controllers
                 //    select cats.EbayCategoryId).ToList();
                 var nestedNestedCats = categories.Where(c => nestedCats.Contains(c.EbayParrentIntValue)).Select(c => c.EbayCategoryIntValue).ToList();
 
-                var catsToRemove = nestedCats.Concat(nestedNestedCats);
+                var catsToRemove = nestedCats.Concat(nestedNestedCats).ToList();
 
                 if (catsToRemove.Count() > 0)
                 {
-                    var updCategories = user.CategoryInfo
+                    tempUserCats = tempUserCats
                         .Select(
                             my => my
                         )
@@ -54,20 +56,25 @@ namespace Wisher.Controllers
                                      catsToRemove.Contains(my.EbayCategoryIntValue) == false)
                         .ToList();
 
-                    user.CategoryInfo = updCategories;
+                    var result = new PersistableIntCollection();
+                    foreach (var categoryInfo in tempUserCats)
+                    {
+                        result.Add(categoryInfo.EbayCategoryIntValue);
+                    }
+                    user.FavCats = result;
                     _dbContext.SaveChanges();
                 }
             }
 
             int targetLevel = 0;
-            if (user.CategoryInfo.Count(c => c.Level == 1) < 4)
+            if (tempUserCats.Count(c => c.Level == 1) < 4)
             {
-                if (user.CategoryInfo.Count(c => c.Level == 2) > 5)
+                if (tempUserCats.Count(c => c.Level == 2) > 5)
                 {
                     //Return 2nd level cats
                     targetLevel = 2;
                 }
-                else if (user.CategoryInfo.Count(c => c.Level == 3) > 10)
+                else if (tempUserCats.Count(c => c.Level == 3) > 10)
                 {
                     //return 3rd level cats
                     targetLevel = 3;
@@ -84,21 +91,21 @@ namespace Wisher.Controllers
                 targetLevel = 1;
             }
 
-            var rndCats = GetTwoRandomCategories(user.CategoryInfo, targetLevel);
+            var rndCats = GetTwoRandomCategories(tempUserCats.ToList(), targetLevel);
             return Ok(new
             {
                 cat1_id = rndCats[0].EbayCategoryIntValue,
                 cat1_name = rndCats[0].Name,
                 cat2_id = rndCats[1].EbayCategoryIntValue,
                 cat2_name = rndCats[1].Name,
-                progress = 100 - ((user.CategoryInfo.Count * 100) / categories.Count)
+                progress = 100 - ((tempUserCats.Count() * 100) / categories.Count)
             });
         }
 
         private CategoryInfo[] GetTwoRandomCategories(ICollection<CategoryInfo> categories, int level)
         {
             Random rnd = new Random();
-            return categories.OrderBy(user => rnd.Next()).Take(2).ToArray();
+            return categories.Where(c=>c.Level==level).OrderBy(user => rnd.Next()).Take(2).ToArray();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Wisher.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Wisher.Data.ApplicationDbContext context)

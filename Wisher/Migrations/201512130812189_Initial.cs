@@ -16,8 +16,10 @@ namespace Wisher.Migrations
                         Details = c.String(),
                         PictureUrl = c.String(),
                         Level = c.Int(nullable: false),
-                        EbayCategoryId = c.Int(nullable: false),
-                        EbayParrentCategoryId = c.Int(nullable: false),
+                        EbayCategoryId = c.String(),
+                        EbayCategoryIntValue = c.Int(nullable: false),
+                        EbayParrentCategoryId = c.String(),
+                        EbayParrentIntValue = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -53,6 +55,7 @@ namespace Wisher.Migrations
                         Email = c.String(nullable: false, maxLength: 256),
                         Age = c.Int(nullable: false),
                         Gender = c.Int(nullable: false),
+                        FavCats_SerializedValue = c.String(),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),

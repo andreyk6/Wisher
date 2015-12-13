@@ -47,7 +47,7 @@ namespace Wisher
                     {
                         EbayCategoryId = secondCatListNode.Attributes["id"].Value,
                         EbayParrentCategoryId = firstCat.EbayCategoryId,
-                        EbayParrentIntValue = firstCat.EbayParrentIntValue,
+                        EbayParrentIntValue = firstCat.EbayCategoryIntValue,
                         Level = 2,
                         Name = secondCatListNode.ChildNodes[0].ChildNodes[0].InnerText,
                         EbayCategoryIntValue = index
@@ -67,7 +67,7 @@ namespace Wisher
                                     {
                                         EbayCategoryId = thirdCatNode.ChildNodes[0].Attributes["href"].Value,
                                         EbayParrentCategoryId = secondCat.EbayCategoryId,
-                                        EbayParrentIntValue = secondCat.EbayParrentIntValue,
+                                        EbayParrentIntValue = secondCat.EbayCategoryIntValue,
                                         Level = 3,
                                         Name = thirdCatNode.ChildNodes[0].ChildNodes[0].InnerText,
                                         EbayCategoryIntValue = index
