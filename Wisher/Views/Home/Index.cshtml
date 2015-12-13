@@ -11,60 +11,142 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,800,900&subset=latin,cyrillic">
+    <link rel="stylesheet" href="~/css/vendor/jquery.fullPage.css">
+    <link rel="stylesheet" href="~/css/screen.css">
 </head>
 <body>
-
-
-    <form id="signIn" action="#">
-        <div class="form-line">
-            <label>E-mail</label>
-            <input id="signInEmail" type="email" placeholder="Enter your e-mail" title="Enter your e-mail" required />
-            <div id="signInEmail_error"></div>
-        </div>
-        <div class="form-line">
-            <label>Password</label>
-            <input id="signInPassword" type="password" placeholder="Enter your password" title="Enter your password" required />
-            <div id="signInPassword_error"></div>
-        </div>
-        <div class="form-line">
-            <button id="signInBtn" type="button">sign in</button>
-        </div>
-        <div class="form-line">
-            <button id="goToSignUp" type="button">create new account</button>
-        </div>
-    </form>
-
-    <br>
-
-
-    <form id="signUp" action="#">
-        <div class="form-line">
-            <label>E-mail</label>
-            <input id="signUpEmail" type="email" placeholder="Enter your e-mail" title="Enter your e-mail" required />
-        </div>
-        <div class="form-line">
-            <label>Full Name</label>
-            <input id="signUpFullName" type="text" placeholder="Enter your full name" title="Enter your full name" required />
-        </div>
-        <div class="form-line">
-            <label>Password</label>
-            <input id="signUpPasswordTrue" type="password" placeholder="Enter your password" title="Enter your password" required />
-            <span id="signUpPassword_error"></span>
-        </div>
-        <div class="form-line">
-            <label>Confirm Password</label>
-            <input id="signUpConfirmation" type="password" placeholder="Confirm your password" title="Confirm your password" required />
-            <span id="signUpPasswordConfirmation_error"></span>
-        </div>
-        <div class="form-line">
-            <button id="signUpBtn" type="button">sign up</button>
-        </div>
-    </form>
-    <script src="~/scripts/jquery.js"></script>
-    <script src="~/scripts/CustomScripts/authorization.js"></script>
-    <script src="~/scripts/CustomScripts/main.js"></script>
-
-
-
 </body>
+<div id="preloader" class="preloader">
+    <div class="loading">
+        <h2>Загрузка</h2>
+        <div class="progress"></div>
+    </div>
+</div>
+<div class="page-bg">
+    <div class="page-bg__image"></div>
+    <div class="page-bg__smoke">
+        <div class="page-bg__smoke-img1">
+            <img alt="smoke-image-1" src="~/Content/img/smoke1.png">
+        </div>
+        <div class="page-bg__smoke-img2">
+            <img alt="smoke-image-2" src="~/Content/img/smoke2.png">
+        </div>
+        <div class="page-bg__smoke-img3">
+            <img alt="smoke-image-3" src="~/Content/img/smoke3.png">
+        </div>
+    </div>
+</div>
+<div class="logo-wrap">
+    <div class="logo-wrap__i"><a href="#" class="logo">WISHER</a></div>
+</div>
+<div id="pageSlider" class="page-slider">
+    <div class="page-section">
+        <div id="start" class="start">
+            <div class="page__inner">
+                <div class="row">
+                    <div id="countdown"></div>
+                </div>
+                <p class="sub-title">Помоги своим друзьям - выбери Себе подарки!</p>
+                <div class="row">
+                    <button id="startButton" class="button">начать </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-section">
+        <div id="sing-in-page" class="page-slide sing-in">
+            <div class="page__inner">
+                <form id="signIn" action="#">
+                    <div class="form-line">
+                        <label>E-mail</label>
+                        <input id="signInEmail" type="email" placeholder="Введите Е-mail" title="Введите e-mail" required>
+                        <div id="signInEmailErrorNotification" class="error-notification"></div>
+                    </div>
+                    <div class="form-line">
+                        <label>Пароль</label>
+                        <input id="signInPassword" type="password" placeholder="Введите пароль" title="Пароль не может быть пустым" required>
+                        <div id="signInPasswordErrorNotification" class="error-notification"></div>
+                    </div>
+                    <div class="form-line">
+                        <button id="signInBtn" type="button" class="button">Войти</button>
+                    </div>
+                    <div class="or-form-separator">or</div>
+                    <div class="form-line">
+                        <button id="goToSignUp" class="button">Создать Новый аккаунт</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="sing-up-page" class="page-slide sing-up">
+            <div class="page__inner">
+                <form id="signUp" action="#">
+                    <div class="form-line">
+                        <label>E-mail</label>
+                        <input id="signUpEmail" name="email" type="email" placeholder="Введите Ваш Е-mail" title="Введите Ваш e-mail" required>
+                        <div id="signUpEmailErrorNotification" class="error-notification"></div>
+                    </div>
+                    <div class="form-line">
+                        <label>Полное имя</label>
+                        <input id="signUpFullName" name="full-name" type="text" placeholder="Введите Свое Полное Имя" title="Введите Ваше полное имя" required>
+                        <div id="signUpFullNameErrorNotification" class="error-notification"></div>
+                    </div>
+                    <div class="form-line">
+                        <label>Пароль</label>
+                        <input id="signUpPasswordSecure" name="password" type="password" placeholder="Введите Пароль" title="Пароль не менее 6 символов" required>
+                        <div id="signUpPasswordErrorNotification" class="error-notification"></div>
+                    </div>
+                    <div class="form-line">
+                        <label>Подтвердите пароль</label>
+                        <input id="signUpConfirmPassword" name="confirm-password" type="password" placeholder="Подтвердите Пароль" title="Подтвердите пароль" required>
+                        <div id="signUpConfirmPasswordErrorNotification" class="error-notification"></div>
+                    </div>
+                    <div class="form-line">
+                        <label>Age</label>
+                        <input id="signUpAge" name="age" type="text" placeholder="Введите Возраст" required>
+                        <div id="signUpAgeNameErrorNotification" class="error-notification"></div>
+                    </div>
+                    <div class="form-line">
+                        <label>Пол</label>
+                        <div class="form-readio-button-wrap">
+                            <input id="signUpMale" name="gender" type="radio" value="0" checked>
+                            <label for="signUpMale">Мужской</label>
+                            <input id="signUpFemele" name="gender" type="radio" value="1">
+                            <label for="signUpFemele">Женский</label>
+                        </div>
+                    </div>
+                    <div class="form-line">
+                        <button id="signUpBtn" type="button" class="button">Зарегистрироваться</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="page-section">
+        <div id="taste-definition" class="page-slide taste-definition">
+            <div class="page__inner">
+                <div class="taste-definition__images-wrap">
+                    <div class="taste-definition__taste-image-wrap">
+                        <img alt="image" src="~/css/gifts.jpg">
+                    </div>
+                    <div class="taste-definition__taste-image-wrap">
+                        <img alt="image" src="~/css/gifts.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/scripts/jquery.js"></script>
+<script src="~/scripts/jquery.fullPage.js"></script>
+<script src="~/scripts/jquery.slimscroll.min.js"></script>
+<script src="~/scripts/jquery.countdown.min.js"></script>
+<script src="~/scripts/underscore.js"></script>
+<script src="~/scripts/backbone.js"></script>
+<script src="~/scripts/CustomScripts/index.js"></script>
+<script src="~/scripts/CustomScripts/authorization.js"></script>
+<script src="~/scripts/CustomScripts/initialisers.js"></script>
+<script src="~/scripts/CustomScripts/routerMain.js"></script>
+<script src="~/scripts/CustomScripts/main.js"></script>
+
 </html>

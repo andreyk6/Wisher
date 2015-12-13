@@ -1,4 +1,3 @@
-
 window.serverName = "http://wisher.azurewebsites.net/";
 /**
  * Created by 23 on 12.12.2015.
@@ -13,7 +12,7 @@ function checkAuthorization() {
 
         $.ajax({
             type: "GET",
-            url: serverName+'auth',
+            url: serverName + 'auth',
             headers: {'idUser': fromLocal.idUser},
             beforeSend: function (xhr) {
                 var token = fromLocal.secret;
@@ -33,31 +32,32 @@ function checkAuthorization() {
 /*
  * Регистрация пользователя
  *
- * @param obj: объект пришедший с валидной формы регистрации
+ * @param dataTransferObject - temporary object to store data;
  */
-function signUp(obj) {
+function signUp(dataTransferObject) {
     $.ajax({
-         url: serverName+"api/accounts/create",
+        url: serverName + "api/accounts/create",
         type: "POST",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify({
-            "Name": obj.fullName,
-            "email": obj.email,
-            "password": obj.password,
-            "confirmPassword": obj.confirmPassword
+            "Name": dataTransferObject.fullName,
+            "email": dataTransferObject.email,
+            "password": dataTransferObject.password,
+            "confirmPassword": dataTransferObject.confirmPassword,
+            "gender": dataTransferObject.gender,
+            "age": dataTransferObject.age
         }),
         statusCode: {
             200: function (data, statusText, xhr) {
-                //TODO добавить реакцию на успех.
-                alert('bingo');
+                signInAdapter(dataTransferObject);
             },
             404: function (data, statusText, error) {
-              alert(error);
+                alert('Запрашиваемая Вами страница не существует!:(')
             },
             400: function (data, statusText, error) {
-               //json
-                alert(error);
+                //json
+                alert("Пароль должен быть не менее 6 символов");
             }
         }
     });
@@ -68,12 +68,11 @@ function signUp(obj) {
  *
  * @param obj: response with validation
  */
+
 function signIn(obj) {
-    var tokenKey = "tokenInfo";
-    var userId = "userId";
-    $(".infoAuth").empty();
+
     $.ajax({
-        url: serverName+'oauth/token',
+        url: serverName + 'oauth/token',
         type: "PUT",
         data: {"userName": obj.email, "password": obj.password, "grant_type": "password"},
         statusCode: {
@@ -81,25 +80,78 @@ function signIn(obj) {
                 var values = xhr.getResponseHeader('Keys');
                 localStorage['user'] = JSON.stringify({"idUser": values, "secret": data.access_token});
 
-                window.location = '/in/';
+                location.hash = "#tastify";
             },
             400: function (data, statusText, error) {
-                //change later to concrete id or class.
-                alert(error);
+                alert("Что-то пошло не так, повторите отправку.")
+
             },
             404: function (data, statusText, error) {
-                alert(error);
+                $("#error-server").html("Запрашиваемая Вами страница не найдена!")
             }
         }
     });
 };
 
-function signUpPasswordValidation() {
-    if ($('#signUpPasswordTrue').val() !== $('#signUpConfirmPassword').val()) {
-        $('#signUpPassword_error').html('password and confirmation must be equals');
-        return false;
+function signInAdapter(dataTransferObject) {
+    var signInObject = {};
+    signInObject.email = dataTransferObject.email;
+    signInObject.password = dataTransferObject.password;
+    signIn(signInObject);
+};
+
+
+function passwordConfirmation() {
+    var formLine = $(this).parents(".form-line");
+    if ($('#signUpPasswordSecure').val() !== $('#signUpConfirmPassword').val()) {
+        formLine.addClass("error");
+        $("#signUpPasswordErrorNotification").text("Пароль и подтверждение должны совпадать");
+
+
     } else {
-        $('#signInPassword_error').html('');
-        return true;
+        formLine.removeClass("error");
+        $("#signUpPasswordNameErrorNotification").text(" ");
+
     }
 };
+
+function passwordValidation() {
+    var formLine = $(this).parents(".form-line");
+    if( $("#signUpPasswordSecure").val().length < 6){
+        formLine.addClass("error");
+        $("#signUpPasswordErrorNotification").text("Пароль должен быть не менее 6 символов");
+
+    } else{
+        formLine.removeClass("error");
+        $("#signUpPasswordNameErrorNotification").text(" ");
+
+    }
+};
+
+function signInLoginNotNull(){
+    var formLine = $(this).parents(".form-line");
+    if( $("#signInEmail").val().length == 0){
+        formLine.addClass("error");
+        $("#signInEmailErrorNotification").text("Поле не может быть пустым");
+
+    } else{
+        formLine.removeClass("error");
+        $("#signInEmailErrorNotification").text(" ");
+
+    }
+
+}
+
+function signInPasswordNotNull(){
+    var formLine = $(this).parents(".form-line");
+    if( $("#signInPassword").val().length == 0){
+        formLine.addClass("error");
+        $("#signInPasswordErrorNotification").text("Поле не может быть пустым");
+
+    } else{
+        formLine.removeClass("error");
+        $("#signInPasswordErrorNotification").text(" ");
+
+    }
+
+}
