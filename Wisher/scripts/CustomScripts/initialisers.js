@@ -3,12 +3,12 @@ function initializeListeners(){
 
         var signUpInfo = {};
         signUpInfo.email = $("#signUpEmail").val();
-        signUpInfo.Name = $("#signUpFullName").val();
+        signUpInfo.fullName = $("#signUpFullName").val();
         signUpInfo.password = $("#signUpPassword").val();
         signUpInfo.confirmPassword = $("#signUpConfirmPassword").val();
         signUpInfo.age = $("#signUpAge").val();
         signUpInfo.gender = $("input:radio[name=gender]:checked").val();
-
+        alert("что-то не так")
         signUp(signUpInfo);
 
     });
