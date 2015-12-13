@@ -131,8 +131,8 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 .taste-definition__taste-image-wrap:hover { box-shadow: 0 0 25px #666 inset, 0 0 25px 10px #fff; }
 .taste-definition__taste-image-wrap img { width: 100%; height: auto; position: absolute; left: 0; top: 0; z-index: -1; min-height: 100%; }
 
-.progress-bar { position: absolute; z-index: 6; top: 81px; bottom: 0; left: 1%; width: 4%; background-color: transparent; box-shadow: 0 0 25px #333 inset; border-radius: 5px; }
-.progress-bar__inner { position: absolute; width: 100%; left: 0; bottom: 0; height: 80%; -o-transition: height 1s ease-out 0.5s; transition: height 1s ease-out 0.5s; background-image: -o-linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); background-image: linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); box-shadow: 0 0 25px #333 inset; border-radius: 5px; }
+.progress-bar { position: absolute; z-index: 6; top: 81px; bottom: 0; left: 1%; width: 4%; background-color: transparent; box-shadow: 0 0 25px #333 inset; border-radius: 5px; overflow: hidden; display: none; }
+.progress-bar__inner { position: absolute; width: 100%; left: 0; bottom: 0; height: 0; -o-transition: height 1s ease-out 0.5s; transition: height 1s ease-out 0.5s; background-image: -o-linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); background-image: linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); box-shadow: 0 0 25px #333 inset; border-radius: 5px; }
 @media screen and (min-width: 767px) and (max-width: 1023px) {
 
  .righ-side-block { padding: 0 12px; } }
