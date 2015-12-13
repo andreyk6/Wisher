@@ -9,11 +9,14 @@
 			sectionSelector: '.page-section',
 			slideSelector: '.page-slide',
 			slidesNavigation: false,
-			controlArrows: false
+			controlArrows: false,
+			scrollOverflow: true,
+			paddingTop: '81px'
 		});
 
 		$.fn.fullpage.setKeyboardScrolling(false, 'all');
 		$.fn.fullpage.setAllowScrolling(false, 'all');
+		$.fn.fullpage.setRecordHistory(false);
 
 		$countdown.countdown({
 			date: "January 01, 2016 00:00:00",
