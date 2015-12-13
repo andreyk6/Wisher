@@ -220,7 +220,11 @@
     <Content Include="Content\img\smoke1.png" />
     <Content Include="Content\img\smoke2.png" />
     <Content Include="Content\img\smoke3.png" />
+    <Content Include="css\logo.png" />
     <Content Include="css\screen.css" />
+    <Content Include="css\smoke1.png" />
+    <Content Include="css\smoke2.png" />
+    <Content Include="css\smoke3.png" />
     <Content Include="css\vendor\jquery.fullPage.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
@@ -283,7 +287,7 @@
     <Content Include="css\screen.css.map" />
     <None Include="Properties\PublishProfiles\wisher.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\ResultPage.cshtml" />
+    <Content Include="scripts\CustomScripts\mock.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

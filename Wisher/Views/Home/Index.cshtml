@@ -11,9 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,800,900&subset=latin,cyrillic">
-    <link rel="stylesheet" href="~/css/vendor/jquery.fullPage.css">
-    <link rel="stylesheet" href="~/css/screen.css">
+    <link rel="stylesheet" href="../../css/vendor/jquery.fullPage.css">
+    <link rel="stylesheet" href="../../css/screen.css">
 </head>
 <body>
 </body>
@@ -23,26 +22,29 @@
         <div class="progress"></div>
     </div>
 </div>
+<div id="progressBar" class="progress-bar">
+    <div class="progress-bar__inner"></div>
+</div>
 <div class="page-bg">
     <div class="page-bg__image"></div>
     <div class="page-bg__smoke">
         <div class="page-bg__smoke-img1">
-            <img alt="smoke-image-1" src="~/Content/img/smoke1.png">
+            <img alt="smoke-image-1" src="../../css/smoke1.png">
         </div>
         <div class="page-bg__smoke-img2">
-            <img alt="smoke-image-2" src="~/Content/img/smoke2.png">
+            <img alt="smoke-image-2" src="../../css/smoke2.png">
         </div>
         <div class="page-bg__smoke-img3">
-            <img alt="smoke-image-3" src="~/Content/img/smoke3.png">
+            <img alt="smoke-image-3" src="../../css/smoke3.png">
         </div>
     </div>
 </div>
 <div class="logo-wrap">
-    <div class="logo-wrap__i"><a href="#" class="logo">WISHER</a></div>
+    <div class="logo-wrap__i"><a href="#start" class="logo"><img alt="logo" src="../../css/logo.png"></a></div>
 </div>
 <div id="pageSlider" class="page-slider">
     <div class="page-section">
-        <div id="start" class="start">
+        <div class="start">
             <div class="page__inner">
                 <div class="row">
                     <div id="countdown"></div>
@@ -71,7 +73,7 @@
                     <div class="form-line">
                         <button id="signInBtn" type="button" class="button">Войти</button>
                     </div>
-                    <div class="or-form-separator">or</div>
+                    <div class="or-form-separator">или</div>
                     <div class="form-line">
                         <button id="goToSignUp" class="button">Создать Новый аккаунт</button>
                     </div>
@@ -125,28 +127,38 @@
     <div class="page-section">
         <div id="taste-definition" class="page-slide taste-definition">
             <div class="page__inner">
+                <h2 class="taste-definition__header">Выберите одну из категорий</h2>
                 <div class="taste-definition__images-wrap">
-                    <div class="taste-definition__taste-image-wrap">
-                        <img alt="image" src="~/css/gifts.jpg">
+                    <div class="taste-definition__taste-category-wrap" id="firstImgWrapper">
+                        <div class="taste-definition__taste-image-wrap">
+                            <img id="firstImg" alt="image" src="~/css/gifts.jpg">
+                        </div>
+                        <div class="taste-definition__category-name" id="firstImgCategoryName"></div>
                     </div>
-                    <div class="taste-definition__taste-image-wrap">
-                        <img alt="image" src="~/css/gifts.jpg">
+                    <div class="taste-definition__taste-category-wrap" id="secondImgWrapper">
+                        <div class="taste-definition__taste-image-wrap">
+                            <img id="secondImg" alt="image" src="~/css/gifts.jpg">
+                        </div>
+                        <div class="taste-definition__category-name" id="secondImgCategoryName"></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
-<script src="~/scripts/jquery.js"></script>
-<script src="~/scripts/jquery.fullPage.js"></script>
-<script src="~/scripts/jquery.slimscroll.min.js"></script>
-<script src="~/scripts/jquery.countdown.min.js"></script>
-<script src="~/scripts/underscore.js"></script>
-<script src="~/scripts/backbone.js"></script>
-<script src="~/scripts/CustomScripts/index.js"></script>
-<script src="~/scripts/CustomScripts/authorization.js"></script>
-<script src="~/scripts/CustomScripts/initialisers.js"></script>
-<script src="~/scripts/CustomScripts/routerMain.js"></script>
-<script src="~/scripts/CustomScripts/main.js"></script>
+<script src="../../scripts/jquery.js"></script>
+<script src="../../scripts/jquery.fullPage.js"></script>
+<script src="../../scripts/jquery.slimscroll.min.js"></script>
+<script src="../../scripts/jquery.countdown.min.js"></script>
+<script src="../../scripts/underscore.js"></script>
+<script src="../../scripts/backbone.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("search", "1");
+</script>
+
+<script src="../../scripts/CustomScripts/main.js"></script>
+
 
 </html>
