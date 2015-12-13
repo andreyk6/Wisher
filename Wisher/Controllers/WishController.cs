@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Wisher.Data;
 using Wisher.Models;
@@ -23,9 +24,9 @@ namespace Wisher.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult MakeWish(WishRequestModel wishRequest)
+        public async  Task<IHttpActionResult> MakeWish(WishRequestModel wishRequest)
         {
-            var user = _dbContext.Users.Include(u => u.CategoryInfo).FirstOrDefault(u => u.Id == wishRequest.UserId);
+            var user = await _dbContext.Users.Include(u => u.CategoryInfo).FirstOrDefaultAsync(u => u.Id == wishRequest.UserId);
             var categories = _hotlineRepository.GetCategories();
 
             //Remove bad cats and nested cats from user wishlist
@@ -47,7 +48,7 @@ namespace Wisher.Controllers
                     .ToList();
 
                 user.CategoryInfo = updCategories;
-                _dbContext.SaveChanges();
+               await  _dbContext.SaveChangesAsync();
             }
 
             int targetLevel = 0;

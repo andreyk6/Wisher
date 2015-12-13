@@ -252,6 +252,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HotlineManagment\HotlineCategoryManager.cs" />
+    <Compile Include="HotlineManagment\HotlineProductManager.cs" />
     <Compile Include="Migrations\201512122130566_Initial.cs" />
     <Compile Include="Migrations\201512122130566_Initial.Designer.cs">
       <DependentUpon>201512122130566_Initial.cs</DependentUpon>
