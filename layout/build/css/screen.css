@@ -102,7 +102,9 @@ input[type="text"] { box-sizing: border-box; }
 #countdown div span { display: block; font-size: 50px; font-size: 3vw; line-height: 50px; letter-spacing: initial; font-weight: 100; text-transform: uppercase; }
 
 form { display: block; margin: 0 auto; width: 450px; padding-bottom: 30px; }
-form .form-line { margin: 15px 0; }
+form .form-line { margin: 15px 0 5px; padding-bottom: 25px; position: relative; }
+form .form-line .error-notification { display: none; position: absolute; bottom: 0; width: 100%; left: 0; color: #f03; line-height: 1; font-size: 16px; }
+form .form-line.error .error-notification { display: block; }
 form label { display: block; margin-bottom: 10px; font-size: 22px; color: #333; }
 form input[type="text"], form input[type="email"], form input[type="password"] { display: inline-block; border-radius: 10px; padding: 0 10px; height: 46px; line-height: 46px; width: 100%; font-size: 18px; text-align: center; background-color: rgba(23, 26, 28, 0.3); border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); box-shadow: 0 0 25px #666 inset; }
 form input[type="text"]:hover, form input[type="email"]:hover, form input[type="password"]:hover { box-shadow: 0 0 25px #666 inset, 0 0 10px #fff; }
@@ -111,7 +113,7 @@ form input[type="text"]::-webkit-input-placeholder, form input[type="email"]::-w
 form input[type="text"]::-moz-placeholder, form input[type="email"]::-moz-placeholder, form input[type="password"]::-moz-placeholder { color: #fff; }
 form input[type="text"]:-ms-input-placeholder, form input[type="email"]:-ms-input-placeholder, form input[type="password"]:-ms-input-placeholder { color: #fff; }
 form input[type="text"]::placeholder, form input[type="email"]::placeholder, form input[type="password"]::placeholder { color: #fff; }
-form input[type="text"].error, form input[type="email"].error, form input[type="password"].error { box-shadow: 0 0 25px #666 inset, 0 0 25px #ff0033; color: #ff0033; }
+form .error input[type="text"], form .error input[type="email"], form .error input[type="password"] { box-shadow: 0 0 25px #666 inset, 0 0 25px #ff0033; color: #ff0033; }
 form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 
 .form-readio-button-wrap input[type="radio"] { display: none; }
@@ -131,7 +133,9 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
  * { -webkit-text-size-adjust: none; } }
 @media screen and (max-width: 1366px) {
 
- form .form-line { margin: 4% 0; }
+ form .form-line { margin: 10px 0 0; padding-bottom: 20px; }
+
+ form .form-line .error-notification { font-size: 14px; }
 
  form input[type="text"], form input[type="email"], form input[type="password"] { font-size: 16px; } }
 @media screen and (max-width: 1200px) {
