@@ -10,7 +10,7 @@ namespace Wisher.HotlineManagment
 {
     public class HotlineProductManager
     {
-        public static HotlineProductModel GetToProducts(CategoryInfo category, int count = 1)
+        public static HotlineProductModel GetToProducts(CategoryInfo category)
         {
             try
             {

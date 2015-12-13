@@ -69,9 +69,9 @@ namespace Wisher.Controllers
             }
 
             int targetLevel = 0;
-            if (tempUserCats.Count(c => c.Level == 1) < 4)
+            if (tempUserCats.Count(c => c.Level == 1) < 3)
             {
-                if (tempUserCats.Count(c => c.Level == 2) > 5)
+                if (tempUserCats.Count(c => c.Level == 2) > 4)
                 {
                     //Return 2nd level cats
                     targetLevel = 2;
@@ -100,7 +100,7 @@ namespace Wisher.Controllers
                 cat1_name = rndCats[0].Name,
                 cat2_id = rndCats[1].EbayCategoryIntValue,
                 cat2_name = rndCats[1].Name,
-                progress = 100 - ((tempUserCats.Count() * 100) / categories.Count)
+                progress = 112 - ((tempUserCats.Count() * 100) / categories.Count)
             });
         }
 

@@ -43,7 +43,7 @@
             chooseCategory: function() {
                 //initialize here all
                 "use strict";
-
+                checkAuthorization();
                 choosedCategory();
             },
 
@@ -52,7 +52,8 @@
                 console.log("wisher router has been initialized");
             },
 
-            userProfile: function(){
+            userProfile: function () {
+                checkAuthorization();
                 $("#progressBar").fadeOut();
                 $("#firstImgWrapper").remove();
                 $("secondImgWrapper").remove();
@@ -66,59 +67,42 @@
             $("#firstImgWrapper").fadeOut();
             $("#secondImgWrapper").fadeOut();
             $("#taste-definition").addClass("loader-bg");
-            var categoryId = $(this).attr('data-id');
+            var categoryId = $(this).find("img").attr('data-id');
             if (categoryId === undefined) {
                 categoryId = -1;
             }
-            // var fromLocal = JSON.parse(localStorage["user"]);
-            //$.ajax({
-            //    type: "POST",
-            //    url: serverName + '',
-            //    headers: {'idUser': fromLocal.idUser},
-            //    beforeSend: function (xhr) {
-            //        var token = fromLocal.secret;
-            //        xhr.setRequestHeader("Authorization", "Bearer " + token);
-            //    },
-            //    data: {"UserId": authInfo.idUser, "TrueCategoryId": "", "FalseCategoryId": categoryId},
-            //    dataType: "json",
-            //    statusCode: {
-            //        200: function (data, statusText, xhr) {
-            //            renderResponse(data);
-            //        },
-            //        404: function (data, statusText, error) {
-            //            alert('Запрашиваемая Вами страница не существует!')
-            //        },
-            //        400: function (data, statusText, error) {
-            //
-            //        }
-            //    }
-
-            //})
+            var fromLocal = JSON.parse(localStorage.getItem("user"));
             $.ajax({
-                type: "GET",
-                url: 'js/mock.json',
+                type: "POST",
+                url: serverName + 'api/Wish/MakeWish',
+                //headers: { 'idUser': fromLocal.idUser },
+                beforeSend: function(xhr) {
+                    var token = fromLocal.secret;
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                },
+                data: { "UserId": fromLocal.idUser, "TrueCategoryId": " ", "FalseCategoryId": categoryId },
                 dataType: "json",
                 statusCode: {
-                    200: function (data, statusText, xhr) {
+                    200: function(data, statusText, xhr) {
                         renderResponse(data);
                     },
-                    404: function (data, statusText, error) {
-                        alert('Запрашиваемая Вами страница не существует!');
+                    404: function(data, statusText, error) {
+                        //  alert('Запрашиваемая Вами страница не существует!')
                     },
-                    400: function (data, statusText, error) {
+                    400: function(data, statusText, error) {
 
                     }
                 }
-
             });
         }
 
+        $(".mock").on("click", choosedCategory);
         function renderResponse(data){
             "use strict";
 
             if( data.progress === 100) {
 
-                $.fn.fullpage.moveSlideLeft();
+                $.fn.fullpage.moveSlideRight();
                 location.hash = "#userAccount";
                 return;
             }
@@ -126,7 +110,7 @@
                 $(this).find(".progress-bar__inner").css("height", data.progress+"%");
             });
             var firstImg = $("#firstImg");
-            var secondImg = $("secondImg");
+            var secondImg = $("#secondImg");
 
             var firstImgCategoryName = data.cat1_name;
             var secondImgCategoryName = data.cat2_name;
@@ -147,7 +131,7 @@
             });
 
             $("#firstImgCategoryName").text(firstImgCategoryName);
-            $("#secondImgCategoryName").text(firstImgCategoryName);
+            $("#secondImgCategoryName").text(secondImgCategoryName);
             $("#taste-definition").removeClass("loader-bg");
             $("#firstImgWrapper").fadeIn();
             $("#secondImgWrapper").fadeIn();
@@ -186,17 +170,17 @@
                 var fromLocal = JSON.parse(localStorage.getItem('user'));
                 $.ajax({
                     type: "GET",
-                    url: serverName + 'auth',
+                    url: serverName + 'api/accounts/auth',
                     headers: {'idUser': fromLocal.idUser},
                     beforeSend: function (xhr) {
                         var token = fromLocal.secret;
                         xhr.setRequestHeader("Authorization", "Bearer " + token);
                     },
                     success: function (data, statusText, xhr) {
-                        location.hash = '#tastify';
+                        
                     },
                     error: function (xhr, textStatus, error) {
-                        location.hash = '#start';
+                        
                     }
                 });
             }
@@ -211,10 +195,10 @@
         function signUp(dataTransferObject) {
             "use strict";
             $.ajax({
-                url: serverName + "api/accounts/create",
-                type: "POST",
-                dataType: "json",
-                contentType: "application/json",
+                url: serverName + 'api/accounts/create',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
                 data: JSON.stringify({
                     "email": dataTransferObject.email,
                     "Name": dataTransferObject.fullName,
@@ -225,15 +209,15 @@
                 }),
                 statusCode: {
                     200: function (data, statusText, xhr) {
-                        alert("SignUpSuccess");
+                       // alert("SignUpSuccess");
                         signInAdapter(dataTransferObject);
                     },
                     404: function (data, statusText, error) {
-                        alert("Not found!");
+                      //  alert("Not found!");
                     },
                     400: function (data, statusText, error) {
                         //json
-                        alert("At least 6 symbols");
+                      //  alert("At least 6 symbols");
                     }
                 }
             });
@@ -261,11 +245,11 @@
                         $.fn.fullpage.silentMoveTo(3, 1);
                     },
                     400: function (data, statusText, error) {
-                        alert("Что-то пошло не так, повторите отправку.");
+                     //   alert("Что-то пошло не так, повторите отправку.");
 
                     },
                     404: function (data, statusText, error) {
-                        alert("Запрашиваемая Вами страница не найдена!");
+                      //  alert("Запрашиваемая Вами страница не найдена!");
                     }
                 }
             });
