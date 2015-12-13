@@ -8,7 +8,7 @@
 (function(global, factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
-        define(['jquery'], function($) {
+        define(['../../../layout/build/js/vendor/jquery'], function($) {
           return factory($, global, global.document, global.Math);
         });
     } else if (typeof exports !== 'undefined') {
