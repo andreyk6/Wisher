@@ -103,8 +103,8 @@ input[type="text"] { box-sizing: border-box; }
 
 form { display: block; margin: 0 auto; width: 450px; padding-bottom: 30px; }
 form .form-line { margin: 15px 0; }
-form label { display: block; margin-bottom: 10px; font-size: 1.8vw; color: #333; }
-form input[type="text"], form input[type="email"], form input[type="password"] { display: inline-block; border-radius: 10px; padding: 0 10px; height: 46px; line-height: 46px; width: 450px; font-size: 1.5vw; text-align: center; background-color: rgba(23, 26, 28, 0.3); line-height: 2vw; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); box-shadow: 0 0 25px #666 inset; }
+form label { display: block; margin-bottom: 10px; font-size: 22px; color: #333; }
+form input[type="text"], form input[type="email"], form input[type="password"] { display: inline-block; border-radius: 10px; padding: 0 10px; height: 46px; line-height: 46px; width: 100%; font-size: 18px; text-align: center; background-color: rgba(23, 26, 28, 0.3); border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); box-shadow: 0 0 25px #666 inset; }
 form input[type="text"]:hover, form input[type="email"]:hover, form input[type="password"]:hover { box-shadow: 0 0 25px #666 inset, 0 0 10px #fff; }
 form input[type="text"]:focus, form input[type="email"]:focus, form input[type="password"]:focus { box-shadow: 0 0 25px #666 inset, 0 0 25px #fff; }
 form input[type="text"]::-webkit-input-placeholder, form input[type="email"]::-webkit-input-placeholder, form input[type="password"]::-webkit-input-placeholder { color: #fff; }
@@ -114,7 +114,12 @@ form input[type="text"]::placeholder, form input[type="email"]::placeholder, for
 form input[type="text"].error, form input[type="email"].error, form input[type="password"].error { box-shadow: 0 0 25px #666 inset, 0 0 25px #ff0033; color: #ff0033; }
 form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 
-.form-readio-button-wrap label { display: inline-block; cursor: pointer; }
+.form-readio-button-wrap input[type="radio"] { display: none; }
+.form-readio-button-wrap label { display: inline-block; cursor: pointer; position: relative; padding-left: 25px; margin-right: 20px; }
+.form-readio-button-wrap label:before { content: ""; position: absolute; background-color: rgba(23, 26, 28, 0.3); border: 1px solid #171a1c; display: inline-block; width: 20px; height: 20px; border-radius: 10px; left: 0; top: 50%; margin-top: -11px; box-shadow: 0 0 25px #666 inset; }
+.form-readio-button-wrap input + label:hover:before { box-shadow: 0 0 25px #666 inset, 0 0 10px #fff; }
+.form-readio-button-wrap input:checked + label:before { box-shadow: 0 0 25px #666 inset, 0 0 25px #fff; }
+.form-readio-button-wrap input:checked + label:after { content: ""; display: inline-block; position: absolute; left: 4px; top: 50%; margin-top: -7px; width: 12px; height: 12px; background-color: rgba(23, 26, 28, 0.5); border-radius: 6px; }
 
 .button { margin: 0 10px; display: inline-block; text-decoration: none; font-size: 14px; font-weight: 700; line-height: 1em; letter-spacing: 0.2em; text-transform: uppercase; color: #161a1b; background: transparent; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); border-radius: 20px; line-height: 46px; padding: 0 40px; height: 46px; -o-transition: all 0.9s; transition: all 0.9s; box-sizing: border-box; }
 .button:hover { background: #171a1c; color: #fff; border: 1px solid #171a1c; -o-transition: all 0.5s; transition: all 0.5s; box-shadow: 0 0 25px #fff; }
@@ -124,9 +129,11 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 
  * { -webkit-text-size-adjust: none; } }
-@media screen and (min-width: 1366px) {
+@media screen and (max-width: 1366px) {
 
- form .form-line { margin: 4% 0; } }
+ form .form-line { margin: 4% 0; }
+
+ form input[type="text"], form input[type="email"], form input[type="password"] { font-size: 16px; } }
 @media screen and (max-width: 1200px) {
 
  .row { margin: 1% 0; }
@@ -143,7 +150,12 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
  .page-bg__smoke-img1 { display: block; position: absolute; right: 40%; top: 40%; }
 
  .page-bg__smoke-img3 { right: -10%; top: -10%; -webkit-animation: wave 9s 0.1s infinite linear; -o-animation: wave 9s 0.1s infinite linear; animation: wave 9s 0.1s infinite linear; } }
+@media screen and (max-width: 900px) {
+
+ form label { font-size: 18px; } }
 @media screen and (max-width: 768px) {
+
+ form { width: 100%; }
 
  .button { width: 100%; } }
 @media screen and (max-width: 767px) {
