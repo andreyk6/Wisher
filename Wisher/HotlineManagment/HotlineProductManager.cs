@@ -12,27 +12,35 @@ namespace Wisher.HotlineManagment
     {
         public static HotlineProductModel GetToProducts(CategoryInfo category, int count = 1)
         {
-            HtmlWeb web = new HtmlWeb();
+            try
+            {
+                HtmlWeb web = new HtmlWeb();
 
-            HtmlDocument document;
+                HtmlDocument document;
 
-            if (category.EbayCategoryId.Contains("hotline"))
-            {
-                document = web.Load(category.EbayCategoryId);
+                if (category.EbayCategoryId.Contains("hotline"))
+                {
+                    document = web.Load(category.EbayCategoryId);
+                }
+                else
+                {
+                    document = web.Load(@"http://m.hotline.ua" + category.EbayCategoryId);
+                }
+                var topItemNode = ElementsByClass(document, "a", "list_tovar")[0];
+                var topItemData = topItemNode.ChildNodes[1].ChildNodes[1];
+                return new HotlineProductModel()
+                {
+                    HotlineUrl = "http://hotline.ua" + topItemNode.Attributes["href"].Value,
+                    ImageUrl = "http://hotline.ua" + topItemData.ChildNodes[1].ChildNodes[0].ChildNodes[0].Attributes["src"].Value,
+                    Name = topItemData.ChildNodes[3].ChildNodes[1].InnerText,
+                    Price = topItemData.ChildNodes[3].ChildNodes[8].InnerText,
+                };
             }
-            else
+            catch (Exception e)
             {
-                document = web.Load(@"http://m.hotline.ua" + category.EbayCategoryId);
+
+                return null;
             }
-            var topItemNode = ElementsByClass(document, "a", "list_tovar")[0];
-            var topItemData = topItemNode.ChildNodes[1].ChildNodes[1];
-            return new HotlineProductModel()
-            {
-                HotlineUrl = topItemNode.Attributes["href"].Value,
-                ImageUrl = topItemData.ChildNodes[1].ChildNodes[0].ChildNodes[0].Attributes["src"].Value,
-                Name = topItemData.ChildNodes[3].ChildNodes[1].InnerText,
-                Price = topItemData.ChildNodes[3].ChildNodes[8].InnerText,
-            };
         }
 
         static HtmlNodeCollection ElementsByClass(HtmlDocument doc, string element, string className)

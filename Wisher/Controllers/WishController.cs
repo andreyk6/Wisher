@@ -6,7 +6,9 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Routing;
 using Wisher.Data;
+using Wisher.HotlineManagment;
 using Wisher.Models;
 using Wisher.UserManagment.Repository;
 
@@ -100,6 +102,22 @@ namespace Wisher.Controllers
                 cat2_name = rndCats[1].Name,
                 progress = 100 - ((tempUserCats.Count() * 100) / categories.Count)
             });
+        }
+
+        [Route("api/wish/getTop/{userName}")]
+        public async Task<IHttpActionResult> GetTopProduct(string userName)
+        {
+            var user = _dbContext.Users.FirstOrDefault(r => r.UserName == userName);
+            if (user == null) return BadRequest();
+            var categories = await _hotlineRepository.GetCategories();
+
+            var tempUserCats = categories.Where(c => user.FavCats.Contains(c.Id)  && c.Level!=2).ToList();
+            List<HotlineProductModel> productModels = new List<HotlineProductModel>();
+            foreach (var item in tempUserCats.Take(15))
+                productModels.Add(HotlineProductManager.GetToProducts(item));
+
+            productModels = productModels.Where(r => r != null).ToList();
+            return Ok(productModels);
         }
 
         private CategoryInfo[] GetTwoRandomCategories(ICollection<CategoryInfo> categories, int level)

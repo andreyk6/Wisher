@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using Wisher.Data;
+using Wisher.HotlineManagment;
+using Wisher.UserManagment.Repository;
 
 namespace Wisher.Controllers
 {

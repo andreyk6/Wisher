@@ -283,6 +283,7 @@
     <Content Include="css\screen.css.map" />
     <None Include="Properties\PublishProfiles\wisher.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ResultPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
