@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Wisher.Data;
+using Wisher.Models;
 
 namespace Wisher.UserManagment.Repository
 {
@@ -22,6 +23,12 @@ namespace Wisher.UserManagment.Repository
         {
             var data = HotlineCategoryManager.GetCategories();
             _applicationDbContext.EbayCategories.AddRange(data);
+            _applicationDbContext.SaveChanges();
+        }
+
+        public List<CategoryInfo> GetCategories()
+        {
+            return _applicationDbContext.EbayCategories.ToList();
         }
 
         public void Dispose(bool disposing)

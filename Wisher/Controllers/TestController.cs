@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Wisher.UserManagment.Repository;
 
 namespace Wisher.Controllers
 {
@@ -9,8 +10,9 @@ namespace Wisher.Controllers
         [HttpGet]
         public IHttpActionResult UpdateCategoriesFromEbay()
         {
-            var result = HotlineCategoryManager.GetCategories();
-            return Ok(result);
+            HotlineRepository repo = new HotlineRepository();
+            repo.UpdateDbFromHotline();
+            return Ok();
         }
     }
 }

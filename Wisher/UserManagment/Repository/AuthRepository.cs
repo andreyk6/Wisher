@@ -27,6 +27,7 @@ namespace Wisher.UserManagment.Repository
                 UserName = userModel.Name,
                 Age =   userModel.Age,
                 Gender = userModel.Gender,
+                CategoryInfo = new HotlineRepository().GetCategories()
             };
 
             //var ebayRepo = new EbayDataRepository();
