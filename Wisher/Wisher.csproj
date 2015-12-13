@@ -249,6 +249,7 @@
     <Compile Include="UserManagment\ApplicationUser.cs" />
     <Compile Include="UserManagment\GenderEnum.cs" />
     <Compile Include="UserManagment\Repository\AuthRepository.cs" />
+    <Compile Include="UserManagment\Repository\HotlineRepository.cs" />
     <Compile Include="UserManagment\Repository\IUserRepository.cs" />
     <Compile Include="UserManagment\UserBindingModel.cs" />
   </ItemGroup>
