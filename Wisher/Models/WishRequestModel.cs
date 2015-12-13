@@ -9,7 +9,7 @@ namespace Wisher.Models
     public class WishRequestModel
     {
         public string UserId { get; set; }
-        public int TrueCategoryId { get; set; }
-        public int FalseCategoryId { get; set; }
+        public string TrueCategoryId { get; set; }
+        public string FalseCategoryId { get; set; }
     }
 }

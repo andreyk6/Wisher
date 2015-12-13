@@ -14,8 +14,8 @@ namespace Wisher.Models
         public string Details { get; set; }
         public string PictureUrl { get; set; }
         public int Level { get; set; }
-        public int HotLIneCategoryId { get; set; }
-        public int HotLineParrentCategoryId { get; set; }
-        public ICollection<ApplicationUser> LikedInfo { get; set; } 
+        public ICollection<ApplicationUser> LikedIn        public ICollection<ApplicationUser> LikedInfo { get; set; } 
+        public string EbayCategoryId { get; set; }
+        public string EbayParrentCategoryId { get; set; }
     }
 }
