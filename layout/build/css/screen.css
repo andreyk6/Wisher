@@ -126,9 +126,13 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 .button { margin: 0 10px; display: inline-block; text-decoration: none; font-size: 14px; font-weight: 700; line-height: 1em; letter-spacing: 0.2em; text-transform: uppercase; color: #161a1b; background: transparent; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); border-radius: 20px; line-height: 46px; padding: 0 40px; height: 46px; -o-transition: all 0.9s; transition: all 0.9s; box-sizing: border-box; }
 .button:hover { background: #171a1c; color: #fff; border: 1px solid #171a1c; -o-transition: all 0.5s; transition: all 0.5s; box-shadow: 0 0 25px #fff; }
 
+.taste-definition__header { color: #333; font-size: 40px; font-weight: normal; margin: 1% 0; }
 .taste-definition__taste-image-wrap { border-radius: 20px; display: inline-block; width: 30%; margin: 30px 5%; padding-bottom: 30%; cursor: pointer; position: relative; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); overflow: hidden; box-shadow: 0 0 25px 8px #666 inset; }
 .taste-definition__taste-image-wrap:hover { box-shadow: 0 0 25px #666 inset, 0 0 25px 10px #fff; }
 .taste-definition__taste-image-wrap img { width: 100%; height: auto; position: absolute; left: 0; top: 0; z-index: -1; min-height: 100%; }
+
+.progress-bar { position: absolute; z-index: 6; top: 81px; bottom: 0; left: 1%; width: 4%; background-color: transparent; box-shadow: 0 0 25px #333 inset; border-radius: 5px; }
+.progress-bar__inner { position: absolute; width: 100%; left: 0; bottom: 0; height: 80%; -o-transition: height 1s ease-out 0.5s; transition: height 1s ease-out 0.5s; background-image: -o-linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); background-image: linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); box-shadow: 0 0 25px #333 inset; border-radius: 5px; }
 @media screen and (min-width: 767px) and (max-width: 1023px) {
 
  .righ-side-block { padding: 0 12px; } }
@@ -146,7 +150,9 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 
  .row { margin: 1% 0; }
 
- .button { width: auto; display: block; margin: 0 auto; min-width: 20%; max-width: 50%; } }
+ .button { width: auto; display: block; margin: 0 auto; min-width: 20%; max-width: 50%; }
+
+ .taste-definition__header { font-size: 30px; } }
 @media screen and (min-width: 1200px) {
 
  .logo-wrap a:after { margin-top: 20px; }
