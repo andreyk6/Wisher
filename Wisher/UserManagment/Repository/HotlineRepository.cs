@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,9 @@ namespace Wisher.UserManagment.Repository
             _applicationDbContext.SaveChanges();
         }
 
-        public List<CategoryInfo> GetCategories()
+        public async Task<List<CategoryInfo>> GetCategories()
         {
-            return _applicationDbContext.EbayCategories.ToList();
+            return await _applicationDbContext.EbayCategories.ToListAsync();
         }
 
         public void Dispose(bool disposing)
