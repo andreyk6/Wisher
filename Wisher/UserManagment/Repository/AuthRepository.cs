@@ -8,7 +8,6 @@ namespace Wisher.UserManagment.Repository
 {
     public class AuthRepository : IUserRepository
     {
-       
         private bool _disposed;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _applicationDbContext;
@@ -20,20 +19,23 @@ namespace Wisher.UserManagment.Repository
 
         public async Task<IdentityResult> RegisterUser(UserBindingModel userModel)
         {
+           // var valueToDb = Enum.GetName(userModel.Gender);
             var user = new ApplicationUser()
             {
                 Name = userModel.Name,
                 Email = userModel.Email,
-                UserName = userModel.Name
+                UserName = userModel.Name,
+                Age =   userModel.Age,
+                Gender = userModel.Gender,
             };
 
-            var ebayRepo = new EbayDataRepository();
-            var categoriesCodes = ebayRepo.GetCategoriesId();
+            //var ebayRepo = new EbayDataRepository();
+            //var categoriesCodes = ebayRepo.GetCategoriesId();
 
-            foreach (int categoriesCode in categoriesCodes)
-            {
-                user.FavCategories.Add(categoriesCode);
-            }
+            //foreach (int categoriesCode in categoriesCodes)
+            //{
+            //    user.FavCategories.Add(categoriesCode);
+            //}
             
             var result = await _userManager.CreateAsync(user, userModel.Password);
 

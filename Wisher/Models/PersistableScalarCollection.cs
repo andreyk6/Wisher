@@ -16,7 +16,7 @@ namespace Wisher.Models
         // this can be overriden using the given abstract methods (e.g. for list of strings).
         const string DefaultValueSeperator = "|";
 
-        readonly string[] DefaultValueSeperators = new string[] { DefaultValueSeperator };
+        readonly string[] _defaultValueSeperators = { DefaultValueSeperator };
 
         /// <summary>
         /// The internal data container for the list data.
@@ -60,7 +60,7 @@ namespace Wisher.Models
         {
             get
             {
-                return DefaultValueSeperators;
+                return _defaultValueSeperators;
             }
         }
 

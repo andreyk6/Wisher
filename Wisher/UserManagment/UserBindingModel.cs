@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Wisher.UserManagment
 {
@@ -23,5 +24,8 @@ namespace Wisher.UserManagment
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        public GenderEnum Gender { get; set; }
+        public int Age { get; set; }
     }
 }

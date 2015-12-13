@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 using Wisher.Models;
 using eBay.Service.Call;
-using eBay.Service.Core.Sdk;
 using eBay.Service.Core.Soap;
 
 namespace Wisher.EbayManagement
@@ -45,8 +39,8 @@ namespace Wisher.EbayManagement
                 {
                     Level = category.CategoryLevel,
                     Name = category.CategoryName,
-                    EbayParrentCategoryId = int.Parse(category.CategoryParentID[0]),
-                    EbayCategoryId = int.Parse(category.CategoryID)
+                    HotLineParrentCategoryId = int.Parse(category.CategoryParentID[0]),
+                    HotLIneCategoryId = int.Parse(category.CategoryID)
                 });
             }
             return result;
