@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Wisher.Data;
+using Wisher.Models;
 
 namespace Wisher.UserManagment.Repository
 {
@@ -19,7 +20,13 @@ namespace Wisher.UserManagment.Repository
 
         public async Task<IdentityResult> RegisterUser(UserBindingModel userModel)
         {
-           // var valueToDb = Enum.GetName(userModel.Gender);
+            var categories = await new HotlineRepository().GetCategories();
+            var res = new PersistableIntCollection();
+            foreach (var categoryInfo in categories)
+            {
+                res.Add(categoryInfo.EbayCategoryIntValue);
+            }
+
             var user = new ApplicationUser()
             {
                 Name = userModel.Name,
@@ -27,7 +34,7 @@ namespace Wisher.UserManagment.Repository
                 UserName = userModel.Name,
                 Age =   userModel.Age,
                 Gender = userModel.Gender,
-                CategoryInfo = new HotlineRepository().GetCategories()
+                FavCats = res
             };
 
             //var ebayRepo = new EbayDataRepository();

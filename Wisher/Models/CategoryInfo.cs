@@ -8,7 +8,7 @@ namespace Wisher.Models
     {
         public CategoryInfo()
         {
-            LikedInfo = new HashSet<ApplicationUser>();
+         //   LikedInfo = new HashSet<ApplicationUser>();
         }
         [Key]
         public int Id { get; set; }
@@ -16,7 +16,7 @@ namespace Wisher.Models
         public string Details { get; set; }
         public string PictureUrl { get; set; }
         public int Level { get; set; }
-        public ICollection<ApplicationUser> LikedInfo { get; set; } 
+       // public ICollection<ApplicationUser> LikedInfo { get; set; } 
         public string EbayCategoryId { get; set; }
         public int EbayCategoryIntValue { get; set; }
         public string EbayParrentCategoryId { get; set; }

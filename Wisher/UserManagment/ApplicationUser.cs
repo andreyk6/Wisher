@@ -14,7 +14,7 @@ namespace Wisher.UserManagment
     {
         public ApplicationUser()
         {
-            CategoryInfo = new HashSet<CategoryInfo>();
+            FavCats = new PersistableIntCollection();
         }
         [Required]
         public string Name { get; set; }
@@ -25,7 +25,9 @@ namespace Wisher.UserManagment
         // converter enum
         [JsonConverter(typeof(StringEnumConverter))]
         public GenderEnum Gender { get; set; }
-        public ICollection<CategoryInfo> CategoryInfo { get; set; }
+
+        public PersistableIntCollection FavCats { get; set; }
+        //  public ICollection<CategoryInfo> CategoryInfo { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager,
             string authenticationType)
         {

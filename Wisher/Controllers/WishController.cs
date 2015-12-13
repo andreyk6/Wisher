@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Wisher.Data;
 using Wisher.Models;
@@ -23,10 +24,10 @@ namespace Wisher.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult MakeWish(WishRequestModel wishRequest)
+        public async Task<IHttpActionResult> MakeWish(WishRequestModel wishRequest)
         {
             var user = _dbContext.Users.Include(u => u.CategoryInfo).FirstOrDefault(u => u.Id == wishRequest.UserId);
-            var categories = _hotlineRepository.GetCategories();
+            var categories = await _hotlineRepository.GetCategories();
 
             //Remove bad cats and nested cats from user wishlist
             if (wishRequest.FalseCategoryId != -1)
@@ -34,12 +35,12 @@ namespace Wisher.Controllers
                 //var nestedCats = (from cats in categories
                 //    where cats.EbayParrentIntValue == wishRequest.FalseCategoryId
                 //    select cats.EbayCategoryId).ToList();
-                var nestedCats = categories.Select(c => c.EbayCategoryIntValue).Where(id => id == wishRequest.FalseCategoryId).ToList();
+                var nestedCats = categories.Where(c => c.EbayParrentIntValue == wishRequest.FalseCategoryId).Select(c => c.EbayCategoryIntValue).ToList();
 
                 //var nestedNestedCats = (from cats in categories
                 //    where nestedCats.Contains(cats.EbayCategoryId)
                 //    select cats.EbayCategoryId).ToList();
-                var nestedNestedCats = categories.Select(c => c.EbayCategoryIntValue).Where(id => nestedCats.Contains(id)).ToList();
+                var nestedNestedCats = categories.Where(c => nestedCats.Contains(c.EbayParrentIntValue)).Select(c => c.EbayCategoryIntValue).ToList();
 
                 var catsToRemove = nestedCats.Concat(nestedNestedCats);
 

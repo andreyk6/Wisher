@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Wisher.HotlineManagment;
 using Wisher.Models;
@@ -20,15 +21,16 @@ namespace Wisher.Controllers
 
         [Route("getTopItem")]
         [HttpGet]
-        public IHttpActionResult GetRandomTopItem()
+        public async Task<IHttpActionResult> GetRandomTopItem()
         {
             CategoryInfo category = new CategoryInfo() {Level = 2};
 
             HotlineRepository repo = new HotlineRepository();
             Random rnd = new Random();
+            var categories = await repo.GetCategories(); 
             while (category.Level == 2)
             {
-                category = repo.GetCategories()[rnd.Next(0, repo.GetCategories().Count)];
+                category = categories[rnd.Next(0, categories.Count)];
             }
 
             return Ok(HotlineProductManager.GetToProducts(category));
