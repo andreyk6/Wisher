@@ -34,7 +34,8 @@ namespace Wisher.UserManagment.Repository
 
         public List<int> GetCategoriesId()
         {
-            return _applicationDbContext.EbayCategories.Select(c => c.EbayCategoryId).ToList();
+            return null;
+            //  return _applicationDbContext.EbayCategories.Select(c => c.EbayCategoryId).ToList();
         }
 
         public List<CategoryInfo> GetCategories()

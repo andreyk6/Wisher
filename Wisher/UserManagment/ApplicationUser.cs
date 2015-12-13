@@ -38,9 +38,9 @@ namespace Wisher.UserManagment
 
         public ApplicationUser()
         {
-              FavCategories = new PersistableIntCollection();
+              FavCategories = new List<string>();
         }
         //Data for AI
-        public PersistableIntCollection FavCategories { get; set; }
+        public List<string> FavCategories { get; set; }
   }
 }

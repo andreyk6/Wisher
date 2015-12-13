@@ -7,7 +7,7 @@
         public string Details { get; set; }
         public string PictureUrl { get; set; }
         public int Level { get; set; }
-        public int EbayCategoryId { get; set; }
-        public int EbayParrentCategoryId { get; set; }
+        public string EbayCategoryId { get; set; }
+        public string EbayParrentCategoryId { get; set; }
     }
 }

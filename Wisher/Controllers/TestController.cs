@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using Wisher.UserManagment.Repository;
+﻿using System.Web.Http;
 
 namespace Wisher.Controllers
 {
@@ -15,11 +9,8 @@ namespace Wisher.Controllers
         [HttpGet]
         public IHttpActionResult UpdateCategoriesFromEbay()
         {
-            EbayDataRepository repository = new EbayDataRepository();
-
-            repository.UpdateCategoriesFromEBay();
-            
-            return Ok();
+            var result = HotlineCategoryManager.GetCategories();
+            return Ok(result);
         }
     }
 }

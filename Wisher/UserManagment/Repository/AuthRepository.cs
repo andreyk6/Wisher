@@ -32,7 +32,7 @@ namespace Wisher.UserManagment.Repository
 
             foreach (int categoriesCode in categoriesCodes)
             {
-                user.FavCategories.Add(categoriesCode);
+              //  user.FavCategories.Add(categoriesCode);
             }
             
             var result = await _userManager.CreateAsync(user, userModel.Password);

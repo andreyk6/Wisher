@@ -27,7 +27,7 @@ namespace Wisher.Controllers
             var user = _dbContext.Users.FirstOrDefault(u => u.Id == wishRequest.UserId);
             var categories = _ebayRepository.GetCategories();
 
-            if (wishRequest.TrueCategoryId != -1)
+            if (wishRequest.FalseCategoryId!= "-1")
             {
                 var nestedCats =
                     categories.Where(c => c.EbayParrentCategoryId == wishRequest.FalseCategoryId)
@@ -41,7 +41,7 @@ namespace Wisher.Controllers
                                  nestedCats.Contains(my) == false)
                     .ToList();
 
-                var result = new PersistableIntCollection();
+                var result = new List<string>();
                 foreach (var updCategory in updCategories)
                 {
                     result.Add(updCategory);
@@ -57,7 +57,7 @@ namespace Wisher.Controllers
 
             if (userTopLevelCats.Count < 7)
             {
-                List<int> secondLevelCats = new List<int>();
+                List<string> secondLevelCats = new List<string>();
                 int index = 0;
                 while (secondLevelCats.Count < 2 && index < user.FavCategories.Count)
                 {
@@ -78,7 +78,7 @@ namespace Wisher.Controllers
             }
             else
             {
-                List<int> firstLevelCats = new List<int>();
+                List<string> firstLevelCats = new List<string>();
                 int index = 0;
                 while (firstLevelCats.Count < 2 && index < user.FavCategories.Count)
                 {
