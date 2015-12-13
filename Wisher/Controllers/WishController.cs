@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,7 +14,7 @@ namespace Wisher.Controllers
     public class WishController : ApiController
     {
         private readonly ApplicationDbContext _dbContext;
-        private HotlineRepository _hotlineRepository;
+        private readonly HotlineRepository _hotlineRepository;
 
         public WishController()
         {
@@ -24,7 +25,7 @@ namespace Wisher.Controllers
         [HttpPost]
         public IHttpActionResult MakeWish(WishRequestModel wishRequest)
         {
-            var user = _dbContext.Users.FirstOrDefault(u => u.Id == wishRequest.UserId);
+            var user = _dbContext.Users.Include(u => u.CategoryInfo).FirstOrDefault(u => u.Id == wishRequest.UserId);
             var categories = _hotlineRepository.GetCategories();
 
             //Remove bad cats and nested cats from user wishlist
@@ -65,7 +66,7 @@ namespace Wisher.Controllers
                 else
                 {
                     //return 100% result
-                    return Ok(new {cat1_id = "", cat2_id = "", progress = 100});
+                    return Ok(new { cat1_id = "", cat2_id = "", progress = 100 });
                 }
             }
             else
@@ -81,7 +82,7 @@ namespace Wisher.Controllers
                 cat1_name = rndCats[0].Name,
                 cat2_id = rndCats[1].EbayCategoryId,
                 cat2_name = rndCats[1].EbayCategoryId,
-                progress = 100 - (user.CategoryInfo.Count*100/categories.Count)
+                progress = 100 - ((user.CategoryInfo.Count * 100) / categories.Count)
             });
         }
 
