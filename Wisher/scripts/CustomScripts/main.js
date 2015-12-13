@@ -1,5 +1,6 @@
 
     $(document).ready(function () {
+        localStorage.clear();
         window.serverName = "http://wisher.azurewebsites.net/";
         var $preloader = $('#preloader'),
             $pageSlider = $('#pageSlider'),
@@ -12,7 +13,8 @@
                 slidesNavigation: false,
                 controlArrows: false,
                 scrollOverflow: true,
-                paddingTop: '81px'
+                paddingTop: '81px',
+                
             });
 
             $.fn.fullpage.setKeyboardScrolling(false, 'all');
@@ -43,7 +45,7 @@
             chooseCategory: function() {
                 //initialize here all
                 "use strict";
-                checkAuthorization();
+                //checkAuthorization();
                 choosedCategory();
             },
 
@@ -53,10 +55,6 @@
             },
 
             userProfile: function () {
-                checkAuthorization();
-                $("#progressBar").fadeOut();
-                $("#firstImgWrapper").remove();
-                $("secondImgWrapper").remove();
 
                 //рендеринг инфы и связь с социалками.
             }
@@ -64,26 +62,28 @@
 
 
         function choosedCategory() {
-            $("#firstImgWrapper").fadeOut();
-            $("#secondImgWrapper").fadeOut();
+            //$("#firstImgWrapper").fadeOut();
+            //$("#secondImgWrapper").fadeOut();
+            $(".taste-definition__header").fadeOut();
             $("#taste-definition").addClass("loader-bg");
-            var categoryId = $(this).find("img").attr('data-id');
+            var categoryId = $(this).find('img').attr('data-id');
             if (categoryId === undefined) {
                 categoryId = -1;
             }
-            var fromLocal = JSON.parse(localStorage.getItem("user"));
+            var fromLocal = JSON.parse(localStorage.getItem('user'));
             $.ajax({
-                type: "POST",
+                type: 'POST',
                 url: serverName + 'api/Wish/MakeWish',
                 //headers: { 'idUser': fromLocal.idUser },
                 beforeSend: function(xhr) {
                     var token = fromLocal.secret;
-                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
                 },
-                data: { "UserId": fromLocal.idUser, "TrueCategoryId": " ", "FalseCategoryId": categoryId },
-                dataType: "json",
+                data: { 'UserId': fromLocal.idUser, 'TrueCategoryId': ' ', 'FalseCategoryId': categoryId },
+                dataType: 'json',
                 statusCode: {
                     200: function(data, statusText, xhr) {
+                        $("#taste-definition").removeClass("loader-bg");
                         renderResponse(data);
                     },
                     404: function(data, statusText, error) {
@@ -98,24 +98,34 @@
 
         $(".mock").on("click", choosedCategory);
         function renderResponse(data){
-            "use strict";
+           
 
-            if( data.progress === 100) {
-
-                $.fn.fullpage.moveSlideRight();
-                location.hash = "#userAccount";
-                return;
-            }
             $("#progressBar").show(function(){
                 $(this).find(".progress-bar__inner").css("height", data.progress+"%");
             });
+
+            if (data.progress >= 100) {
+                //  $.fn.fullpage.moveSlideRight();
+                $("#progressBar").fadeOut();
+                $("#firstImgWrapper").remove();
+                $("#secondImgWrapper").remove();
+                //alert("userProfile called");
+
+                var fromLocal = JSON.parse(localStorage.getItem('user'));
+                location.replace("http://wisher.azurewebsites.net/api/wish/getTop/" + fromLocal.idUser);
+
+                location.hash = "#userAccount";
+
+                return;
+            }
+
             var firstImg = $("#firstImg");
             var secondImg = $("#secondImg");
 
             var firstImgCategoryName = data.cat1_name;
             var secondImgCategoryName = data.cat2_name;
-            var firstImgSrc = getPictureFromGoogle(firstImgCategoryName);
-            var secondImgSrc = getPictureFromGoogle(secondImgCategoryName);
+            var firstImgSrc = "http://lorempixel.com/400/200/sports/";
+            var secondImgSrc = "http://lorempixel.com/400/200/sports";
 
             var firstImgId = data.cat1_id;
             var secondImgId = data.cat2_id;
@@ -135,30 +145,9 @@
             $("#taste-definition").removeClass("loader-bg");
             $("#firstImgWrapper").fadeIn();
             $("#secondImgWrapper").fadeIn();
+            $(".taste-definition__header").fadeIn();
 
         }
-        function getPictureFromGoogle(categoryName){
-            $.ajax({
-                url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='+categoryName+"&as_filetype=jpg",
-                dataType: "json",
-                statusCode: {
-                    200: function (data, statusText, xhr) {
-                        alert(data);
-                    },
-                    404: function (data, statusText, error) {
-                        alert(data);
-                    },
-                    400: function (data, statusText, error) {
-                        alert(data);
-                    }
-                },
-
-            });
-            var img = null;
-            return img;
-        }
-
-
 
         /*
          * Check user's signIn
@@ -239,7 +228,7 @@
                 statusCode: {
                     200: function (data, statusText, xhr) {
                         var values = xhr.getResponseHeader('Keys');
-                        localStorage['user'] = JSON.stringify({"idUser": values, "secret": data.access_token});
+                        localStorage['user'] = JSON.stringify({'idUser': values,'secret': data.access_token});
 
                         location.hash = "#tastify";
                         $.fn.fullpage.silentMoveTo(3, 1);
@@ -253,8 +242,6 @@
                     }
                 }
             });
-            location.hash = "#tastify";
-                        $.fn.fullpage.silentMoveTo(3, 1);
         }
 
         function signInAdapter(dataTransferObject) {
@@ -352,7 +339,7 @@
         //var wisherRouter = new globalFunc.wisher();
         var wisherRouter = new WisherRouter();
         Backbone.history.start();
-        $("img "[name = "category"]).on("click", choosedCategory);
+        $("img [name = \"category\"]").on("click", choosedCategory);
         $("#startButton").on("click", function () {
             $.fn.fullpage.moveSectionDown();
         });

@@ -69,14 +69,14 @@ namespace Wisher.Controllers
             }
 
             int targetLevel = 0;
-            if (tempUserCats.Count(c => c.Level == 1) < 3)
+            if (tempUserCats.Count(c => c.Level == 1) < 5)
             {
-                if (tempUserCats.Count(c => c.Level == 2) > 4)
+                if (tempUserCats.Count(c => c.Level == 2) > 3)
                 {
                     //Return 2nd level cats
                     targetLevel = 2;
                 }
-                else if (tempUserCats.Count(c => c.Level == 3) > 10)
+                else if (tempUserCats.Count(c => c.Level == 3) > 25)
                 {
                     //return 3rd level cats
                     targetLevel = 3;
@@ -107,7 +107,7 @@ namespace Wisher.Controllers
         [Route("api/wish/getTop/{userName}")]
         public async Task<IHttpActionResult> GetTopProduct(string userName)
         {
-            var user = _dbContext.Users.FirstOrDefault(r => r.UserName == userName);
+            var user = _dbContext.Users.FirstOrDefault(r => r.Id == userName);
             if (user == null) return BadRequest();
             var categories = await _hotlineRepository.GetCategories();
 
