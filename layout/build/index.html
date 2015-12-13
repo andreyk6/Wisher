@@ -33,6 +33,42 @@
   </div>
   <div id="pageSlider" class="page-slider">
     <div class="page-section">
+      <div id="start" class="start">
+        <div class="page__inner">
+          <div class="row">
+            <div id="countdown"></div>
+          </div>
+          <p class="sub-title">Help your friends to choose gift for You!</p>
+          <div class="row">
+            <button id="startButton" class="button">start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-section">
+      <div id="sing-in-page" class="page-slide sing-in">
+        <div class="page__inner">
+          <form id="signIn" action="#">
+            <div class="form-line">
+              <label>E-mail</label>
+              <input id="signInEmail" type="email" placeholder="Enter your e-mail" title="Enter your e-mail" required class="error">
+              <div id="signInEmail_error"></div>
+            </div>
+            <div class="form-line">
+              <label>Password</label>
+              <input id="signInPassword" type="password" placeholder="Enter your password" title="Enter your password" required>
+              <div id="signInPassword_error"></div>
+            </div>
+            <div class="form-line">
+              <button id="signInSubmit" type="submit" class="button">sign in</button>
+            </div>
+            <div class="or-form-separator">or</div>
+            <div class="form-line">
+              <button id="goToSignUp" class="button">create new account</button>
+            </div>
+          </form>
+        </div>
+      </div>
       <div id="sing-up-page" class="page-slide sing-up">
         <div class="page__inner">
           <form id="signUp" action="#">
