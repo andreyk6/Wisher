@@ -10,25 +10,25 @@ namespace Wisher.HotlineManagment
 {
     public class HotlineProductManager
     {
-        public static HotlineProduct GetToProducts(CategoryInfo category, int count = 1)
+        public static HotlineProductModel GetToProducts(CategoryInfo category, int count = 1)
         {
-            List<CategoryInfo> categories = new List<CategoryInfo>();
-
             HtmlWeb web = new HtmlWeb();
-            var document = web.Load(@"http://m.hotline.ua" + category.EbayCategoryId);
-            var firstLevel = ElementsByClass(document, "a", "list_tovar");
 
-            return null;
+            var document = web.Load(@"http://m.hotline.ua" + category.EbayCategoryId);
+            var topItemNode = ElementsByClass(document, "a", "list_tovar")[0];
+            var topItemData = topItemNode.ChildNodes[0].ChildNodes[0].ChildNodes[0];
+            return new HotlineProductModel()
+            {
+                HotlineUrl = topItemNode.Attributes["href"].Value,
+                ImageUrl = topItemData.ChildNodes[0].ChildNodes[0].ChildNodes[0].Attributes["src"].Value,
+                Name = topItemData.ChildNodes[0].ChildNodes[1].InnerText,
+                Price = topItemData.ChildNodes[0].ChildNodes[4].InnerText,
+            };
         }
 
         static HtmlNodeCollection ElementsByClass(HtmlDocument doc, string element, string className)
         {
             return doc.DocumentNode.SelectNodes("//" + element + "[@class='" + className + "']");
         }
-    }
-
-    public class HotlineProduct
-    {
-        
     }
 }
