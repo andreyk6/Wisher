@@ -129,7 +129,9 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 .button:hover { background: #171a1c; color: #fff; border: 1px solid #171a1c; -o-transition: all 0.5s; transition: all 0.5s; box-shadow: 0 0 25px #fff; }
 
 .taste-definition__header { color: #333; font-size: 40px; font-weight: normal; margin: 1% 0; }
-.taste-definition__taste-image-wrap { border-radius: 20px; display: inline-block; width: 30%; margin: 30px 5%; padding-bottom: 30%; cursor: pointer; position: relative; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); overflow: hidden; box-shadow: 0 0 25px 8px #666 inset; }
+.taste-definition__taste-category-wrap { width: 25%; margin: 30px 5%; display: inline-block; }
+.taste-definition__category-name { color: #333; font-size: 25px; font-weight: normal; margin: 1% 0; }
+.taste-definition__taste-image-wrap { border-radius: 20px; display: block; width: 100%; padding-bottom: 100%; cursor: pointer; position: relative; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); overflow: hidden; box-shadow: 0 0 25px 8px #666 inset; }
 .taste-definition__taste-image-wrap:hover { box-shadow: 0 0 25px #666 inset, 0 0 25px 10px #fff; }
 .taste-definition__taste-image-wrap img { width: 100%; height: auto; position: absolute; left: 0; top: 0; z-index: -1; min-height: 100%; }
 
@@ -154,7 +156,9 @@ form .or-form-separator { color: #333; font-size: 15px; font-weight: 600; }
 
  .button { width: auto; display: block; margin: 0 auto; min-width: 20%; max-width: 50%; }
 
- .taste-definition__header { font-size: 30px; } }
+ .taste-definition__header { font-size: 30px; }
+
+ .taste-definition__category-name { font-size: 15px; } }
 @media screen and (min-width: 1200px) {
 
  .logo-wrap a:after { margin-top: 20px; }
