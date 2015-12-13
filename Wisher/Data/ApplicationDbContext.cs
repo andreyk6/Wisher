@@ -12,8 +12,8 @@ namespace Wisher.Data
 
         public ApplicationDbContext() : base("wisher_db", throwIfV1Schema:false)
         {
-            Configuration.ProxyCreationEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = true;
+            Configuration.LazyLoadingEnabled = true;
         }
         public static ApplicationDbContext Create()
         {
