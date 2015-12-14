@@ -69,14 +69,14 @@ namespace Wisher.Controllers
             }
 
             int targetLevel = 0;
-            if (tempUserCats.Count(c => c.Level == 1) < 5)
+            if (tempUserCats.Count(c => c.Level == 1) < 4)
             {
-                if (tempUserCats.Count(c => c.Level == 2) > 3)
+                if (tempUserCats.Count(c => c.Level == 2) > 5)
                 {
                     //Return 2nd level cats
                     targetLevel = 2;
                 }
-                else if (tempUserCats.Count(c => c.Level == 3) > 25)
+                else if (tempUserCats.Count(c => c.Level == 3) > 10)
                 {
                     //return 3rd level cats
                     targetLevel = 3;
@@ -111,9 +111,9 @@ namespace Wisher.Controllers
             if (user == null) return BadRequest();
             var categories = await _hotlineRepository.GetCategories();
 
-            var tempUserCats = categories.Where(c => user.FavCats.Contains(c.Id)  && c.Level!=2).ToList();
+            var tempUserCats = categories.Where(c => user.FavCats.Contains(c.Id)  && c.Level==3).ToList();
             List<HotlineProductModel> productModels = new List<HotlineProductModel>();
-            foreach (var item in tempUserCats.Take(15))
+            foreach (var item in tempUserCats.Take(10))
                 productModels.Add(HotlineProductManager.GetToProducts(item));
 
             productModels = productModels.Where(r => r != null).ToList();

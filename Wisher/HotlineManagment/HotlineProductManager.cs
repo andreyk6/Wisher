@@ -26,6 +26,7 @@ namespace Wisher.HotlineManagment
                 {
                     document = web.Load(@"http://m.hotline.ua" + category.EbayCategoryId);
                 }
+
                 var topItemNode = ElementsByClass(document, "a", "list_tovar")[0];
                 var topItemData = topItemNode.ChildNodes[1].ChildNodes[1];
                 return new HotlineProductModel()
