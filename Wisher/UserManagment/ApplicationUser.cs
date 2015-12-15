@@ -16,7 +16,7 @@ namespace Wisher.UserManagment
         {
             FavCats = new PersistableIntCollection();
         }
-        [Required]
+        //[Required]
         public string Name { get; set; }
         [Required]
         public override string Email { get; set; }
