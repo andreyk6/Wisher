@@ -93,6 +93,7 @@ namespace Wisher.Models
         #region ICollection<T> Members
 
         public void Add(T item)
+
         {
             Data.Add(item);
         }

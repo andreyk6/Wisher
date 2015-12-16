@@ -31,20 +31,12 @@ namespace Wisher.UserManagment.Repository
             {
                 Name = userModel.Name,
                 Email = userModel.Email,
-                UserName = userModel.Name,
-                Age =   userModel.Age,
+                UserName = userModel.Email,
+                Age = userModel.Age,
                 Gender = userModel.Gender,
                 FavCats = res
             };
 
-            //var ebayRepo = new EbayDataRepository();
-            //var categoriesCodes = ebayRepo.GetCategoriesId();
-
-            //foreach (int categoriesCode in categoriesCodes)
-            //{
-            //    user.FavCategories.Add(categoriesCode);
-            //}
-            
             var result = await _userManager.CreateAsync(user, userModel.Password);
 
             return result;

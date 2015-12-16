@@ -20,6 +20,7 @@ namespace Wisher.Providers
 
             using (AuthRepository repo = new AuthRepository())
             {
+                // first of all get user by email, email = userName table 
                 var email = await repo.FindByEmailAsync(context.UserName);
                 if (email == null)
                 {
