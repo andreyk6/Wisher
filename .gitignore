@@ -76,3 +76,4 @@ _[Ss]cripts
 .vs
 layout/source/
 Wisher/Web.config
+*.pubxml

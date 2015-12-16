@@ -28,7 +28,7 @@ namespace Wisher.UserManagment.Providers
                     context.OwinContext.Response.Headers["error"] = $"{"Invalid UserName or Password"}";
                     return;
                 }
-                IdentityUser user = await repo.FindUser(email.Name, context.Password);
+                IdentityUser user = await repo.FindUser(email.UserName, context.Password);
 
                 if (user == null)
                 {

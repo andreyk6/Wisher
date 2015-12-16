@@ -17,8 +17,10 @@ namespace Wisher
         {
 
             HttpConfiguration httpConfig = new HttpConfiguration();
+            httpConfig.EnableCors();
             ConfigureWebApi(httpConfig);
             ConfigureOAuth(app);
+           
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(httpConfig);
@@ -29,9 +31,9 @@ namespace Wisher
             //    consumerKey: "8NpXC8v84DRas4qsn2KCBMQRb",
             //    consumerSecret: "ckND9vF3Kr8KBJ3BQXVn9zzEXCZCefMYAGIqtNScUijoFcAgKH");
 
-            app.UseFacebookAuthentication(
-                appId: "",
-                appSecret: "");
+            //app.UseFacebookAuthentication(
+            //    appId: "",
+            //    appSecret: "");
           
         }
         public void ConfigureOAuth(IAppBuilder app)

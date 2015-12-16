@@ -224,7 +224,7 @@ $(document).ready(function () {
         $.ajax({
             url: '/oauth/token',
             type: "PUT",
-            data: { "userName": obj.email, "password": obj.password, "grant_type": "password" },
+            data: { "UserName": obj.email, "password": obj.password, "grant_type": "password" },
             statusCode: {
                 200: function (data, statusText, xhr) {
                     var values = xhr.getResponseHeader('Keys');
