@@ -268,13 +268,15 @@
     <Compile Include="Models\PersistableScalarCollection.cs" />
     <Compile Include="Models\WishRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="UserManagment\Providers\FacebookAuthProvider.cs" />
+    <Compile Include="UserManagment\Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UserManagment\ApplicationUser.cs" />
     <Compile Include="UserManagment\GenderEnum.cs" />
     <Compile Include="UserManagment\Repository\AuthRepository.cs" />
-    <Compile Include="UserManagment\Repository\HotlineRepository.cs" />
+    <Compile Include="HotlineManagment\HotlineRepository.cs" />
     <Compile Include="UserManagment\Repository\IUserRepository.cs" />
+    <Compile Include="UserManagment\Results\ChallengeResult.cs" />
     <Compile Include="UserManagment\UserBindingModel.cs" />
   </ItemGroup>
   <ItemGroup>

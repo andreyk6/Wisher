@@ -6,7 +6,7 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using Wisher.Data;
-using Wisher.Providers;
+using Wisher.UserManagment.Providers;
 
 [assembly: OwinStartup(typeof(Wisher.Startup))]
 namespace Wisher
@@ -24,15 +24,15 @@ namespace Wisher
             app.UseWebApi(httpConfig);
 
             Database.SetInitializer<ApplicationDbContext>(null);
-            /*
-            app.UseTwitterAuthentication(
-                consumerKey: "8NpXC8v84DRas4qsn2KCBMQRb",
-                consumerSecret: "ckND9vF3Kr8KBJ3BQXVn9zzEXCZCefMYAGIqtNScUijoFcAgKH");
+          
+            //app.UseTwitterAuthentication(
+            //    consumerKey: "8NpXC8v84DRas4qsn2KCBMQRb",
+            //    consumerSecret: "ckND9vF3Kr8KBJ3BQXVn9zzEXCZCefMYAGIqtNScUijoFcAgKH");
 
             app.UseFacebookAuthentication(
                 appId: "",
                 appSecret: "");
-           */
+          
         }
         public void ConfigureOAuth(IAppBuilder app)
         {
