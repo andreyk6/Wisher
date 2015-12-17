@@ -20,7 +20,7 @@ namespace Wisher.UserManagment.Repository
 
         public async Task<IdentityResult> RegisterUser(UserBindingModel userModel)
         {
-            var categories = await new HotlineRepository().GetCategories();
+            var categories = await new HotlineRepository().GetCategoriesAsync();
             var res = new PersistableIntCollection();
             foreach (var categoryInfo in categories)
             {

@@ -260,9 +260,9 @@
     <Compile Include="HotlineManagment\HotlineCategoryManager.cs" />
     <Compile Include="HotlineManagment\HotlineProductManager.cs" />
     <Compile Include="HotlineManagment\HotlineProductModel.cs" />
-    <Compile Include="Migrations\201512130812189_Initial.cs" />
-    <Compile Include="Migrations\201512130812189_Initial.Designer.cs">
-      <DependentUpon>201512130812189_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201512171918139_Init.cs" />
+    <Compile Include="Migrations\201512171918139_Init.Designer.cs">
+      <DependentUpon>201512171918139_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryInfo.cs" />
@@ -302,8 +302,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512130812189_Initial.resx">
-      <DependentUpon>201512130812189_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512171918139_Init.resx">
+      <DependentUpon>201512171918139_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -29,6 +29,8 @@ namespace Wisher.UserManagment
 
         public PersistableIntCollection CatsToChose { get; set; }
         public PersistableIntCollection SellectedCats { get; set; }
+        public int LastCatStoreId { get;  set; }
+
         //  public ICollection<CategoryInfo> CategoryInfo { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager,
             string authenticationType)

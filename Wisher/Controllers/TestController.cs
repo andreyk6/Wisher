@@ -27,7 +27,7 @@ namespace Wisher.Controllers
 
             HotlineRepository repo = new HotlineRepository();
             Random rnd = new Random();
-            var categories = await repo.GetCategories(); 
+            var categories = await repo.GetCategoriesAsync(); 
             while (category.Level == 2)
             {
                 category = categories[rnd.Next(0, categories.Count)];
