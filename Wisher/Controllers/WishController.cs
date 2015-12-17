@@ -131,6 +131,7 @@ namespace Wisher.Controllers
 
         public async Task<IHttpActionResult> MakeWish2(WishRequestV2Model wishRequest)
         {
+            #region [ Get user and category ]
             //Get current user
             var user = _dbContext.Users.FirstOrDefault(u => u.Id == wishRequest.UserId);
             if (user == null)
@@ -140,6 +141,7 @@ namespace Wisher.Controllers
             var category = _categories.FirstOrDefault(c => c.EbayCategoryIntValue == wishRequest.CategoryId);
             if (category == null)
                 return BadRequest("Category not found");
+            #endregion
 
             //If user dont like the category - remove it from list and return new random category
             if (!wishRequest.IsLiked)
@@ -156,10 +158,16 @@ namespace Wisher.Controllers
                     //if Level == 1,2 then return item from nested cat
                     case 1:
                     case 2:
-                        //Remove cat from todo list
+                        //Remove cat from queue
                         user.CatsToChose.Remove(category.EbayCategoryIntValue);
                         //Get next category
                         selectedCategory = GetRndNestedCategoryFromList(user.CatsToChose, category.EbayCategoryIntValue);
+                        //If selected category doesn't has nested cats then return random parent nested cat
+                        //                  -0-   - 1st level
+                        //                 | | |  
+                        //we are here    ->0 0 0  - 2nd level
+                        //cat hasnt nested cat |  
+                        //                     0  - 3rd level
                         if (selectedCategory == null)
                             return BadRequest("Category " + category.EbayCategoryId + " does not contains nested cats");
                         break;
@@ -168,8 +176,8 @@ namespace Wisher.Controllers
                         //Add category to user favList and remove from current list
                         user.SellectedCats.Add(category.EbayCategoryIntValue);
                         user.CatsToChose.Remove(category.EbayCategoryIntValue);
-                        //Get next category
-                        selectedCategory = GetRndNestedCategoryFromList(user.CatsToChose, category.EbayParrentIntValue);
+                        
+                        selectedCategory = TryToGetRelatedCategory(user, category);
                         if (selectedCategory == null)
                             return BadRequest("Category " + category.EbayParrentIntValue + " does not contains nested cats");
                         break;
@@ -180,11 +188,39 @@ namespace Wisher.Controllers
             }
         }
 
+        /// <summary>
+        /// Use for last level category
+        /// Returns parrent nested cat or random cat from parrent family
+        /// Or 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        private CategoryInfo TryToGetRelatedCategory(ApplicationUser user, CategoryInfo category)
+        {
+            CategoryInfo selectedCategory;
+//Get next category
+            selectedCategory = GetRndNestedCategoryFromList(user.CatsToChose, category.EbayParrentIntValue);
+
+            //If parent category doesn't has nested cats then return random parrent of parent nested cat
+            if (selectedCategory == null)
+            {
+                var parrent = _categories.FirstOrDefault(c => c.EbayCategoryIntValue == category.EbayParrentIntValue);
+                selectedCategory = GetRndNestedCategoryFromList(user.CatsToChose,
+                    parrent.EbayParrentIntValue);
+            }
+
+            //If parrent doesnt has any nested cat return random category
+            selectedCategory = GetRandomCategoryFromList(user.CatsToChose);
+            return selectedCategory;
+        }
+
         private CategoryInfo GetRandomCategoryFromList(PersistableIntCollection favCats)
         {
             var userCats = _categories.Where(c => favCats.Contains(c.EbayCategoryIntValue)).ToList();
             CategoryInfo result;
 
+            //Return ramdom category from first non empty layer
             for (int i = 1; i <= 3; i++)
             {
                 result = GetRandomCat(userCats, i);
@@ -196,18 +232,23 @@ namespace Wisher.Controllers
 
         private CategoryInfo GetRndNestedCategoryFromList(PersistableIntCollection favCats, int parrentId)
         {
+            //get nested cats from queue
             var userCats = _categories.Where(c => favCats.Contains(c.EbayCategoryIntValue) && c.EbayParrentIntValue == parrentId).ToList();
-            CategoryInfo result;
 
-            for (int i = 1; i <= 3; i++)
+            //if cat has nested cats return random nested cat
+            if (userCats.Any())
             {
-                result = GetRandomCat(userCats, i);
-                if (result != null) return result;
+                return GetRandomCat(userCats);
             }
-
+            //else return null
             return null;
         }
 
+        private static CategoryInfo GetRandomCat(List<CategoryInfo> cats)
+        {
+            Random rnd = new Random();
+            return cats.OrderBy(id => rnd.Next()).FirstOrDefault();
+        }
 
         private static CategoryInfo GetRandomCat(List<CategoryInfo> userCats, int level)
         {
@@ -216,6 +257,30 @@ namespace Wisher.Controllers
             var cats = userCats.Where(c => c.Level == level).ToList();
 
             return cats.OrderBy(id => rnd.Next()).FirstOrDefault();
+        }
+
+        private static CategoryInfo GetNextCategoryInList(List<CategoryInfo> cats, CategoryInfo current)
+        {
+            CategoryInfo result = GetNestedCategory(cats, current);
+            if (result == null)
+            {
+                if (current.Level != 1)
+                {
+                    CategoryInfo parrent =
+                        _categories.FirstOrDefault(c => c.EbayCategoryIntValue == current.EbayParrentIntValue);
+                    result = GetNextCategoryInList(cats, parrent);
+                }
+                else
+                {
+                    result = GetRandomCat(cats);
+                }
+            }
+            return result;
+        }
+
+        private static CategoryInfo GetNestedCategory(List<CategoryInfo> cats, CategoryInfo current)
+        {
+            return cats.FirstOrDefault(c => c.EbayParrentIntValue == current.EbayCategoryIntValue);
         }
 
         private void RemoveRefferencedCatsFromUserList(WishRequestV2Model wishRequest, ApplicationUser user)
