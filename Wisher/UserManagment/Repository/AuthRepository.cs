@@ -34,7 +34,7 @@ namespace Wisher.UserManagment.Repository
                 UserName = userModel.Name,
                 Age =   userModel.Age,
                 Gender = userModel.Gender,
-                FavCats = res
+                CatsToChose = res
             };
 
             //var ebayRepo = new EbayDataRepository();
