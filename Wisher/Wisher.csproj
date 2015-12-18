@@ -220,10 +220,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientJS\app.js" />
+    <Content Include="ClientJS\controllers\loginController.js" />
+    <Content Include="ClientJS\services\authService.js" />
+    <Content Include="ClientJS\services\tokensManagerService.js" />
+    <Content Include="ClientJS\views\login.html" />
     <Content Include="Content\img\smoke1.png" />
     <Content Include="Content\img\smoke2.png" />
     <Content Include="Content\img\smoke3.png" />
+    <Content Include="Content\loading-bar.css" />
+    <Content Include="Content\loading-bar.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-local-storage.js" />
+    <Content Include="Scripts\angular-local-storage.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\loading-bar.js" />
+    <Content Include="Scripts\loading-bar.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +293,8 @@
     <None Include="Properties\PublishProfiles\wisher - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\wisher.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
