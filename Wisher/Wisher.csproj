@@ -272,6 +272,11 @@
     <Compile Include="Models\PersistableScalarCollection.cs" />
     <Compile Include="Models\WishRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManagment\Models\Client.cs" />
+    <Compile Include="UserManagment\Models\ExternalLoginViewModel.cs" />
+    <Compile Include="UserManagment\Models\ParsedExternalAccessToken.cs" />
+    <Compile Include="UserManagment\Models\RefreshToken.cs" />
+    <Compile Include="UserManagment\Models\RegisterExternalBindingModel.cs" />
     <Compile Include="UserManagment\Providers\FacebookAuthProvider.cs" />
     <Compile Include="UserManagment\Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />

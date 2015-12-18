@@ -7,8 +7,12 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Linq;
 using Wisher.UserManagment;
+using Wisher.UserManagment.Models;
 using Wisher.UserManagment.Repository;
 using Wisher.UserManagment.Results;
 
@@ -18,23 +22,13 @@ namespace Wisher.Controllers
     [RoutePrefix("api/accounts")]
     public class AccountsController : ApiController
     {
+        private IAuthenticationManager Authentication => Request.GetOwinContext().Authentication;
         private readonly IUserRepository _repository;
         public AccountsController() : this(new AuthRepository()) { }
         public AccountsController(IUserRepository repository)
         {
             _repository = repository;
         }
-        [HttpGet]
-        [Route("auth")]
-        public IHttpActionResult AuthConfirm()
-        {
-            return Ok();
-        }
-        private IAuthenticationManager Authentication
-        {
-            get { return Request.GetOwinContext().Authentication; }
-        }
-
         // GET api/Accounts/ExternalLogin
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
@@ -88,6 +82,57 @@ namespace Wisher.Controllers
             return Redirect(redirectUri);
 
         }
+        // POST api/Account/RegisterExternal
+        [AllowAnonymous]
+        [Route("RegisterExternal")]
+        public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var verifiedAccessToken = await VerifyExternalAccessToken(model.Provider, model.ExternalAccessToken);
+            if (verifiedAccessToken == null)
+            {
+                return BadRequest("Invalid Provider or External Access Token");
+            }
+
+            var user = await _repository.FindAsync(new UserLoginInfo(model.Provider, verifiedAccessToken.user_id));
+
+            bool hasRegistered = user != null;
+
+            if (hasRegistered)
+            {
+                return BadRequest("External user is already registered");
+            }
+
+            user = new IdentityUser() { UserName = model.UserName };
+
+            IdentityResult result = await _repository.CreateAsync((ApplicationUser)user);
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            var info = new ExternalLoginInfo()
+            {
+                DefaultUserName = model.UserName,
+                Login = new UserLoginInfo(model.Provider, verifiedAccessToken.user_id)
+            };
+
+            result = await _repository.AddLoginAsync(user.Id, info.Login);
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            //generate access token response
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(model.UserName);
+
+            return Ok(accessTokenResponse);
+        }
         private string ValidateClientAndRedirectUri(HttpRequestMessage request, ref string redirectUriOutput)
         {
 
@@ -131,7 +176,6 @@ namespace Wisher.Controllers
             return string.Empty;
 
         }
-
         private string GetQueryString(HttpRequestMessage request, string key)
         {
             var queryStrings = request.GetQueryNameValuePairs();
@@ -143,6 +187,131 @@ namespace Wisher.Controllers
             if (string.IsNullOrEmpty(match.Value)) return null;
 
             return match.Value;
+        }
+        private async Task<ParsedExternalAccessToken> VerifyExternalAccessToken(string provider, string accessToken)
+        {
+            ParsedExternalAccessToken parsedToken = null;
+
+            var verifyTokenEndPoint = "";
+
+            if (provider == "Facebook")
+            {
+                //You can get it from here: https://developers.facebook.com/tools/accesstoken/
+                //More about debug_tokn here: http://stackoverflow.com/questions/16641083/how-does-one-get-the-app-access-token-for-debug-token-inspection-on-facebook
+
+                var appToken = "xxxxx";
+                verifyTokenEndPoint = string.Format("https://graph.facebook.com/debug_token?input_token={0}&access_token={1}", accessToken, appToken);
+            }
+            else if (provider == "Google")
+            {
+                verifyTokenEndPoint = string.Format("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token={0}", accessToken);
+            }
+            else
+            {
+                return null;
+            }
+
+            var client = new HttpClient();
+            var uri = new Uri(verifyTokenEndPoint);
+            var response = await client.GetAsync(uri);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+
+                dynamic jObj = (JObject)Newtonsoft.Json.JsonConvert.DeserializeObject(content);
+
+                parsedToken = new ParsedExternalAccessToken();
+
+                if (provider == "Facebook")
+                {
+                    parsedToken.user_id = jObj["data"]["user_id"];
+                    parsedToken.app_id = jObj["data"]["app_id"];
+
+                    if (!string.Equals(Startup.FacebookAuthOptions.AppId, parsedToken.app_id, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return null;
+                    }
+                }
+                else if (provider == "Google")
+                {
+                    parsedToken.user_id = jObj["user_id"];
+                    parsedToken.app_id = jObj["audience"];
+
+                    if (!string.Equals(Startup.GoogleAuthOptions.ClientId, parsedToken.app_id, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return null;
+                    }
+
+                }
+
+            }
+
+            return parsedToken;
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ObtainLocalAccessToken")]
+        public async Task<IHttpActionResult> ObtainLocalAccessToken(string provider, string externalAccessToken)
+        {
+
+            if (string.IsNullOrWhiteSpace(provider) || string.IsNullOrWhiteSpace(externalAccessToken))
+            {
+                return BadRequest("Provider or external access token is not sent");
+            }
+
+            var verifiedAccessToken = await VerifyExternalAccessToken(provider, externalAccessToken);
+            if (verifiedAccessToken == null)
+            {
+                return BadRequest("Invalid Provider or External Access Token");
+            }
+
+            IdentityUser user = await _repository.FindAsync(new UserLoginInfo(provider, verifiedAccessToken.user_id));
+
+            bool hasRegistered = user != null;
+
+            if (!hasRegistered)
+            {
+                return BadRequest("External user is not registered");
+            }
+
+            //generate access token response
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(user.UserName);
+
+            return Ok(accessTokenResponse);
+
+        }
+
+        private JObject GenerateLocalAccessTokenResponse(string userName)
+        {
+
+            var tokenExpiration = TimeSpan.FromDays(1);
+
+            ClaimsIdentity identity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
+
+            identity.AddClaim(new Claim(ClaimTypes.Name, userName));
+            identity.AddClaim(new Claim("role", "user"));
+
+            var props = new AuthenticationProperties()
+            {
+                IssuedUtc = DateTime.UtcNow,
+                ExpiresUtc = DateTime.UtcNow.Add(tokenExpiration),
+            };
+
+            var ticket = new AuthenticationTicket(identity, props);
+
+            var accessToken = Startup.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
+
+            JObject tokenResponse = new JObject(
+                                        new JProperty("userName", userName),
+                                        new JProperty("access_token", accessToken),
+                                        new JProperty("token_type", "bearer"),
+                                        new JProperty("expires_in", tokenExpiration.TotalSeconds.ToString()),
+                                        new JProperty(".issued", ticket.Properties.IssuedUtc.ToString()),
+                                        new JProperty(".expires", ticket.Properties.ExpiresUtc.ToString())
+        );
+
+            return tokenResponse;
         }
         [AllowAnonymous]
         [Route("create")]
@@ -191,5 +360,38 @@ namespace Wisher.Controllers
 
             return null;
         }
+
+
+        private class ExternalLoginData
+        {
+            public string LoginProvider { get; set; }
+            public string ProviderKey { get; set; }
+            public string UserName { get; set; }
+            public string ExternalAccessToken { get; set; }
+
+            public static ExternalLoginData FromIdentity(ClaimsIdentity identity)
+            {
+                Claim providerKeyClaim = identity?.FindFirst(ClaimTypes.NameIdentifier);
+
+                if (providerKeyClaim == null || String.IsNullOrEmpty(providerKeyClaim.Issuer) || String.IsNullOrEmpty(providerKeyClaim.Value))
+                {
+                    return null;
+                }
+
+                if (providerKeyClaim.Issuer == ClaimsIdentity.DefaultIssuer)
+                {
+                    return null;
+                }
+
+                return new ExternalLoginData
+                {
+                    LoginProvider = providerKeyClaim.Issuer,
+                    ProviderKey = providerKeyClaim.Value,
+                    UserName = identity.FindFirstValue(ClaimTypes.Name),
+                    ExternalAccessToken = identity.FindFirstValue("ExternalAccessToken"),
+                };
+            }
+        }
     }
+
 }
