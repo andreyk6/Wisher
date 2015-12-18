@@ -220,32 +220,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\gifts.jpg" />
     <Content Include="Content\img\smoke1.png" />
     <Content Include="Content\img\smoke2.png" />
     <Content Include="Content\img\smoke3.png" />
-    <Content Include="css\logo.png" />
-    <Content Include="css\screen.css" />
-    <Content Include="css\smoke1.png" />
-    <Content Include="css\smoke2.png" />
-    <Content Include="css\smoke3.png" />
-    <Content Include="css\vendor\jquery.fullPage.css" />
     <Content Include="Global.asax" />
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="scripts\backbone.js" />
-    <Content Include="scripts\CustomScripts\authorization.js" />
-    <Content Include="scripts\CustomScripts\index.js" />
-    <Content Include="scripts\CustomScripts\initialisers.js" />
-    <Content Include="scripts\CustomScripts\main.js" />
-    <Content Include="scripts\CustomScripts\routerMain.js" />
-    <Content Include="scripts\CustomScripts\tastify.js" />
-    <Content Include="scripts\jquery.countdown.min.js" />
-    <Content Include="scripts\jquery.easings.min.js" />
-    <Content Include="scripts\jquery.fullPage.js" />
-    <Content Include="scripts\jquery.js" />
-    <Content Include="scripts\jquery.slimscroll.min.js" />
-    <Content Include="scripts\underscore.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -295,13 +273,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="css\screen.css.map" />
     <None Include="Properties\PublishProfiles\wisher - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\wisher - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\wisher.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="scripts\CustomScripts\mock.json" />
-    <Content Include="Views\Home\TestFaceBook.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

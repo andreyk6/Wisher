@@ -14,10 +14,6 @@ namespace Wisher.Controllers
         {
             return View();
         }
-
-        public ActionResult TestFaceBook()
-        {
-            return View();
-        }
+     
     }
 }
