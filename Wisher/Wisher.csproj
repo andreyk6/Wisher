@@ -136,6 +136,10 @@
       <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
@@ -287,9 +291,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="css\screen.css.map" />
+    <None Include="Properties\PublishProfiles\wisher - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\wisher - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\wisher.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="scripts\CustomScripts\mock.json" />
+    <Content Include="Views\Home\TestFaceBook.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
