@@ -75,3 +75,5 @@ _[Ss]cripts
 *.dot[Cc]over
 .vs
 layout/source/
+Wisher/Web.config
+*.pubxml

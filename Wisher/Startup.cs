@@ -2,37 +2,37 @@
 using System.Data.Entity;
 using System.Web.Http;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.Facebook;
+using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using Wisher.Data;
-using Wisher.Providers;
+using Wisher.UserManagment.Providers;
 
 [assembly: OwinStartup(typeof(Wisher.Startup))]
 namespace Wisher
 {
     public class Startup
     {
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
+        //TODO Add google auth next
+        public static GoogleOAuth2AuthenticationOptions GoogleAuthOptions { get; private set; }
+        public static FacebookAuthenticationOptions FacebookAuthOptions { get; private set; }
         public void Configuration(IAppBuilder app)
         {
-
             HttpConfiguration httpConfig = new HttpConfiguration();
+
             ConfigureWebApi(httpConfig);
             ConfigureOAuth(app);
+
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(httpConfig);
+            app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
 
             Database.SetInitializer<ApplicationDbContext>(null);
-            /*
-            app.UseTwitterAuthentication(
-                consumerKey: "8NpXC8v84DRas4qsn2KCBMQRb",
-                consumerSecret: "ckND9vF3Kr8KBJ3BQXVn9zzEXCZCefMYAGIqtNScUijoFcAgKH");
 
-            app.UseFacebookAuthentication(
-                appId: "",
-                appSecret: "");
-           */
         }
         public void ConfigureOAuth(IAppBuilder app)
         {
@@ -44,6 +44,14 @@ namespace Wisher
                 Provider = new SimpleAuthorizationServerProvider()
             };
             // Token Generation
+            FacebookAuthOptions = new FacebookAuthenticationOptions()
+            {
+                AppId = "1111778688855713",
+                AppSecret = "77ae148b416d836649bd38ed30defee4",
+                Provider = new FacebookAuthProvider()
+            };
+            app.UseFacebookAuthentication(FacebookAuthOptions);
+
             app.UseOAuthAuthorizationServer(oAuthServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }

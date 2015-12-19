@@ -1,163 +1,52 @@
-﻿@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html data-ng-app="AngularAuthApp">
 <head>
-    <title>Wisher</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="../../css/vendor/jquery.fullPage.css">
-    <link rel="stylesheet" href="../../css/screen.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title>Test</title>
 </head>
 <body>
+ 
+    <div class="jumbotron">
+        <div class="container">
+            <div class="page-header text-center">
+                <h1>AngularJS Authentication</h1>
+            </div>
+            <p>AngularJS Application which uses OAuth Bearer Token for authentication and implements Refresh Tokens. The backend API is built using ASP.NET Web API 2, OWIN middleware, and ASP.NET Identity.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div data-ng-view="">
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- 3rd party libraries -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script src="../../Scripts/angular-local-storage.min.js"></script>
+    <script src="../../Scripts/loading-bar.min.js"></script>
+
+    <!-- Load app main script -->
+    <script src="app/app.js?v=2"></script>
+
+    <!-- Load services -->
+    <script src="app/services/authInterceptorService.js?v=2"></script>
+    <script src="app/services/authService.js?v=2"></script>
+    <script src="app/services/ordersService.js?v=2"></script>
+    <script src="app/services/tokensManagerService.js?v=2"></script>
+    <!-- Load controllers -->
+    <script src="app/controllers/indexController.js?v=2"></script>
+    <script src="app/controllers/homeController.js?v=2"></script>
+    <script src="app/controllers/loginController.js?v=2"></script>
+    <script src="app/controllers/signupController.js?v=2"></script>
+    <script src="app/controllers/ordersController.js?v=2"></script>
+    <script src="app/controllers/refreshController.js?v=2"></script>
+    <script src="app/controllers/tokensManagerController.js?v=2"></script>
+    <script src="app/controllers/associateController.js?v=2"></script>
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+
 </body>
-<div id="preloader" class="preloader">
-    <div class="loading">
-        <h2>Загрузка</h2>
-        <div class="progress"></div>
-    </div>
-</div>
-<div id="progressBar" class="progress-bar">
-    <div class="progress-bar__inner"></div>
-</div>
-<div class="page-bg">
-    <div class="page-bg__image"></div>
-    <div class="page-bg__smoke">
-        <div class="page-bg__smoke-img1">
-            <img alt="smoke-image-1" src="../../css/smoke1.png">
-        </div>
-        <div class="page-bg__smoke-img2">
-            <img alt="smoke-image-2" src="../../css/smoke2.png">
-        </div>
-        <div class="page-bg__smoke-img3">
-            <img alt="smoke-image-3" src="../../css/smoke3.png">
-        </div>
-    </div>
-</div>
-<div class="logo-wrap">
-    <div class="logo-wrap__i"><a href="#start" class="logo"><img alt="logo" src="../../css/logo.png"></a></div>
-</div>
-<div id="pageSlider" class="page-slider">
-    <div class="page-section" >
-        <div class="start">
-            <div class="page__inner">
-                <div class="row">
-                    <div id="countdown"></div>
-                </div>
-                <p class="sub-title">Помоги своим друзьям - выбери Себе подарки!</p>
-                <div class="row">
-                    <button id="startButton" class="button">начать </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="page-section">
-        <div id="sing-in-page" class="page-slide sing-in">
-            <div class="page__inner">
-                <form id="signIn" action="#">
-                    <div class="form-line">
-                        <label>E-mail</label>
-                        <input id="signInEmail" type="email" placeholder="Введите Е-mail" title="Введите e-mail" required>
-                        <div id="signInEmailErrorNotification" class="error-notification"></div>
-                    </div>
-                    <div class="form-line">
-                        <label>Пароль</label>
-                        <input id="signInPassword" type="password" placeholder="Введите пароль" title="Пароль не может быть пустым" required>
-                        <div id="signInPasswordErrorNotification" class="error-notification"></div>
-                    </div>
-                    <div class="form-line">
-                        <button id="signInBtn" type="button" class="button">Войти</button>
-                    </div>
-                    <  <div class="form-line">
-                        <button id="facebook-signIn " type="button" class="button"><i class="fa fa-facebook fa-2x"></i> <span class="network-name">Facebook</span></button>
-                    </div>
-                    <div class="or-form-separator">или</div>
-                    <div class="form-line">
-                        <button id="goToSignUp" class="button">Создать Новый аккаунт</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="sing-up-page" class="page-slide sing-up">
-            <div class="page__inner">
-                <form id="signUp" action="#">
-                    <div class="form-line">
-                        <label>E-mail</label>
-                        <input id="signUpEmail" name="email" type="email" placeholder="Введите Ваш Е-mail" title="Введите Ваш e-mail" required>
-                        <div id="signUpEmailErrorNotification" class="error-notification"></div>
-                    </div>
-                    <div class="form-line">
-                        <label>Полное имя</label>
-                        <input id="signUpFullName" name="full-name" type="text" placeholder="Введите Свое Полное Имя" title="Введите Ваше полное имя" required>
-                        <div id="signUpFullNameErrorNotification" class="error-notification"></div>
-                    </div>
-                    <div class="form-line">
-                        <label>Пароль</label>
-                        <input id="signUpPasswordSecure" name="password" type="password" placeholder="Введите Пароль" title="Пароль не менее 6 символов" required>
-                        <div id="signUpPasswordErrorNotification" class="error-notification"></div>
-                    </div>
-                    <div class="form-line">
-                        <label>Подтвердите пароль</label>
-                        <input id="signUpConfirmPassword" name="confirm-password" type="password" placeholder="Подтвердите Пароль" title="Подтвердите пароль" required>
-                        <div id="signUpConfirmPasswordErrorNotification" class="error-notification"></div>
-                    </div>
-                    <div class="form-line">
-                        <label>Age</label>
-                        <input id="signUpAge" name="age" type="text" placeholder="Введите Возраст" required>
-                        <div id="signUpAgeNameErrorNotification" class="error-notification"></div>
-                    </div>
-                    <div class="form-line">
-                        <label>Пол</label>
-                        <div class="form-readio-button-wrap">
-                            <input id="signUpMale" name="gender" type="radio" value="0" checked>
-                            <label for="signUpMale">Мужской</label>
-                            <input id="signUpFemele" name="gender" type="radio" value="1">
-                            <label for="signUpFemele">Женский</label>
-                        </div>
-                    </div>
-                    <div class="form-line">
-                        <button id="signUpBtn" type="button" class="button">Зарегистрироваться</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="page-section">
-        <div id="taste-definition" class="page-slide taste-definition">
-            <div class="page__inner">
-                <h2 class="taste-definition__header">Выберите одну из категорий</h2>
-                <div class="taste-definition__images-wrap">
-                    <div class="taste-definition__taste-category-wrap mock" id="firstImgWrapper">
-                        <div class="taste-definition__taste-image-wrap ">
-                            <img id="firstImg" alt="image" src="~/css/gifts.jpg">
-                        </div>
-                        <div class="taste-definition__category-name" id="firstImgCategoryName"></div>
-                    </div>
-                    <div class="taste-definition__taste-category-wrap mock" id="secondImgWrapper">
-                        <div class="taste-definition__taste-image-wrap">
-                            <img id="secondImg" alt="image" src="~/css/gifts.jpg">
-                        </div>
-                        <div class="taste-definition__category-name" id="secondImgCategoryName"></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-<script src="../../scripts/jquery.js"></script>
-<script src="../../scripts/jquery.fullPage.js"></script>
-<script src="../../scripts/jquery.slimscroll.min.js"></script>
-<script src="../../scripts/jquery.countdown.min.js"></script>
-<script src="../../scripts/underscore.js"></script>
-<script src="../../scripts/backbone.js"></script>
-
-<script src="../../scripts/CustomScripts/main.js"></script>
-
-
 </html>
