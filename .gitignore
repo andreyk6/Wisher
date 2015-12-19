@@ -74,6 +74,10 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 .vs
-layout/source/
+layout/build
+layout/node_modules
+layout/source/bower
+layout/.sass-cache
+
 Wisher/Web.config
 *.pubxml
