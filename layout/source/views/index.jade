@@ -1,0 +1,31 @@
+extends ./layout/default_layout.jade
+
+block title_name
+	title Wisher
+
+block preloader
+	include blocks/preloader.jade
+
+block page-background
+	include blocks/page-background.jade
+
+block logo
+	include blocks/logo.jade
+
+block progress-bar
+	include blocks/progress-bar.jade
+
+
+
+
+block page-slider
+	.page-section
+		include blocks/start.jade
+	.page-section
+		include blocks/sing-in.jade
+		include blocks/sing-up.jade
+	.page-section
+		include blocks/taste-definition.jade
+		include blocks/user-page.jade
+
+	include blocks/footer-link.jade

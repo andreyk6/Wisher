@@ -1,0 +1,23 @@
+{
+  "name": "test_task",
+  "description": "test_task_for_astound",
+  "main": "index.js",
+  "authors": [
+    "Oleksandr Pavlishch <lokdawn80@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.1.4",
+    "fullpage.js": "~2.7.6"
+  }
+}

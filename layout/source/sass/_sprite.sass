@@ -1,0 +1,163 @@
+$icons: (0:0)
+$icons: map-merge($icons,(facebook-hover: (X: -204px, Y:-58px, W: 32px, H: 31px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(facebook: (X: -36px, Y:-204px, W: 32px, H: 31px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(google-plus-hover: (X: -204px, Y:-163px, W: 32px, H: 31px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(google-plus: (X: 0px, Y:-204px, W: 32px, H: 31px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(next: (X: -136px, Y:-136px, W: 34px, H: 54px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(pin-hover: (X: -204px, Y:-93px, W: 32px, H: 31px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(pin: (X: -204px, Y:-128px, W: 32px, H: 31px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(prev: (X: -204px, Y:0px, W: 34px, H: 54px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(retina-facebook-hover: (X: -68px, Y:0px, W: 64px, H: 64px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(retina-facebook: (X: 0px, Y:0px, W: 64px, H: 64px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(retina-google-plus-hover: (X: 0px, Y:-68px, W: 64px, H: 64px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(retina-google-plus: (X: -68px, Y:-68px, W: 64px, H: 64px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(retina-pin-hover: (X: -136px, Y:0px, W: 64px, H: 64px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(retina-pin: (X: -136px, Y:-68px, W: 64px, H: 64px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(retina-twitter-hover: (X: 0px, Y:-136px, W: 64px, H: 64px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(retina-twitter: (X: -68px, Y:-136px, W: 64px, H: 64px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(twitter-hover: (X: -72px, Y:-204px, W: 32px, H: 31px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+$icons: map-merge($icons,(twitter: (X: -108px, Y:-204px, W: 32px, H: 31px, TW: 238px, TH: 235px, IMG: '../img/icons.png')))
+
+
+// Gets an attribute from the sass map
+@function icon-attr($icon, $attr)
+	$icon: map-get($icons, $icon)
+	@return map-get($icon, $attr)
+
+@mixin sprite($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	width: icon-attr($iconName, W)
+	height: icon-attr($iconName, H)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+@mixin sprite-position($iconName)
+	background-position: icon-attr($iconName, X) icon-attr($iconName, Y)
+@mixin sprite-retina($iconName)
+	background-image: url(icon-attr($iconName, IMG))
+	$width: icon-attr($iconName, W)
+	$height: icon-attr($iconName, H)
+	width: $width/2
+	height: $height/2
+	$x: icon-attr($iconName, X)
+	$y: icon-attr($iconName, Y)
+	background-position: $x/2 $y/2
+	$tw: icon-attr($iconName, TW) 	
+	$th: icon-attr($iconName, TH)
+	background-size: $tw/2 $th/2  	
+
+
+@mixin s($i)
+	+sprite($i)
+@mixin sp($i)
+	+sprite-position($i)
+@mixin sr($i)
+	+sprite-retina($i)	
+
+//
+//.icon-facebook-hover
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: -204px -58px
+//
+//.icon-facebook
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: -36px -204px
+//
+//.icon-google-plus-hover
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: -204px -163px
+//
+//.icon-google-plus
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px -204px
+//
+//.icon-next
+//	width: 34px
+//	height: 54px
+//	background-image: url('../img/icons.png')
+//	background-position: -136px -136px
+//
+//.icon-pin-hover
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: -204px -93px
+//
+//.icon-pin
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: -204px -128px
+//
+//.icon-prev
+//	width: 34px
+//	height: 54px
+//	background-image: url('../img/icons.png')
+//	background-position: -204px 0px
+//
+//.icon-retina-facebook-hover
+//	width: 64px
+//	height: 64px
+//	background-image: url('../img/icons.png')
+//	background-position: -68px 0px
+//
+//.icon-retina-facebook
+//	width: 64px
+//	height: 64px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px 0px
+//
+//.icon-retina-google-plus-hover
+//	width: 64px
+//	height: 64px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px -68px
+//
+//.icon-retina-google-plus
+//	width: 64px
+//	height: 64px
+//	background-image: url('../img/icons.png')
+//	background-position: -68px -68px
+//
+//.icon-retina-pin-hover
+//	width: 64px
+//	height: 64px
+//	background-image: url('../img/icons.png')
+//	background-position: -136px 0px
+//
+//.icon-retina-pin
+//	width: 64px
+//	height: 64px
+//	background-image: url('../img/icons.png')
+//	background-position: -136px -68px
+//
+//.icon-retina-twitter-hover
+//	width: 64px
+//	height: 64px
+//	background-image: url('../img/icons.png')
+//	background-position: 0px -136px
+//
+//.icon-retina-twitter
+//	width: 64px
+//	height: 64px
+//	background-image: url('../img/icons.png')
+//	background-position: -68px -136px
+//
+//.icon-twitter-hover
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: -72px -204px
+//
+//.icon-twitter
+//	width: 32px
+//	height: 31px
+//	background-image: url('../img/icons.png')
+//	background-position: -108px -204px
+//

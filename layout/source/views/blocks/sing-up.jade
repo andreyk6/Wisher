@@ -1,0 +1,33 @@
+.page-slide.sing-up#sing-up-page
+	.page__inner
+		form#signUp(action="#")
+			.form-line
+				label E-mail
+				input#signUpEmail(name="email" type="email" placeholder="Enter your e-mail" title="Enter your e-mail" required)
+				#signUpEmailErrorNotification.error-notification
+			.form-line
+				label Full Name
+				input#signUpFullName(name="full-name" type="text" placeholder="Enter your full name" title="Enter your full name" required)
+				#signUpFullNameErrorNotification.error-notification
+			.form-line
+				label Password
+				input#signUpPassword(name="password" type="password" placeholder="Enter your password" title="Enter your password" required)
+				#signUpPasswordNameErrorNotification.error-notification
+			.form-line
+				label Confirm Password
+				input#signUpComfirmPassword(name="confirm-password" type="password" placeholder="Confirm your password" title="Confirm your password" required)
+				#signUpComfirmPasswordErrorNotification.error-notification
+			.form-line
+				label Age
+				input#signUpAge(name="age" type="text" placeholder="Enter your age" required)
+				#signUpAgeNameErrorNotification.error-notification
+			.form-line
+				label Gender
+				.form-readio-button-wrap
+					input#signUpMale(name="gender" type="radio" value="male" checked)
+					label(for="signUpMale") Male
+					input#signUpFemele(name="gender" type="radio" value="female")
+					label(for="signUpFemele") Female
+
+			.form-line
+				button.button#signUpSubmit(type="submit") sign up

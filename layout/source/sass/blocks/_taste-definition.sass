@@ -1,0 +1,42 @@
+.taste-definition
+	&__header
+		color: #333
+		font-size: 40px
+		font-weight: normal
+		margin: 1% 0
+		+max-screen(1200)
+			font-size: 30px
+	&__taste-category-wrap
+		width: 25%
+		margin: 30px 5%
+		display: inline-block
+
+	&__category-name
+		color: #333
+		font-size: 25px
+		font-weight: normal
+		margin: 1% 0
+		+max-screen(1200)
+			font-size: 15px
+	&__taste-image-wrap
+		border-radius: 20px
+		display: block
+		width: 100%
+		// margin: 30px 5%
+		padding-bottom: 100%
+		cursor: pointer
+		position: relative
+		border: 1px solid rgb(23, 26, 28)
+		border: 1px solid rgba(23, 26, 28, 0.3)
+		overflow: hidden
+		box-shadow: 0 0 25px 8px #666 inset
+		&:hover
+			box-shadow: 0 0 25px #666 inset, 0 0 25px 10px #fff
+		img
+			width: 100%
+			height: auto
+			position: absolute
+			left: 0
+			top: 0
+			z-index: -1
+			min-height: 100%

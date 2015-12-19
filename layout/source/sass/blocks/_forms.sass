@@ -1,0 +1,142 @@
+form
+	display: block
+	margin: 0 auto
+	width: 450px
+	padding-bottom: 30px
+	+max-screen(768)
+		width: 100%
+	.form-line
+		margin: 15px 0 5px
+		padding-bottom: 25px
+		position: relative
+		+max-screen(1366)
+			margin: 10px 0 0
+			padding-bottom: 20px
+		.error-notification
+			display: none
+			position: absolute
+			bottom: 0
+			width: 100%
+			left: 0
+			color: #f03
+			line-height: 1
+			font-size: 16px
+			+max-screen(1366)
+				font-size: 14px
+		&.error .error-notification
+			display: block
+	label
+		display: block
+		margin-bottom: 10px
+		font-size: 22px
+		color: #333
+		+max-screen(900)
+			font-size: 18px
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"]
+		display: inline-block
+		border-radius: 10px
+		padding: 0 10px
+		height: 46px
+		line-height: 46px
+		width: 100%
+		font-size: 18px
+		text-align: center
+		background-color: rgba(23, 26, 28, 0.3)
+		border: 1px solid rgb(23, 26, 28)
+		border: 1px solid rgba(23, 26, 28, 0.3)
+		box-shadow: 0 0 25px #666 inset
+		+max-screen(1366)
+			font-size: 16px
+		&:hover
+			box-shadow: 0 0 25px #666 inset, 0 0 10px #fff
+		&:focus
+			box-shadow: 0 0 25px #666 inset, 0 0 25px #fff
+		+placeholder
+			color: #fff
+	.error input[type="text"],
+	.error input[type="email"],
+	.error input[type="password"]
+		box-shadow: 0 0 25px #666 inset, 0 0 25px #ff0033
+		color: #ff0033
+	.or-form-separator
+		color: #333
+		font-size: 15px
+		font-weight: 600
+
+.form-readio-button-wrap
+	input[type="radio"]
+		display: none
+		
+	label
+		display: inline-block
+		cursor: pointer
+		position: relative
+		padding-left: 25px
+		margin-right: 20px
+		&:before
+			content: ""
+			position: absolute
+			background-color: rgba(23, 26, 28, 0.3)
+			border: 1px solid rgb(23, 26, 28)
+			display: inline-block
+			width: 20px
+			height: 20px
+			border-radius: 10px
+			left: 0
+			top: 50%
+			margin-top: -11px
+			box-shadow: 0 0 25px #666 inset
+	input + label:hover:before
+		box-shadow: 0 0 25px #666 inset, 0 0 10px #fff
+	input:checked + label:before
+		box-shadow: 0 0 25px #666 inset, 0 0 25px #fff
+	input:checked + label:after
+		content: ""
+		display: inline-block
+		position: absolute
+		left: 4px
+		top: 50%
+		margin-top: -7px
+		width: 12px
+		height: 12px
+		background-color: rgba(23, 26, 28, 0.5)
+		border-radius: 6px
+
+
+.button
+	margin: 0 10px
+	display: inline-block
+	text-decoration: none
+	font-size: 14px
+	font-weight: 700
+	line-height: 1em
+	letter-spacing: 0.2em
+	text-transform: uppercase
+	color: #161a1b
+	background: transparent
+	border: 1px solid rgb(23, 26, 28)
+	border: 1px solid rgba(23, 26, 28, 0.3)
+	border-radius: 20px
+	line-height: 46px
+	padding: 0 40px
+	height: 46px
+	transition: all 0.9s
+	box-sizing: border-box
+	&:hover
+		background: rgb(23, 26, 28)
+		color: #fff
+		border: 1px solid rgb(23, 26, 28)
+		transition: all 0.5s
+		box-shadow: 0 0 25px #fff
+	+max-screen(1200)
+		width: auto
+		display: block
+		margin: 0 auto
+		min-width: 20%
+		max-width: 50%
+	+max-screen(768)
+		width: 100%
+
