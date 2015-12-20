@@ -18,7 +18,7 @@ using Wisher.UserManagment.Results;
 
 namespace Wisher.Controllers
 {
-    [Authorize]
+
     [RoutePrefix("api/accounts")]
     public class AccountsController : ApiController
     {
@@ -87,18 +87,16 @@ namespace Wisher.Controllers
         [Route("RegisterExternal")]
         public async Task<IHttpActionResult> RegisterExternal(RegisterExternalBindingModel model)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
             var verifiedAccessToken = await VerifyExternalAccessToken(model.Provider, model.ExternalAccessToken);
+
             if (verifiedAccessToken == null)
             {
                 return BadRequest("Invalid Provider or External Access Token");
             }
-
             var user = await _repository.FindAsync(new UserLoginInfo(model.Provider, verifiedAccessToken.user_id));
 
             bool hasRegistered = user != null;
@@ -108,9 +106,9 @@ namespace Wisher.Controllers
                 return BadRequest("External user is already registered");
             }
 
-            user = new IdentityUser() { UserName = model.UserName };
+            user = new ApplicationUser() { UserName = model.UserName};
 
-            IdentityResult result = await _repository.CreateAsync((ApplicationUser)user);
+            IdentityResult result = await _repository.CreateAsync((ApplicationUser) user);
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -166,10 +164,10 @@ namespace Wisher.Controllers
                 return string.Format("Client_id '{0}' is not registered in the system.", clientId);
             }
 
-            if (!string.Equals(client.AllowedOrigin, redirectUri.GetLeftPart(UriPartial.Authority), StringComparison.OrdinalIgnoreCase))
-            {
-                return string.Format("The given URL is not allowed by Client_id '{0}' configuration.", clientId);
-            }
+            //if (!string.Equals(client.AllowedOrigin, redirectUri.GetLeftPart(UriPartial.Authority), StringComparison.OrdinalIgnoreCase))
+            //{
+            //    return string.Format("The given URL is not allowed by Client_id '{0}' configuration.", clientId);
+            //}
 
             redirectUriOutput = redirectUri.AbsoluteUri;
 
@@ -199,7 +197,7 @@ namespace Wisher.Controllers
                 //You can get it from here: https://developers.facebook.com/tools/accesstoken/
                 //More about debug_tokn here: http://stackoverflow.com/questions/16641083/how-does-one-get-the-app-access-token-for-debug-token-inspection-on-facebook
 
-                var appToken = "xxxxx";
+                var appToken = "1111778688855713|0BDoIy2P4isvN8xFbcn-lFuJwz4";
                 verifyTokenEndPoint = string.Format("https://graph.facebook.com/debug_token?input_token={0}&access_token={1}", accessToken, appToken);
             }
             else if (provider == "Google")
@@ -329,7 +327,7 @@ namespace Wisher.Controllers
             {
                 return errorResult;
             }
-            
+
             return Ok();
         }
         private IHttpActionResult GetErrorResult(IdentityResult result)

@@ -16,6 +16,7 @@ namespace Wisher.UserManagment.Repository
         private bool _disposed;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _applicationDbContext;
+        
         public AuthRepository()
         {
             _applicationDbContext = new ApplicationDbContext();
@@ -52,9 +53,17 @@ namespace Wisher.UserManagment.Repository
             return user;
         }
 
-        public async Task<IdentityResult> CreateAsync(ApplicationUser user)
+        public async Task<IdentityResult> CreateAsync(ApplicationUser userModel)
         {
-            var result = await _userManager.CreateAsync(user);
+            var categories = await new HotlineRepository().GetCategories();
+            var res = new PersistableIntCollection();
+            foreach (var categoryInfo in categories)
+            {
+                res.Add(categoryInfo.EbayCategoryIntValue);
+            }
+            userModel.FavCats = res;
+
+            var result = await _userManager.CreateAsync(userModel);
 
             return result;
         }

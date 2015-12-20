@@ -54,7 +54,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
                 //Obtain access token and redirect to orders
                 var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
                 authService.obtainAccessToken(externalData).then(function (response) {
-
+                    // ДОПИСАТЬ ЗДЕСЬ
                     $location.path('/orders');
 
                 },

@@ -16,11 +16,11 @@ namespace Wisher.UserManagment
         {
             FavCats = new PersistableIntCollection();
         }
-        [Required]
+       // [Required]
         public string Name { get; set; }
-        [Required]
+       // [Required]
         public override string Email { get; set; }
-        [Required]
+       // [Required]
         public int Age { get; set; }
         // converter enum
         [JsonConverter(typeof(StringEnumConverter))]
