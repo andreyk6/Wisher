@@ -1,7 +1,7 @@
 ﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
 
 var serviceBase = 'http://localhost:24860/';
-
+//http://localhost:24860/
 app.config(function ($routeProvider) {
 
     $routeProvider.when("/home", {

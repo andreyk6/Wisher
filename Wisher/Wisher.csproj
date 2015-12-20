@@ -307,6 +307,7 @@
     <Compile Include="UserManagment\Models\RefreshToken.cs" />
     <Compile Include="UserManagment\Models\RegisterExternalBindingModel.cs" />
     <Compile Include="UserManagment\Providers\FacebookAuthProvider.cs" />
+    <Compile Include="UserManagment\Providers\GoogleAuthProvider.cs" />
     <Compile Include="UserManagment\Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UserManagment\ApplicationUser.cs" />

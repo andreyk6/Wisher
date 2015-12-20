@@ -45,6 +45,14 @@ namespace Wisher
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new SimpleAuthorizationServerProvider()
             };
+            GoogleAuthOptions = new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "655406860655-ikkgjfk17qkppfh6l6on54k52hbflm88.apps.googleusercontent.com",
+                ClientSecret = "ZvfRvEkbihuA8tKCQ_dZAdxo",
+                Provider = new GoogleAuthProvider()
+            };
+            app.UseGoogleAuthentication(GoogleAuthOptions);
+
             FacebookAuthOptions = new FacebookAuthenticationOptions()
             {
                 AppId = "1111778688855713",
