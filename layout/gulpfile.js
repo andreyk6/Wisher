@@ -15,10 +15,10 @@ var gulp = require('gulp'),
 	spritesmith = require('gulp.spritesmith'),
 	uglify = require('gulp-uglify'),
 	base64 = require('gulp-base64'),
+	uglifycss = require('gulp-uglifycss'),
 	dirs = {
 		'source': {
 			'vendorJs': './source/js/vendor/',
-			'vendorCss': './source/css-vendor/',
 			'js': './source/js/**/*.js',
 			'fonts': './source/fonts/**/*',
 			'jade': './source/views/*.jade',
@@ -50,6 +50,7 @@ gulp.task('vendor-js', function() {
 gulp.task('vendor-css', function() {
 	return gulp.src(mainBowerFiles('**/*.css'))
 	.pipe(plumber())
+	.pipe(uglifycss())
 	.pipe(gulp.dest(dirs.build.vendorCss));
 });
 
