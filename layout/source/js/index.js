@@ -47,11 +47,13 @@
 	whr.hide(preloader)
 	// 	$countdown = $('#countdown');
 
+	fullpage.init = init();
+
 	fullpage.initialize("#pageSlider", {
 		// 'anchors': ['section1', 'section2', 'section3'],
 		'sectionSelector': '.page-section',
 		'slideSelector': '.page-slide',
-		// 'keyboardScrolling': false,
+		'keyboardScrolling': false,
 		'navigation': false,
 		'recordHistory': false,
 		'slidesNavigation': false,
@@ -80,7 +82,8 @@
 		}	
 	});
 
-	// fullpage.setKeyboardScrolling(false, 'all');
+	// fullpage.removeTouchHandler();
+	fullpage.setKeyboardScrolling(false, 'all');
 	// fullpage.setAllowScrolling(false, 'all');
 	fullpage.setRecordHistory(false);
 

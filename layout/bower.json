@@ -22,7 +22,7 @@
   "overrides": {
     "fullpage.js": {
       "main" : [
-        "pure javascript (Alpha)/javascript.fullPage.min.js",
+        "pure javascript (Alpha)/javascript.fullPage.js",
         "pure javascript (Alpha)/javascript.fullPage.css"
       ]
     }
