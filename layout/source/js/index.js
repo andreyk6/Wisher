@@ -44,10 +44,9 @@
 
 	var preloader = document.getElementById('preloader');
 
-	whr.hide(preloader)
 	// 	$countdown = $('#countdown');
 
-	fullpage.init = init();
+	// fullpage.init = init();
 
 	fullpage.initialize("#pageSlider", {
 		// 'anchors': ['section1', 'section2', 'section3'],
@@ -86,6 +85,8 @@
 	fullpage.setKeyboardScrolling(false, 'all');
 	// fullpage.setAllowScrolling(false, 'all');
 	fullpage.setRecordHistory(false);
+	
+	whr.hide(preloader);
 
 	// var onDomReady = function(){
 
