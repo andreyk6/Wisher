@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -17,21 +17,19 @@ namespace Wisher.UserManagment
             CatsToChose = new PersistableIntCollection();
             SellectedCats = new PersistableIntCollection();
         }
-        [Required]
+       // [Required]
         public string Name { get; set; }
-        [Required]
+       // [Required]
         public override string Email { get; set; }
-        [Required]
+       // [Required]
         public int Age { get; set; }
         // converter enum
         [JsonConverter(typeof (StringEnumConverter))]
         public GenderEnum Gender { get; set; }
-
         public PersistableIntCollection CatsToChose { get; set; }
         public PersistableIntCollection SellectedCats { get; set; }
         public int LastCatStoreId { get;  set; }
 
-        //  public ICollection<CategoryInfo> CategoryInfo { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager,
             string authenticationType)
         {
