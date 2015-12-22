@@ -83,8 +83,9 @@ input:-webkit-autofill
 	text-align: center
 	box-sizing: border-box
 .page__inner
-	padding-left: 5%
-	padding-right: 5%
+	padding: 0 5%
+	+max-screen(768)
+		padding: 0 20px
 
 .loader-bg
 	background: url("../img/image_932466.gif") center center no-repeat
