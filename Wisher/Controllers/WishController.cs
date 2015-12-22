@@ -55,71 +55,69 @@ namespace Wisher.Controllers
         public async Task<IHttpActionResult> DoWish(WishRequestV2Model wishRequest)
         {
             #region [ Get user and category ]
-
             //Get current user
             var user = _dbContext.Users.FirstOrDefault(u => u.Id == wishRequest.UserId);
             if (user == null)
                 return BadRequest("User not found");
 
-
             if (_userCats == null)
             {
                 _userCats = _categories.Where(c => user.CatsToChose.Contains(c.EbayCategoryIntValue)).ToList();
             }
+            #endregion
 
+            CategoryInfo next;
             if (wishRequest.CategoryId == -1)
             {
                 if (user.LastCatStoreId != 0)
-                    return Ok(_categories.FirstOrDefault(c => c.EbayCategoryIntValue == user.LastCatStoreId));
-                return Ok(GetRandomCat(_userCats));
-            }
-
-            //Get info about current category
-            var category = _categories.FirstOrDefault(c => c.EbayCategoryIntValue == wishRequest.CategoryId);
-            if (category == null)
-                return BadRequest("Category not found");
-
-            #endregion
-
-
-            CategoryInfo next;
-            //If user dont like the category - remove it from list and return new random category
-            if (!wishRequest.IsLiked)
-            {
-                //Remove all refferenced categories
-                RemoveRefferencedCatsFromUserList(category, user);
+                    next = _categories.FirstOrDefault(c => c.EbayCategoryIntValue == user.LastCatStoreId);
                 next = GetRandomCat(_userCats);
             }
             else
             {
-                //If it is last cat level then add it to favourite cats
-                if (category.Level == 3)
-                    user.SellectedCats.Add(category.EbayCategoryIntValue);
+                //Get info about current category
+                var category = _categories.FirstOrDefault(c => c.EbayCategoryIntValue == wishRequest.CategoryId);
+                if (category == null)
+                    return BadRequest("Category not found");
 
-                //Remove from current queue
-                _userCats.Remove(category);
-                user.CatsToChose.Remove(category.EbayCategoryIntValue);
-                
+                //If user dont like the category - remove it from list and return new random category
+                if (!wishRequest.IsLiked)
+                {
+                    //Remove all refferenced categories
+                    RemoveRefferencedCatsFromUserList(category, user);
+                    next = GetRandomCat(_userCats);
+                }
+                else
+                {
+                    //If it is last cat level then add it to favourite cats
+                    if (category.Level == 3)
+                        user.SellectedCats.Add(category.EbayCategoryIntValue);
+
+                    //Remove from current queue
+                    _userCats.Remove(category);
+                    user.CatsToChose.Remove(category.EbayCategoryIntValue);
+
+                    _dbContext.SaveChanges();
+
+                    next = GetNextCategoryInList(_userCats, category);
+                }
+
+                if (next == null)
+                    return Ok(new
+                    {
+                        progress = 100
+                    });
+
+                user.LastCatStoreId = next.EbayCategoryIntValue;
                 _dbContext.SaveChanges();
-
-                next = GetNextCategoryInList(_userCats, category);
             }
-
-
-            if (next == null)
-                return Ok(new {
-                    progress = 100
-                });
-
-            user.LastCatStoreId = next.EbayCategoryIntValue;
-            _dbContext.SaveChanges();
-
             return Ok(new
             {
                 name = next.Name,
                 categoryId = next.EbayCategoryIntValue,
                 progress = 100 - (user.CatsToChose.Count*100)/_categories.Count
             });
+
         }
 
         private static CategoryInfo GetNextCategoryInList(List<CategoryInfo> cats, CategoryInfo current)

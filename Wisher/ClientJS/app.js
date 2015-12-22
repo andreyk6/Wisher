@@ -3,7 +3,6 @@
 var serviceBase = 'http://localhost:24860/';
 //http://localhost:24860/
 app.config(function ($routeProvider) {
-
     $routeProvider.when("/home", {
         controller: "homeController",
         templateUrl: "/ClientJS/views/home.html"
@@ -22,6 +21,12 @@ app.config(function ($routeProvider) {
         controller: "associateController",
         templateUrl: "/ClientJS/views/associate.html"
     });
+
+    $routeProvider.when("/quiz", {
+        controller: "quizController",
+        templateUrl: "/ClientJS/views/quiz.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 

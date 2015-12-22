@@ -1,0 +1,12 @@
+﻿{{progress}}
+<div class="row">
+    <div class="flip-container text-center col-md-12" ng-init="nextQuestion()">
+        <div class="front" ng-class="{flip: answered}">
+            <p class="lead">{{title}}</p>
+            <div class="row text-center">
+                <button class="btn btn-info btn-lg" ng-click="submitAnswerTrue()" ng-disabled="working">Хочу</button>
+                <button class="btn btn-info btn-lg" ng-click="submitAnswerFalse()" ng-disabled="working">Не хочу</button>
+            </div>
+        </div>
+    </div>
+</div>
