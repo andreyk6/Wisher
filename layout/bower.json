@@ -17,11 +17,12 @@
     "tests"
   ],
   "dependencies": {
-    "fullpage.js": "~2.7.6"
+    "fullpage.js": "~2.7.6",
+    "angular": "~1.4.8"
   },
   "overrides": {
     "fullpage.js": {
-      "main" : [
+      "main": [
         "pure javascript (Alpha)/javascript.fullPage.js",
         "pure javascript (Alpha)/javascript.fullPage.css"
       ]

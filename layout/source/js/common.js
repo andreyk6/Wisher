@@ -42,49 +42,49 @@
 
 
 
-	var preloader = document.getElementById('preloader');
+	// var preloader = document.getElementById('preloader');
 
 	// 	$countdown = $('#countdown');
 
 	// fullpage.init = init();
 
-	fullpage.initialize("#pageSlider", {
-		// 'anchors': ['section1', 'section2', 'section3'],
-		'sectionSelector': '.page-section',
-		'slideSelector': '.page-slide',
-		'keyboardScrolling': false,
-		'navigation': false,
-		'recordHistory': false,
-		'slidesNavigation': false,
-		'controlArrows': false,
-		'loopHorizontal': false,
-		'afterLoad': function(i){
-			console.log('afterLoad', i);
-		},
-		'onLeave': function(index, nextIndex, direction){
-			console.log('onLeave', index, nextIndex, direction);
-		},
-		'afterRender': function(i){
-			console.log('afterRender', i);
-		},
-		'afterResize': function(i){
-			console.log('afterResize', i);
-		},
-		'afterReBuild': function(i){
-			console.log('afterReBuild', i);
-		},
-		'afterSlideLoad': function(i){
-			console.log('afterSlideLoad', i);
-		},
-		'onSlideLeave': function(anchorLink, index, slideIndex, direction, nextSlideIndex){
-			console.log('onSlideLeave', anchorLink, index, slideIndex, direction, nextSlideIndex);
-		}	
-	});
+	// fullpage.initialize("#pageSlider", {
+	// 	// 'anchors': ['section1', 'section2', 'section3'],
+	// 	'sectionSelector': '.page-section',
+	// 	'slideSelector': '.page-slide',
+	// 	'keyboardScrolling': false,
+	// 	'navigation': false,
+	// 	'recordHistory': false,
+	// 	'slidesNavigation': false,
+	// 	'controlArrows': false,
+	// 	'loopHorizontal': false,
+	// 	'afterLoad': function(i){
+	// 		console.log('afterLoad', i);
+	// 	},
+	// 	'onLeave': function(index, nextIndex, direction){
+	// 		console.log('onLeave', index, nextIndex, direction);
+	// 	},
+	// 	'afterRender': function(i){
+	// 		console.log('afterRender', i);
+	// 	},
+	// 	'afterResize': function(i){
+	// 		console.log('afterResize', i);
+	// 	},
+	// 	'afterReBuild': function(i){
+	// 		console.log('afterReBuild', i);
+	// 	},
+	// 	'afterSlideLoad': function(i){
+	// 		console.log('afterSlideLoad', i);
+	// 	},
+	// 	'onSlideLeave': function(anchorLink, index, slideIndex, direction, nextSlideIndex){
+	// 		console.log('onSlideLeave', anchorLink, index, slideIndex, direction, nextSlideIndex);
+	// 	}	
+	// });
 
 	// fullpage.removeTouchHandler();
-	fullpage.setKeyboardScrolling(false, 'all');
-	// fullpage.setAllowScrolling(false, 'all');
-	fullpage.setRecordHistory(false);
+	// fullpage.setKeyboardScrolling(false, 'all');
+	// // fullpage.setAllowScrolling(false, 'all');
+	// fullpage.setRecordHistory(false);
 	
 	whr.hide(preloader);
 
