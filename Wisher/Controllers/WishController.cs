@@ -56,7 +56,7 @@ namespace Wisher.Controllers
         {
             #region [ Get user and category ]
             //Get current user
-            var user = _dbContext.Users.FirstOrDefault(u => u.Id == wishRequest.UserId);
+            var user = _dbContext.Users.FirstOrDefault(u => u.UserName == wishRequest.UserId);
             if (user == null)
                 return BadRequest("User not found");
 
