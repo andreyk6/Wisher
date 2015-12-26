@@ -7,6 +7,50 @@
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
+    <div id="preloader" class="preloader">
+        <div class="loading">
+            <h2>Loading...</h2>
+            <div class="progress"></div>
+        </div>
+    </div>
+    <div class="page-bg">
+        <div class="page-bg__smoke">
+            <div class="page-bg__smoke-img1">
+                <img alt="smoke-image-1" src="img/smoke1.png">
+            </div>
+            <div class="page-bg__smoke-img2">
+                <img alt="smoke-image-2" src="img/smoke2.png">
+            </div>
+            <div class="page-bg__smoke-img3">
+                <img alt="smoke-image-3" src="img/smoke3.png">
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="logo-wrap">
+            <div class="logo-wrap__i"><a href="#" class="logo"><img alt="logo" src="img/logo.png"></a></div>
+        </div>
+        <div class="page__slider">
+            <div class="page__slider-content">
+                <div class="page__slider-content-inner">
+                    <div id="start" class="start">
+                        <div ng-app="whr-countdown-app" class="row">
+                            <div id="countdown" countdown="" date="January 1, 2016 00:00:00"></div>
+                        </div>
+                        <p class="sub-title">Help your friends to choose gift for You!</p>
+                        <button id="startButton" class="button">start</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="progressBar" class="progress-bar">
+        <div class="progress-bar__inner"></div>
+    </div>
+    <footer><a href="#">&copy; Strong Soft Team</a></footer>
+    <button id="logOut" class="button log-out hide">Log out</button>
+ 
+
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="indexController">
         <div class="container">
