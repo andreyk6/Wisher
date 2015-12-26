@@ -1,6 +1,6 @@
 {
-  "name": "test_task",
-  "description": "test_task_for_astound",
+  "name": "wisher",
+  "description": "wisher_progect_bower",
   "main": "index.js",
   "authors": [
     "Oleksandr Pavlishch <lokdawn80@gmail.com>"
@@ -17,15 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "fullpage.js": "~2.7.6",
-    "angular": "~1.4.8"
-  },
-  "overrides": {
-    "fullpage.js": {
-      "main": [
-        "pure javascript (Alpha)/javascript.fullPage.js",
-        "pure javascript (Alpha)/javascript.fullPage.css"
-      ]
-    }
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "angular-animate": "~1.4.8"
   }
 }

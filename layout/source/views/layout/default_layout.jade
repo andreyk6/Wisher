@@ -12,7 +12,7 @@ html(lang="en")
 		meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no")
 		link(rel="stylesheet" href="/css/vendor/javascript.fullPage.css")
 		link(rel="stylesheet" href="/css/screen.css")
-	body
+	body(ng-app="animateApp")
 
 	block preloader
 
@@ -22,7 +22,7 @@ html(lang="en")
 		block logo
 		.page__slider
 			.page__slider-content
-				.page__slider-content-inner
+				.page__slider-content-inner(class="page {{ pageClass }}" ng-view)
 					block page-slider
 			
 	block progress-bar
@@ -32,6 +32,8 @@ html(lang="en")
 	button#logOut.button.log-out.hide Log out
 
 	script(src="/js/vendor/angular.js")
+	script(src="/js/vendor/angular-route.js")
+	script(src="/js/vendor/angular-animate.js")
 	script(src="/js/common.js")
 	script(src="/js/layout.js")
 	script(src="/js/logic.js")
