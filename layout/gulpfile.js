@@ -22,7 +22,7 @@ var gulp = require('gulp'),
 			'js': './source/js/**/*.js',
 			'fonts': './source/fonts/**/*',
 			'jade': './source/views/*.jade',
-			'jadeBlocks': ['./source/views/blocks/*.jade', './source/views/layout/*.jade'],
+			'jadeBlocks': './source/views/blocks/*.jade',
 			'jade_watch': './source/views/**/*.jade',
 			'sass': './source/sass/**/*.sass',
 			'sassFolder': './source/sass/',
@@ -32,7 +32,7 @@ var gulp = require('gulp'),
 		'build': {
 			'vendorJs': './build/js/vendor/',
 			'vendorCss': './build/css/vendor/',
-			'jadeBloks': './build/jade-blocks/',
+			'jadeBloks': './build/blocks/',
 			'css': './build/css/',
 			'js': './build/js/',
 			'fonts': './build/fonts/',
@@ -169,7 +169,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('watch', function(){
-	gulp.watch(dirs.source.jade_watch, ['templates']);
+	gulp.watch(dirs.source.jade_watch, ['templates', 'templates-blocks']);
 	gulp.watch(dirs.source.sass, ['sass']);
 	gulp.watch(dirs.source.js, ['js']);
 	gulp.watch(dirs.source.img, ['images']);
@@ -178,4 +178,4 @@ gulp.task('watch', function(){
 
 
 
-gulp.task('default', ['fonts', 'vendor-js', 'vendor-css', 'js', 'sprite', 'images', 'templates', 'sass', 'connect', 'watch']);
+gulp.task('default', ['fonts', 'vendor-js', 'vendor-css', 'js', 'sprite', 'images', 'templates', 'templates-blocks', 'sass', 'connect', 'watch']);
