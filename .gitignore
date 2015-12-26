@@ -1,4 +1,4 @@
-﻿###################
+###################
 # compiled source #
 ###################
 *.com
@@ -75,6 +75,6 @@ _[Ss]cripts
 *.dot[Cc]over
 .vs
 layout/build/
+layout/source/
 layout/.sass-cache
 layout/node_modules
-layout/source/
