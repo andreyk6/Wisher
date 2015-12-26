@@ -220,16 +220,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="authComplete.html" />
     <Content Include="ClientJS\app.js" />
+    <Content Include="ClientJS\controllers\homeController.js" />
+    <Content Include="ClientJS\controllers\indexController.js" />
     <Content Include="ClientJS\controllers\loginController.js" />
+    <Content Include="ClientJS\controllers\signupController.js" />
+    <Content Include="ClientJS\controllers\associateController.js" />
+    <Content Include="ClientJS\services\authInterceptorService.js" />
     <Content Include="ClientJS\services\authService.js" />
     <Content Include="ClientJS\services\tokensManagerService.js" />
+    <Content Include="ClientJS\views\associate.html" />
+    <Content Include="ClientJS\views\home.html" />
     <Content Include="ClientJS\views\login.html" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\img\smoke1.png" />
     <Content Include="Content\img\smoke2.png" />
     <Content Include="Content\img\smoke3.png" />
     <Content Include="Content\loading-bar.css" />
     <Content Include="Content\loading-bar.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-local-storage.js" />
     <Content Include="Scripts\angular-local-storage.min.js" />
@@ -238,6 +254,25 @@
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\authComplete.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\loading-bar.js" />
     <Content Include="Scripts\loading-bar.min.js" />
     <Content Include="Web.config" />
@@ -272,6 +307,7 @@
     <Compile Include="UserManagment\Models\RefreshToken.cs" />
     <Compile Include="UserManagment\Models\RegisterExternalBindingModel.cs" />
     <Compile Include="UserManagment\Providers\FacebookAuthProvider.cs" />
+    <Compile Include="UserManagment\Providers\GoogleAuthProvider.cs" />
     <Compile Include="UserManagment\Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UserManagment\ApplicationUser.cs" />
@@ -295,6 +331,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

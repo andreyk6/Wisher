@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using Wisher.UserManagment.Models;
+
 namespace Wisher.Migrations
 {
     using System;
@@ -14,18 +18,53 @@ namespace Wisher.Migrations
 
         protected override void Seed(Wisher.Data.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (context.Clients.Any())
+            {
+                return;
+            }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Clients.AddRange(BuildClientsList());
+            context.SaveChanges();
+        }
+        private static List<Client> BuildClientsList()
+        {
+
+            List<Client> ClientsList = new List<Client>
+            {
+                new Client
+                { Id = "consoleApp",
+                    Secret=Helper.GetHash("123@abc"),
+                    Name="name of your fucking gf",
+                    Active = true,
+                    RefreshTokenLifeTime = 14400,
+                    AllowedOrigin = "*"
+                },
+                new Client()
+                {
+                    Id = "wisher",
+                    Secret=Helper.GetHash("123@sadasd"),
+                    Name="name of your fucking gf",
+                    Active = true,
+                    RefreshTokenLifeTime = 14400,
+                    AllowedOrigin = "*"
+                }
+            };
+
+            return ClientsList;
+        }
+
+    }
+    public class Helper
+    {
+        public static string GetHash(string input)
+        {
+            HashAlgorithm hashAlgorithm = new SHA256CryptoServiceProvider();
+
+            byte[] byteValue = System.Text.Encoding.UTF8.GetBytes(input);
+
+            byte[] byteHash = hashAlgorithm.ComputeHash(byteValue);
+
+            return Convert.ToBase64String(byteHash);
         }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using Wisher.Data;
+using Wisher.Migrations;
 using Wisher.UserManagment.Providers;
 
 [assembly: OwinStartup(typeof(Wisher.Startup))]
@@ -25,17 +26,18 @@ namespace Wisher
 
             ConfigureWebApi(httpConfig);
             ConfigureOAuth(app);
-
+            WebApiConfig.Register(httpConfig);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-
             app.UseWebApi(httpConfig);
-            app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
+            //app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
 
-            Database.SetInitializer<ApplicationDbContext>(null);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
 
         }
         public void ConfigureOAuth(IAppBuilder app)
         {
+            app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
             OAuthAuthorizationServerOptions oAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
@@ -43,7 +45,17 @@ namespace Wisher
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new SimpleAuthorizationServerProvider()
             };
-            // Token Generation
+
+            app.UseOAuthAuthorizationServer(oAuthServerOptions);
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+            GoogleAuthOptions = new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "655406860655-ikkgjfk17qkppfh6l6on54k52hbflm88.apps.googleusercontent.com",
+                ClientSecret = "ZvfRvEkbihuA8tKCQ_dZAdxo",
+                Provider = new GoogleAuthProvider()
+            };
+            app.UseGoogleAuthentication(GoogleAuthOptions);
+
             FacebookAuthOptions = new FacebookAuthenticationOptions()
             {
                 AppId = "1111778688855713",
@@ -52,12 +64,10 @@ namespace Wisher
             };
             app.UseFacebookAuthentication(FacebookAuthOptions);
 
-            app.UseOAuthAuthorizationServer(oAuthServerOptions);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            
         }
         private void ConfigureWebApi(HttpConfiguration config)
         {
-            config.MapHttpAttributeRoutes();
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
