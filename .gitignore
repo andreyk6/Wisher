@@ -1,4 +1,4 @@
-###################
+﻿###################
 # compiled source #
 ###################
 *.com
@@ -74,4 +74,6 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 .vs
-layout/source/
+layout/build/
+layout/.sass-cache
+layout/node_modules
