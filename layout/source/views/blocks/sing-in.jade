@@ -1,17 +1,17 @@
 .page-slide.sing-in#sing-in-page
 	.page__inner
-		form#signIn(action="#")
+		form(action="#")
 			.form-line
 				label E-mail
-				input#signInEmail(type="email" placeholder="Enter your e-mail" title="Enter your e-mail"  autocomplete="off" required)
-				#signInEmailErrorNotification.error-notification
+				input(type="email" placeholder="Enter your e-mail" title="Enter your e-mail"  autocomplete="off" required)
+				.error-notification
 			.form-line
 				label Password
-				input#signInPassword(type="password" placeholder="Enter your password" title="Enter your password" required)
-				#signInPasswordErrorNotification.error-notification
+				input(type="password" placeholder="Enter your password" title="Enter your password" required)
+				.error-notification
 			.form-line
-				button.button#signInSubmit(type="submit") sign in
+				button.button(type="submit") sign in
 			.or-form-separator or
 
 			.form-line
-				button.button#goToSignUp create new account
+				button.button create new account
