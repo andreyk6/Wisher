@@ -15,17 +15,15 @@ html(lang="en")
 	body
 
 	block preloader
-	
 
 	block page-background
 
-	block logo
-
-	block progress-bar
-
-	.page-slider#pageSlider
+	.page
+		block logo
+			
 		block page-slider
-
+			
+	block progress-bar
 	block progress-bar
 	
 	block footer
@@ -33,9 +31,6 @@ html(lang="en")
 	button#logOut.button.log-out.hide Log out
 
 	script(src="/js/vendor/angular.js")
-	//- script(src="/js/vendor/javascript.fullPage.js")
-	//- script(src="/js/vendor/jquery.slimscroll.min.js")
-	//- script(src="/js/vendor/jquery.countdown.min.js")
 	script(src="/js/common.js")
 	script(src="/js/layout.js")
 	script(src="/js/logic.js")
