@@ -22,6 +22,13 @@ app.config(function ($routeProvider) {
         controller: "associateController",
         templateUrl: "/ClientJS/views/associate.html"
     });
+
+    $routeProvider.when("/tasteIdentification", {
+        controller: "tasteIdentificationController",
+        templateUrl: "/ClientJS/views/tasteIdentification.html"
+    });
+
+ 
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
