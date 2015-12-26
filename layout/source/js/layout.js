@@ -49,4 +49,51 @@
 		1000
 	);
 
+
+//***************************************//
+var animateApp = angular.module('animateApp', ['ngRoute', 'ngAnimate']);
+
+// ROUTING ===============================================
+// set our routing for this application
+// each route will pull in a different controller
+animateApp.config(function($routeProvider) {
+
+	$routeProvider
+
+		// home page
+		.when('/', {
+			templateUrl: '../blocks/start.html',
+			controller: 'mainController'
+		})
+
+		// sing-in page
+		.when('/sing-in', {
+			templateUrl: '../blocks/sing-in.html',
+			controller: 'singInController'
+		})
+
+		// contact page
+		.when('/contact', {
+			templateUrl: 'page-contact.html',
+			controller: 'contactController'
+		});
+
+});
+
+
+// CONTROLLERS ============================================
+// home page controller
+animateApp.controller('mainController', function($scope) {
+	$scope.pageClass = 'page-home';
+});
+
+// about page controller
+animateApp.controller('singInController', function($scope) {
+	$scope.pageClass = 'page-about';
+});
+
+// contact page controller
+animateApp.controller('contactController', function($scope) {
+	$scope.pageClass = 'page-contact';
+});
 }).call(this);
