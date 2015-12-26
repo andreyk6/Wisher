@@ -40,6 +40,3 @@ whr.hide = function(element){
 whr.show = function(element){
 	element.classList.remove(hideClass);
 };
-
-
-
