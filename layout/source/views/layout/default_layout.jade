@@ -14,28 +14,28 @@ html(lang="en")
 		link(rel="stylesheet" href="/css/screen.css")
 	body(ng-app="animateApp")
 
-	block preloader
+		block preloader
 
-	block page-background
+		block page-background
 
-	.page
-		block logo
-		.page__slider
-			.page__slider-content
-				.page__slider-content-inner(class="page {{ pageClass }}" ng-view)
-					block page-slider
-			
-	block progress-bar
-	
-	block footer
+		.page
+			block logo
+			.page__slider
+				.page__slider-content
+					.page__slider-content-inner(class="page {{ pageClass }}" ng-view)
+						block page-slider
+				
+		block progress-bar
+		
+		block footer
 
-	button#logOut.button.log-out.hide Log out
+		button#logOut.button.log-out.hide Log out
 
-	script(src="/js/vendor/angular.js")
-	script(src="/js/vendor/angular-route.js")
-	script(src="/js/vendor/angular-animate.js")
-	script(src="/js/common.js")
-	script(src="/js/layout.js")
-	script(src="/js/logic.js")
+		script(src="/js/vendor/angular.js")
+		script(src="/js/vendor/angular-route.js")
+		script(src="/js/vendor/angular-animate.js")
+		script(src="/js/common.js")
+		script(src="/js/layout.js")
+		script(src="/js/logic.js")
 
 
