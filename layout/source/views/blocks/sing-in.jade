@@ -1,17 +1,16 @@
-.page-slide.sing-in#sing-in-page
-	.page__inner
-		form(action="#")
-			.form-line
-				label E-mail
-				input(type="email" placeholder="Enter your e-mail" title="Enter your e-mail"  autocomplete="off" required)
-				.error-notification
-			.form-line
-				label Password
-				input(type="password" placeholder="Enter your password" title="Enter your password" required)
-				.error-notification
-			.form-line
-				button.button(type="submit") sign in
-			.or-form-separator or
+.sing-in
+	form(action="#")
+		.form-line
+			label E-mail
+			input(type="email" placeholder="Enter your e-mail" title="Enter your e-mail"  autocomplete="off" required)
+			.error-notification
+		.form-line
+			label Password
+			input(type="password" placeholder="Enter your password" title="Enter your password" required)
+			.error-notification
+		.form-line
+			button.button(type="submit") sign in
+		.or-form-separator or
 
-			.form-line
-				a.button(href="#sing-up") create new account
+		.form-line
+			a.button(href="#sing-up") create new account
