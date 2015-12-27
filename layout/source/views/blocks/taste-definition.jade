@@ -1,15 +1,15 @@
 include ../mixins/mixin.jade
 
+include progress-bar.jade
 .page-slide.taste-definition#taste-definition
-	.page__inner
-		h2.taste-definition__header
-			| Выберите одну из категорий
-		.taste-definition__images-wrap
-			.taste-definition__taste-category-wrap
-				.taste-definition__taste-image-wrap
-					+insert-image('gifts.jpg')
-				.taste-definition__category-name Категория 1
-			.taste-definition__taste-category-wrap
-				.taste-definition__taste-image-wrap
-					+insert-image('gifts.jpg')
-				.taste-definition__category-name Категория 2
+	h2.taste-definition__header
+		| Выберите одну из категорий
+	.taste-definition__images-wrap
+		.taste-definition__taste-category-wrap
+			.taste-definition__taste-image-wrap
+				+insert-image('gifts.jpg')
+			.taste-definition__category-name Категория 1
+		.taste-definition__taste-category-wrap
+			.taste-definition__taste-image-wrap
+				+insert-image('gifts.jpg')
+			.taste-definition__category-name Категория 2
