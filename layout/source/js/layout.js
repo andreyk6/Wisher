@@ -51,49 +51,66 @@
 
 
 //***************************************//
-var animateApp = angular.module('animateApp', ['ngRoute', 'ngAnimate']);
+	var animateApp = angular.module('animateApp', ['ngRoute', 'ngAnimate']);
 
 // ROUTING ===============================================
-// set our routing for this application
-// each route will pull in a different controller
-animateApp.config(function($routeProvider) {
+	animateApp.config(function($routeProvider) {
 
-	$routeProvider
+		$routeProvider
 
-		// home page
-		.when('/', {
-			templateUrl: '../blocks/start.html',
-			controller: 'mainController'
-		})
+			// home page
+			.when('/', {
+				templateUrl: '../blocks/start.html',
+				controller: 'mainController'
+			})
 
-		// sing-in page
-		.when('/sing-in', {
-			templateUrl: '../blocks/sing-in.html',
-			controller: 'singInController'
-		})
+			// sing-in page
+			.when('/sing-in', {
+				templateUrl: '../blocks/sing-in.html',
+				controller: 'singInController'
+			})
 
-		// contact page
-		.when('/contact', {
-			templateUrl: 'page-contact.html',
-			controller: 'contactController'
-		});
+			// sing-up page
+			.when('/sing-up', {
+				templateUrl: '../blocks/sing-up.html',
+				controller: 'singUpController'
+			})
 
-});
+			// taste-definition page
+			.when('/taste-definition', {
+				templateUrl: '../blocks/taste-definition.html',
+				controller: 'tasteDefinitionController'
+			})
+
+			// sing-up page
+			.when('/result', {
+				templateUrl: '../blocks/result-page.html',
+				controller: 'resultPageController'
+			});
+
+	});
 
 
 // CONTROLLERS ============================================
-// home page controller
-animateApp.controller('mainController', function($scope) {
-	$scope.pageClass = 'page-home';
-});
+	animateApp.controller('mainController', function($scope) {
+		$scope.pageClass = '';
+	});
 
-// about page controller
-animateApp.controller('singInController', function($scope) {
-	$scope.pageClass = 'page-about';
-});
+	animateApp.controller('singInController', function($scope) {
+		$scope.pageClass = '';
+	});
 
-// contact page controller
-animateApp.controller('contactController', function($scope) {
-	$scope.pageClass = 'page-contact';
-});
+	animateApp.controller('singUpController', function($scope) {
+		$scope.pageClass = '';
+	});
+
+	animateApp.controller('tasteDefinitionController', function($scope) {
+		$scope.pageClass = '';
+	});
+
+	animateApp.controller('resultPageController', function($scope) {
+		$scope.pageClass = '';
+	});
+
+
 }).call(this);
