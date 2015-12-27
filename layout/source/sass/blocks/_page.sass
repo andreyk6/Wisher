@@ -4,13 +4,17 @@
 	overflow-x: hidden
 	overflow-y: auto
 	z-index: 2
+	+box()
+	padding-bottom: 25px
+	+max-screen($tablet-breakpoint)
+		margin-bottom: -25px
 	&__slider
 		position: absolute
 		top: 200px
 		bottom: 25px
 		text-align: center
 		width: 100%
-		+max-screen(968)
+		+max-screen($tablet-breakpoint)
 			top: 150px
 		&-content
 			display: table
@@ -23,32 +27,7 @@
 				width: 100%
 				height: 100%
 				padding: 1% 5% 30px
-				+max-screen(968)
+				+max-screen($tablet-breakpoint)
 					padding: 3% 20px 30px
 
 
-
-.page-section
-	text-align: center
-	box-sizing: border-box
-// .page__inner
-// 	padding: 1% 5%
-// 	+max-screen(768)
-// 		padding: 3% 20px
-
-
-// .page-slider
-// 	position: relative
-// 	z-index: 5
-// 	text-align: center
-// 	height: 100%
-// 	width: 100%
-// 	display: table
-// 	table-layout: fixed
-// 	&-i
-// 		display: table-cell
-// 		display: table-cell
-// 		vertical-align: middle
-// 		width: 100%
-// 		height: 100%
-// 		box-sizing: border-box

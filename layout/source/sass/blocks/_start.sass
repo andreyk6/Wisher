@@ -1,3 +1,5 @@
+.start
+	@extend %unselectable
 .sub-title
 	font-size: 18px
 	margin-top: 5px
@@ -7,34 +9,32 @@
 	transition: all 400ms ease-in
 	margin-bottom: 25px
 	margin: 2% 0
-	+max-screen(1024)
-		font-size: 5vw
+	+max-screen($tablet-breakpoint)
+		font-size: 5.5vw
 		margin: 4% 0
 
 
 
 #countdown
 	text-align: center
+	font-size: 0
 	div
 		display: inline-block
 		padding: 0 34px
 		font-weight: 800
 		font-size: 50px
 		font-size: 8.5vw
-		width: 20%
 		box-sizing: border-box
 		text-align: center
 		transition: all 400ms ease-in
-		+max-screen(968)
+		+max-screen($tablet-breakpoint)
 			padding: 0 10px
-			font-size: 10vw
-			width: 25%
-
-		+max-screen(400)
 			font-size: 12vw
+			width: 25%
+		+max-screen($small-mobile-breakpoint)
+			font-size: 11.5vw
 			padding: 0 5px
-			// display: block
-			
+
 	span
 		display: block
 		font-size: 50px
@@ -43,6 +43,6 @@
 		letter-spacing: initial
 		font-weight: 100
 		text-transform: uppercase
-		+max-screen(768)
-			transition: all 400ms ease-in
-			font-size: 5vw
+		transition: all 400ms ease-in
+		+max-screen($mobile-breakpoint)
+			font-size: 4vw

@@ -9,11 +9,20 @@ footer
 	text-align: right
 	+max-screen($tablet-breakpoint)
 		text-align: center
-		position: static
+		position: relative
+
+	// for landscape
+	+landscape($tablet-breakpoint)
+		display: none
+			
 	a
 		font-size: 17px
 		line-height: 25px
 		color: #fff
 		font-weight: bold
+		+max-screen($tablet-breakpoint)
+			font-size: 2vw
+		+max-screen($mobile-breakpoint)
+			font-size: 3vw
 		&:hover
 			color: #ff0033

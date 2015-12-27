@@ -9,7 +9,8 @@
 	width: 100%
 	transition: all 400ms ease-in
 	height: 200px
-	+max-screen(968)
+	@extend %unselectable
+	+max-screen($tablet-breakpoint)
 		height: 150px
 	&__i
 		display: table-cell
@@ -30,5 +31,5 @@
 		img
 			max-height: 172px
 			transition: all 400ms ease-in
-			+max-screen(968)
+			+max-screen($tablet-breakpoint)
 				max-height: 110px
