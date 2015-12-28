@@ -150,3 +150,12 @@ input[type="text"]
 =landscape($res)
 	@media only screen and ( max-width: if(unitless($res), $res*$units, $res) ) and (orientation: landscape)
 		@content
+
+.justify
+	+justify
+
+h1
+	font-weight: normal
+	font-size: 35px
+	color: #333
+	text-transform: uppercase

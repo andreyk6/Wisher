@@ -1,16 +1,22 @@
 .sing-in
 	form(action="#")
-		.form-line
-			label E-mail
-			input(type="email" placeholder="Enter your e-mail" title="Enter your e-mail"  autocomplete="off" required)
-			.error-notification
-		.form-line
-			label Password
-			input(type="password" placeholder="Enter your password" title="Enter your password" required)
-			.error-notification
-		.form-line
-			button.button(type="submit") sign in
-		.or-form-separator or
+
+		//- h1 Вход
+		.form-line.social.social
+			a.social-button(href="#")
+				include ../svg/facebook.svg
+			a.social-button(href="#")
+				include ../svg/google.svg
 
 		.form-line
-			a.button(href="#sing-up") create new account
+			label E-mail
+			input(type="email" placeholder="Введите свой e-mail" title="Введите свой e-mail"  autocomplete="off" required)
+			.error-notification
+		.form-line
+			label Пароль
+			input(type="password" placeholder="Введите свой пароль" title="Введите свой пароль" required)
+			.error-notification
+		.form-line
+			button.button(type="submit") Войти
+		.or-form-separator или 
+			a.registration-link(href="#sing-up") Зарегистрироватся
