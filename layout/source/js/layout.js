@@ -50,6 +50,9 @@
 	);
 
 
+
+
+}).call(this);
 //***************************************//
 	var animateApp = angular.module('animateApp', ['ngRoute', 'ngAnimate']);
 
@@ -111,6 +114,3 @@
 	animateApp.controller('resultPageController', function($scope) {
 		$scope.pageClass = '';
 	});
-
-
-}).call(this);
