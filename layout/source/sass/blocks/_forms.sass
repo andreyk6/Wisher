@@ -6,14 +6,14 @@ form
 	+max-screen(768)
 		width: 100%
 	.form-line
-		margin: 15px 0 25px
+		margin: 15px 0 30px
 		position: relative
 		+max-screen(1366)
 			margin: 10px 0 25px
 		.error-notification
 			display: none
 			position: absolute
-			bottom: -15px
+			bottom: -18px
 			width: 100%
 			left: 0
 			color: #f03
@@ -24,13 +24,14 @@ form
 		&.error .error-notification
 			display: block
 	label
-		display: block
+		display: none
 		margin-bottom: 5px
 		font-size: 22px
 		color: #333
-		+max-screen(900)
-			font-size: 18px
-
+		+min-screen($notebook-breakpoint)
+			display: block
+		// +max-screen(900)
+		// 	font-size: 18px
 	input[type="text"],
 	input[type="email"],
 	input[type="password"]
@@ -46,6 +47,7 @@ form
 		border: 1px solid rgb(23, 26, 28)
 		border: 1px solid rgba(23, 26, 28, 0.3)
 		box-shadow: 0 0 25px #666 inset
+		color: #fff
 		+max-screen(1366)
 			font-size: 16px
 		&:hover
@@ -53,7 +55,7 @@ form
 		&:focus
 			box-shadow: 0 0 25px #666 inset, 0 0 25px #fff
 		+placeholder
-			color: #fff
+			color: #ddd
 	.error input[type="text"],
 	.error input[type="email"],
 	.error input[type="password"]
@@ -68,46 +70,71 @@ form
 			color: inherit
 			font: inherit
 			margin-left: 5px
+	h1
+		display: block
+		margin-bottom: 30px
+		font-size: 48px
+		+max-screen($notebook-breakpoint)
+			margin-bottom: 20px
+			font-size: 38px
+
+			
+.two-step-form
+	width: 100%
+	padding: 0 25px
+	box-sizing: border-box
+	overflow: hidden
+	+max-screen($tablet-breakpoint)
+		padding: 0
+	&__inner
+		width: 200%
+		transition: margin-left 400ms ease-in
+		&.show-next-form-step
+			margin-left: -100%
+	&__step
+		width: 50%
+		display: inline-block
+		vertical-align: top
+		float: left
+		&-inner
+			max-width: 450px
+			margin: 0 auto
 
 
-.form-readio-button-wrap
+
+
+
+.form-gender-button-wrap
+	font-size: 0
 	input[type="radio"]
 		display: none
-		
 	label
 		display: inline-block
+		transition: all 400ms ease-in-out
 		cursor: pointer
 		position: relative
-		padding-left: 25px
-		margin-right: 20px
-		&:before
-			content: ""
-			position: absolute
-			background-color: rgba(23, 26, 28, 0.3)
-			border: 1px solid rgb(23, 26, 28)
-			display: inline-block
-			width: 20px
-			height: 20px
-			border-radius: 10px
-			left: 0
-			top: 50%
-			margin-top: -11px
-			box-shadow: 0 0 25px #666 inset
-	input + label:hover:before
+		padding: 0 10px
+		height: 46px
+		line-height: 46px
+		width: 50%
+		font-size: 18px
+		text-align: center
+		background-color: rgba(23, 26, 28, 0.3)
+		border: 1px solid rgb(23, 26, 28)
+		border: 1px solid rgba(23, 26, 28, 0.3)
+		box-shadow: 0 0 25px #666 inset
+		color: #fff
+	&__male
+		border-radius: 10px 0 0 10px
+	&__female
+		border-radius: 0 10px 10px 0
+	input + label:hover
 		box-shadow: 0 0 25px #666 inset, 0 0 10px #fff
-	input:checked + label:before
+		z-index: 1
+	input:checked + label
+		z-index: 2
+		background-color: rgba(23, 26, 28, 0.8)
 		box-shadow: 0 0 25px #666 inset, 0 0 25px #fff
-	input:checked + label:after
-		content: ""
-		display: inline-block
-		position: absolute
-		left: 4px
-		top: 50%
-		margin-top: -7px
-		width: 12px
-		height: 12px
-		background-color: rgba(23, 26, 28, 0.5)
-		border-radius: 6px
 
 
 .button
@@ -158,9 +185,12 @@ form
 		text-decoration: none
 		overflow: hidden
 		border-radius: 9px
-		width: 46px
-		height: 46px
 		transition: all 200ms ease-in
+		width: 60px
+		height: 60px
+		+max-screen(1366)
+			width: 46px
+			height: 46px
 		&:hover
 			box-shadow: 0 0 25px 10px #fff
 		svg

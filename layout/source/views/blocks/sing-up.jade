@@ -1,32 +1,40 @@
 .sing-up
-	form#signUp(action="#")
-		.form-line
-			label E-mail
-			input(name="email" type="email" placeholder="Enter your e-mail" title="Enter your e-mail" required)
-			.error-notification
-		.form-line
-			label Full Name
-			input(name="full-name" type="text" placeholder="Enter your full name" title="Enter your full name" required)
-			.error-notification
-		.form-line
-			label Password
-			input(name="password" type="password" placeholder="Enter your password" title="Enter your password" required)
-			.error-notification
-		.form-line
-			label Confirm Password
-			input(name="confirm-password" type="password" placeholder="Confirm your password" title="Confirm your password" required)
-			.error-notification
-		.form-line
-			label Age
-			input(name="age" type="text" placeholder="Enter your age" required)
-			.error-notification
-		.form-line
-			label Gender
-			.form-readio-button-wrap
-				input#signUpMale(name="gender" type="radio" value="male" checked)
-				label(for="signUpMale") Male
-				input#signUpFemele(name="gender" type="radio" value="female")
-				label(for="signUpFemele") Female
+	form.two-step-form#signUp(action="#")
+		h1 регистрация
+		.two-step-form__inner.show-next-form-step
+				.two-step-form__step
+					.two-step-form__step-inner
+						.form-line
+							label E-mail
+							input(name="email" type="email" placeholder="Введите свой e-mail" title="Введите свой e-mail" required)
+							.error-notification
+						.form-line
+							label Имя и Фамилия
+							input(name="full-name" type="text" placeholder="Введите имя и фамилию" title="Введите имя и фамилию" required)
+							.error-notification
+						.form-line
+							label Пароль
+							input(name="password" type="password" placeholder="Введите свой пароль" title="Введите свой пароль" required)
+							.error-notification
+						.form-line
+							label Повторите пароль
+							input(name="confirm-password" type="password" placeholder="Повторите пароль" title="Повторите пароль" required)
+							.error-notification
+						div
+							button.two-step-form__next-step-button.button(type="submit") Далее
+				.two-step-form__step
+					.two-step-form__step-inner
+						.form-line
+							label Возраст
+							input(name="age" type="text" placeholder="Введите свой возраст" title="Введите свой возраст" required)
+							.error-notification
+						.form-line
+							label Пол
+							.form-gender-button-wrap
+								input#signUpMale(name="gender" type="radio" value="male" checked)
+								label.form-gender-button-wrap__male(for="signUpMale") Мужчина
+								input#signUpFemele(name="gender" type="radio" value="female")
+								label.form-gender-button-wrap__female(for="signUpFemele") Женщина
 
-		.form-line
-			button.button(type="submit") sign up
+						div
+							button.button(type="submit") Зарегистрироватся
