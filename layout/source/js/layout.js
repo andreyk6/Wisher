@@ -31,10 +31,10 @@
 					t -= minutes * 60;
 					seconds = t % 60;
 					return [
-						"<div>", days, "<span>days</span></div>",
-						"<div>", hours, "<span>hrs</span></div>",
-						"<div>", minutes, "<span>min</span></div>",
-						"<div>", seconds, "<span>sec</span></div>",
+						"<div>", days, "<span>Дней</span></div>",
+						"<div>", hours, "<span>Часов</span></div>",
+						"<div>", minutes, "<span>минут</span></div>",
+						"<div>", seconds, "<span>секунд</span></div>",
 					].join('');
 				}
 			};
