@@ -3,12 +3,12 @@
 		color: #333
 		font-size: 40px
 		font-weight: normal
+		text-transform: none
 		margin: 1% 0
 		+max-screen(1200)
 			font-size: 30px
 	&__taste-category-wrap
 		width: 25%
-		margin: 30px 5%
 		display: inline-block
 
 	&__category-name
@@ -23,6 +23,7 @@
 		display: block
 		width: 100%
 		// margin: 30px 5%
+		margin-bottom: 3%
 		padding-bottom: 100%
 		cursor: pointer
 		position: relative
@@ -40,3 +41,8 @@
 			top: 0
 			z-index: -1
 			min-height: 100%
+	&__button-wrap
+		text-align: center
+		.button
+			margin: 0 1%
+			min-width: 12%
