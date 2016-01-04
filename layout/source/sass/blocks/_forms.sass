@@ -162,12 +162,12 @@ form
 		border: 1px solid rgb(23, 26, 28)
 		transition: all 0.5s
 		box-shadow: 0 0 25px #fff
-	+max-screen(1200)
+	+max-screen($tablet-breakpoint)
 		width: auto
-		display: block
 		margin: 0 auto
 		min-width: 20%
-	+max-screen(768)
+	+max-screen($mobile-breakpoint)
+		display: block
 		width: 100%
 		max-width: none
 		
