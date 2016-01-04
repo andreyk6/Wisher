@@ -22,7 +22,7 @@ html(lang="en")
 			block logo
 			.page__slider
 				.page__slider-content
-					.page__slider-content-inner(class="page {{ pageClass }}" ng-view)
+					.page__slider-content-inner(class="{{ pageClass }}" ng-view)
 						block page-slider
 				
 		block progress-bar
