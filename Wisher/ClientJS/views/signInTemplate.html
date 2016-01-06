@@ -1,0 +1,53 @@
+
+<div class="sing-in">
+  <form action="#">
+    <h1>Вход</h1>
+    <div class="form-line social social"><a href="#" class="social-button" data-ng-click="authExternalProvider('Google')"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="90px" height="90px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
+	<path d="M90,15.001C90,7.119,82.884,0,75,0H15C7.116,0,0,7.119,0,15.001v59.998
+		C0,82.881,7.116,90,15.001,90H45V56H34V41h11v-5.844C45,25.077,52.568,16,61.875,16H74v15H61.875C60.548,31,59,32.611,59,35.024V41
+		h15v15H59v34h16c7.884,0,15-7.119,15-15.001V15.001z"/>
+
+</svg>
+</a><a href="#" class="social-button" data-ng-click="authExternalProvider('Facebook')"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 486.392 486.392" style="enable-background:new 0 0 486.392 486.392;" xml:space="preserve">
+
+	<path d="M395.193,0H91.198C40.826,0,0,40.826,0,91.198v303.995c0,50.372,40.826,91.198,91.198,91.198
+		h303.995c50.372,0,91.198-40.827,91.198-91.198V91.198C486.392,40.826,445.565,0,395.193,0z M175.344,406.836
+		c-53.837,0-99.254-21.918-99.254-56.938c0-35.537,41.434-69.858,95.272-69.828l16.811-0.152
+		c-7.357-7.144-13.193-15.929-13.193-26.782c0-6.445,2.067-12.616,4.925-18.118l-8.968,0.304
+		c-44.231,0-73.84-31.463-73.84-70.466c0-38.151,40.887-71.074,84.359-71.074h96.974l-21.766,15.686h-30.734
+		c20.398,7.843,31.251,31.615,31.251,55.996c0,20.459-11.339,38.091-27.36,50.615c-15.656,12.251-18.604,17.358-18.604,27.755
+		c0,8.877,16.781,23.955,25.536,30.187c25.627,18.118,33.865,34.929,33.865,62.988
+		C270.616,372.029,236.721,406.836,175.344,406.836z M425.593,213.374h-60.799v60.708h-30.369v-60.708h-60.829v-30.977h60.829
+		v-60.799h30.369v60.799h60.799V213.374z"/>
+	<path d="M222.342,167.349c-4.317-32.771-28.059-59.097-53.017-59.857
+		c-24.958-0.73-41.708,24.35-37.391,57.181c4.317,32.801,28.059,60.009,53.047,60.738
+		C209.908,226.172,226.689,200.181,222.342,167.349z"/>
+	<path d="M205.774,293.021c-7.357-2.371-15.473-3.8-24.137-3.891
+		c-37.209-0.395-70.527,22.678-70.527,50.433c0,28.332,26.873,51.861,64.082,51.861c52.317,0,70.527-22.131,70.527-50.402
+		c0-3.405-0.456-6.749-1.186-10.001C240.46,314.969,225.959,307.035,205.774,293.021z"/>
+</svg>
+</a></div>
+    <div class="form-line">
+      <label>E-mail</label>
+      <input type="email" placeholder="Введите свой e-mail" title="Введите свой e-mail" data-ng-model="loginData.userName" autocomplete="off" required="required"/>
+      <div class="error-notification"></div>
+    </div>
+    <div class="form-line">
+      <label>Пароль</label>
+      <input type="password" placeholder="Введите свой пароль" title="Введите свой пароль" data-ng-model="loginData.password" required="required"/>
+      <div class="error-notification"></div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" data-ng-model="loginData.useRefreshTokens"><strong> Use Refresh Tokens</strong>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-line">
+      <button type="submit" class="button" data-ng-click="login()">Войти</button>
+    </div>
+    <div class="or-form-separator">или <a href="#/signUp" class="registration-link">Зарегистрироватся</a></div>
+  </form>
+</div>

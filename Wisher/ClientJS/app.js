@@ -11,12 +11,12 @@ app.config(function ($routeProvider) {
 
     $routeProvider.when("/login", {
         controller: "loginController",
-        templateUrl: "/ClientJS/views/login.html"
+        templateUrl: "/ClientJS/views/signInTemplate.html"
     });
 
     $routeProvider.when("/signup", {
         controller: "signupController",
-        templateUrl: "/ClientJS/views/signup.html"
+        templateUrl: "/ClientJS/views/signUpTemplate.html"
     });
     $routeProvider.when("/associate", {
         controller: "associateController",

@@ -1,0 +1,56 @@
+
+<div class="sing-up">
+  <form id="signUp" action="#" class="two-step-form">
+    <h1>регистрация</h1>
+    <div class="two-step-form__inner">
+      <div class="two-step-form__step">
+        <div class="two-step-form__step-inner">
+          <div class="form-line">
+            <label>E-mail</label>
+            <input name="email" type="email" placeholder="Введите свой e-mail" title="Введите свой e-mail" required="required"/>
+            <div class="error-notification"></div>
+          </div>
+          <div class="form-line">
+            <label>Имя и Фамилия</label>
+            <input name="full-name" type="text" placeholder="Введите имя и фамилию" title="Введите имя и фамилию" required="required"/>
+            <div class="error-notification"></div>
+          </div>
+          <div class="form-line">
+            <label>Пароль</label>
+            <input name="password" type="password" placeholder="Введите свой пароль" title="Введите свой пароль" required="required"/>
+            <div class="error-notification"></div>
+          </div>
+          <div class="form-line">
+            <label>Повторите пароль</label>
+            <input name="confirm-password" type="password" placeholder="Повторите пароль" title="Повторите пароль" required="required"/>
+            <div class="error-notification"></div>
+          </div>
+          <div>
+            <button type="submit" class="two-step-form__next-step-button button">Далее</button>
+          </div>
+        </div>
+      </div>
+      <div class="two-step-form__step">
+        <div class="two-step-form__step-inner">
+          <div class="form-line">
+            <label>Возраст</label>
+            <input name="age" type="text" placeholder="Введите свой возраст" title="Введите свой возраст" required="required"/>
+            <div class="error-notification"></div>
+          </div>
+          <div class="form-line">
+            <label>Пол</label>
+            <div class="form-gender-button-wrap">
+              <input id="signUpMale" name="gender" type="radio" value="male" checked="checked"/>
+              <label for="signUpMale" class="form-gender-button-wrap__male">Мужчина</label>
+              <input id="signUpFemele" name="gender" type="radio" value="female"/>
+              <label for="signUpFemele" class="form-gender-button-wrap__female">Женщина</label>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="button">Зарегистрироватся</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
