@@ -1,13 +1,7 @@
-﻿<div class="row">
-    <div class="col-md-2">
-        &nbsp;
-    </div>
-    <div class="jumbotron">
-        <h2>Login</h2>
-        <p class="text-primary">Login or reg through facebook or google</p>
-        <p><a class="btn btn-info" href="#/login" role="button">Login &raquo;</a></p>
-    </div>
-    <div class="col-md-2">
-        &nbsp;
+﻿<div class="page__slider-content">
+    <div ng-view class="page__slider-content-inner {{ pageClass }}">
+        <div id="start" class="start">
+            <p class="sub-title">Помоги своим друзьям выбрать подарок для Тебя!</p><a href="#signIn" id="startButton" data-ng-hide="authentication.isAuth" class="button">начать</a>
+        </div>
     </div>
 </div>

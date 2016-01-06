@@ -109,13 +109,9 @@ body { background-image: url(../img/gifts.jpg); background-repeat: no-repeat; ba
 .page__slider-content { display: table; width: 100%; height: 100%; table-layout: fixed; position: relative; padding-bottom: 25px; }
 .page__slider-content-inner { display: table-cell; vertical-align: middle; width: 100%; height: 100%; padding: 1% 5% 0; }
 
-/* slide in from the bottom */
-/* rotate out newspaper */
 /* slide in from the right */
 /* slide in from the bottom */
-.ng-enter { z-index: 8888; }
 
-.ng-leave { z-index: 9999; }
 
 .start { padding-bottom: 25px; }
 
