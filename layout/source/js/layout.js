@@ -1,58 +1,58 @@
-(function() {
-	angular.module('whr-countdown-app', []).directive('countdown', [
-		'Util', '$interval', function(Util, $interval) {
-			return {
-				restrict: 'A',
-				scope: {
-					date: '@'
-				},
-				link: function(scope, element) {
-					var future;
-					future = new Date(scope.date);
-					$interval(function() {
-						var diff;
-						diff = Math.floor((future.getTime() - new Date().getTime()) / 1000);
-						return element.html(Util.dhms(diff));
-					}, 1000);
-				}
-			};
-		}
-	]).factory('Util', [
-		function() {
-			return {
+// (function() {
+// 	angular.module('whr-countdown-app', []).directive('countdown', [
+// 		'Util', '$interval', function(Util, $interval) {
+// 			return {
+// 				restrict: 'A',
+// 				scope: {
+// 					date: '@'
+// 				},
+// 				link: function(scope, element) {
+// 					var future;
+// 					future = new Date(scope.date);
+// 					$interval(function() {
+// 						var diff;
+// 						diff = Math.floor((future.getTime() - new Date().getTime()) / 1000);
+// 						return element.html(Util.dhms(diff));
+// 					}, 1000);
+// 				}
+// 			};
+// 		}
+// 	]).factory('Util', [
+// 		function() {
+// 			return {
 
-				dhms: function(t) {
-					var days, hours, minutes, seconds;
-					days = Math.floor(t / 86400);
-					t -= days * 86400;
-					hours = Math.floor(t / 3600) % 24;
-					t -= hours * 3600;
-					minutes = Math.floor(t / 60) % 60;
-					t -= minutes * 60;
-					seconds = t % 60;
-					return [
-						"<div>", days, "<span>Дней</span></div>",
-						"<div>", hours, "<span>Часов</span></div>",
-						"<div>", minutes, "<span>минут</span></div>",
-						"<div>", seconds, "<span>секунд</span></div>",
-					].join('');
-				}
-			};
-		}
-	]);
-
-
-	setTimeout(
-		function(){
-			whr.hide(preloader);
-		},
-		1000
-	);
+// 				dhms: function(t) {
+// 					var days, hours, minutes, seconds;
+// 					days = Math.floor(t / 86400);
+// 					t -= days * 86400;
+// 					hours = Math.floor(t / 3600) % 24;
+// 					t -= hours * 3600;
+// 					minutes = Math.floor(t / 60) % 60;
+// 					t -= minutes * 60;
+// 					seconds = t % 60;
+// 					return [
+// 						"<div>", days, "<span>Дней</span></div>",
+// 						"<div>", hours, "<span>Часов</span></div>",
+// 						"<div>", minutes, "<span>минут</span></div>",
+// 						"<div>", seconds, "<span>секунд</span></div>",
+// 					].join('');
+// 				}
+// 			};
+// 		}
+// 	]);
 
 
+// 	setTimeout(
+// 		function(){
+// 			whr.hide(preloader);
+// 		},
+// 		1000
+// 	);
 
 
-}).call(this);
+
+
+// }).call(this);
 //***************************************//
 	var animateApp = angular.module('animateApp', ['ngRoute', 'ngAnimate']);
 
@@ -114,3 +114,5 @@
 	animateApp.controller('resultPageController', function($scope) {
 		$scope.pageClass = '';
 	});
+
+	whr.hide(preloader);
