@@ -9,7 +9,7 @@ app.config(function ($routeProvider) {
         templateUrl: "/ClientJS/views/home.html"
     });
 
-    $routeProvider.when("/login", {
+    $routeProvider.when("/signIn", {
         controller: "loginController",
         templateUrl: "/ClientJS/views/signInTemplate.html"
     });

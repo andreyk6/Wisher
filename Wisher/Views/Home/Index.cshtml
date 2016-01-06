@@ -2,8 +2,7 @@
 <html data-ng-app="AngularAuthApp">
 <head>
     <title>Test</title>
-    <link href="~/Content/loading-bar.min.css" rel="stylesheet"/>
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+  
     <link href="~/Content/screen.css" rel="stylesheet" />
 </head>
 <body>
@@ -29,13 +28,13 @@
     </div>
     <div class="page">
         <div class="logo-wrap">
-            <div class="logo-wrap__i"><a href="/#/home" class="logo"><img alt="logo" src="~/Content/img/logo.png"></a></div>
+            <div class="logo-wrap__i"><a href="#/home" class="logo"><img alt="logo" src="~/Content/img/logo.png"></a></div>
         </div>
         <div class="page__slider">
             <div class="page__slider-content">
                 <div ng-view class="page__slider-content-inner {{ pageClass }}">
                     <div id="start" class="start">
-                        <p class="sub-title">Помоги своим друзьям выбрать подарок для Тебя!</p><a href="#sing-in" id="startButton" data-ng-hide="authentication.isAuth" class="button">начать</a>
+                        <p class="sub-title">Помоги своим друзьям выбрать подарок для Тебя!</p><a href="#/signIn" id="startButton" data-ng-hide="authentication.isAuth" class="button">начать</a>
                     </div>
                 </div>
             </div>

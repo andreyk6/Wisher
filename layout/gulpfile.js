@@ -34,10 +34,11 @@ var gulp = require('gulp'),
 			'vendorCss': './build/css/vendor/',
 			'jadeBloks': './build/blocks/',
 			'css': './build/css/',
+			'externalCss': './../Wisher/Content/',
 			'js': './build/js/',
-			'fonts': './build/fonts/',
+			'fonts': './../Wisher/fonts/',
 			'build': './build',
-			'img': './build/img/'
+			'img': './../Wisher/Content/img/'
 		}
 	};
 
@@ -123,6 +124,7 @@ gulp.task('sass', function() {
 	.pipe(postcss(processors))
 	.pipe(sourcemaps.write('./'))
 	.pipe(gulp.dest(dirs.build.css))
+	.pipe(gulp.dest(dirs.build.externalCss))
 	.pipe(connect.reload());
 });
 
