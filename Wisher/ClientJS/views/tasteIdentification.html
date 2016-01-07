@@ -1,17 +1,19 @@
-
-<div class="taste-definition">
-  <div id="progressBar" class="progress-bar">
-    <div class="progress-bar__inner"></div>
-  </div>
-  <h1 class="taste-definition__header">Вам нравится категория?</h1>
-  <div class="taste-definition__images-wrap">
-    <div class="taste-definition__taste-category-wrap">
-      <div class="taste-definition__taste-image-wrap"><img alt="image" src="img/gifts.jpg"/>
-      </div>
+<div ng-init="nextQuestion()">
+    <div class="taste-definition">
+        <div id="progressBar" class="progress-bar">
+            <div class="progress-bar__inner" {{progress}}></div>
+        </div>
+        <h1 class="taste-definition__header">Вам нравится {{title}}?</h1>
+        <div class="taste-definition__images-wrap">
+            <div class="taste-definition__taste-category-wrap">
+                <div class="taste-definition__taste-image-wrap">
+                    <img alt="image" src="img/gifts.jpg" />
+                </div>
+            </div>
+            <div class="taste-definition__button-wrap">
+                <button class="button" ng-click="submitAnswerTrue()" ng-disabled="working">Хочу</button>
+                <button class="button" ng-click="submitAnswerFalse()" ng-disabled="working">Не хочу</button>
+            </div>
+        </div>
     </div>
-    <div class="taste-definition__button-wrap">
-      <button class="button">да</button>
-      <button class="button">Нет</button>
-    </div>
-  </div>
 </div>

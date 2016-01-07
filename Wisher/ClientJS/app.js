@@ -4,17 +4,17 @@ var serviceBase = 'http://localhost:24860/';
 //http://localhost:24860/
 app.config(function ($routeProvider) {
 
-    $routeProvider.when("home", {
+    $routeProvider.when("/home", {
         controller: "homeController",
         templateUrl: "/ClientJS/views/home.html"
     });
 
-    $routeProvider.when("signIn", {
+    $routeProvider.when("/signIn", {
         controller: "loginController",
         templateUrl: "ClientJS/views/signInTemplate.html"
     });
 
-    $routeProvider.when("signUp", {
+    $routeProvider.when("/signUp", {
         controller: "signupController",
         templateUrl: "ClientJS/views/signUpTemplate.html"
     });

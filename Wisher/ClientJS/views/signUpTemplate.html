@@ -7,26 +7,26 @@
         <div class="two-step-form__step-inner">
           <div class="form-line">
             <label>E-mail</label>
-            <input name="email" type="email" placeholder="Введите свой e-mail" title="Введите свой e-mail" required="required"/>
+            <input name="email" type="email" placeholder="Введите свой e-mail" title="Введите свой e-mail" data-ng-model="registration.userName" required="required"/>
             <div class="error-notification"></div>
           </div>
           <div class="form-line">
             <label>Имя и Фамилия</label>
-            <input name="full-name" type="text" placeholder="Введите имя и фамилию" title="Введите имя и фамилию" required="required"/>
+            <input name="full-name" type="text" placeholder="Введите имя и фамилию" title="Введите имя и фамилию" data-ng-model="registration.fullName" required="required"/>
             <div class="error-notification"></div>
           </div>
           <div class="form-line">
             <label>Пароль</label>
-            <input name="password" type="password" placeholder="Введите свой пароль" title="Введите свой пароль" required="required"/>
+            <input name="password" type="password" placeholder="Введите свой пароль" data-ng-model="registration.password"  title="Введите свой пароль" required="required"/>
             <div class="error-notification"></div>
           </div>
           <div class="form-line">
             <label>Повторите пароль</label>
-            <input name="confirm-password" type="password" placeholder="Повторите пароль" title="Повторите пароль" required="required"/>
+            <input name="confirm-password" type="password" placeholder="Повторите пароль" data-ng-model="registration.confirmPassword"  title="Повторите пароль" required="required"/>
             <div class="error-notification"></div>
           </div>
           <div>
-            <button type="submit" class="two-step-form__next-step-button button">Далее</button>
+            <button type="submit" class="two-step-form__next-step-button button" ng-click="signUpNextPage()">Далее</button>
           </div>
         </div>
       </div>
@@ -34,20 +34,20 @@
         <div class="two-step-form__step-inner">
           <div class="form-line">
             <label>Возраст</label>
-            <input name="age" type="text" placeholder="Введите свой возраст" title="Введите свой возраст" required="required"/>
+            <input name="age" type="text" placeholder="Введите свой возраст" data-ng-model="registration.age"  title="Введите свой возраст" required="required"/>
             <div class="error-notification"></div>
           </div>
           <div class="form-line">
             <label>Пол</label>
             <div class="form-gender-button-wrap">
-              <input id="signUpMale" name="gender" type="radio" value="male" checked="checked"/>
+              <input id="signUpMale" name="gender" type="radio" value="male" data-ng-model="registration.gender" ng-checked="checked"/>
               <label for="signUpMale" class="form-gender-button-wrap__male">Мужчина</label>
               <input id="signUpFemele" name="gender" type="radio" value="female"/>
               <label for="signUpFemele" class="form-gender-button-wrap__female">Женщина</label>
             </div>
           </div>
           <div>
-            <button type="submit" class="button">Зарегистрироватся</button>
+            <button type="submit" class="button" ng-click="signUp()">Зарегистрироватся</button>
           </div>
         </div>
       </div>
