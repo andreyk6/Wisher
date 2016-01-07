@@ -23,13 +23,14 @@ app.config(function ($routeProvider) {
         templateUrl: "/ClientJS/views/associate.html"
     });
 
-    $routeProvider.when("tasteIdentification", {
-        controller: "tasteIdentificationController",
-        templateUrl: "/ClientJS/views/tasteIdentification.html"
+
+    $routeProvider.when("/quiz", {
+        controller: "quizController",
+        templateUrl: "/ClientJS/views/quiz.html"
     });
 
- 
-    $routeProvider.otherwise({ redirectTo: "home" });
+    $routeProvider.otherwise({ redirectTo: "/home" });
+
 });
 
 app.constant('ngAuthSettings', {

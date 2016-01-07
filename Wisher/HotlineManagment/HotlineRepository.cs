@@ -27,9 +27,15 @@ namespace Wisher.HotlineManagment
             }
         }
 
-        public async Task<List<CategoryInfo>> GetCategories()
+        public async Task<List<CategoryInfo>> GetCategoriesAsync()
         {
             return await _applicationDbContext.EbayCategories.ToListAsync();
+        }
+
+
+        public List<CategoryInfo> GetCategories()
+        {
+            return _applicationDbContext.EbayCategories.ToList();
         }
 
         public void Dispose(bool disposing)

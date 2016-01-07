@@ -55,7 +55,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
                 var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
                 authService.obtainAccessToken(externalData).then(function (response) {
                     // ДОПИСАТЬ ЗДЕСЬ
-                    $location.path('/orders');
+                    $location.path('/quiz');
 
                 },
              function (err) {

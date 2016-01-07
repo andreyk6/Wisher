@@ -25,12 +25,6 @@ namespace Wisher.UserManagment.Repository
 
         public async Task<IdentityResult> RegisterUser(UserBindingModel userModel)
         {
-            var categories = await new HotlineRepository().GetCategories();
-            var res = new PersistableIntCollection();
-            foreach (var categoryInfo in categories)
-            {
-                res.Add(categoryInfo.EbayCategoryIntValue);
-            }
 
             var user = new ApplicationUser()
             {
@@ -38,8 +32,7 @@ namespace Wisher.UserManagment.Repository
                 Email = userModel.Email,
                 UserName = userModel.Email,
                 Age = userModel.Age,
-                Gender = userModel.Gender,
-                FavCats = res
+                Gender = userModel.Gender
             };
 
             var result = await _userManager.CreateAsync(user, userModel.Password);
@@ -55,13 +48,13 @@ namespace Wisher.UserManagment.Repository
 
         public async Task<IdentityResult> CreateAsync(ApplicationUser userModel)
         {
-            var categories = await new HotlineRepository().GetCategories();
+            var categories = await new HotlineRepository().GetCategoriesAsync();
             var res = new PersistableIntCollection();
             foreach (var categoryInfo in categories)
             {
                 res.Add(categoryInfo.EbayCategoryIntValue);
             }
-            userModel.FavCats = res;
+            userModel.CatsToChose = res;
 
             var result = await _userManager.CreateAsync(userModel);
 

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="AngularAuthApp">
+<head>
+    <title>Test</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/loading-bar.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="indexController">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <a class="navbar-brand" href="#/">Home</a>
+            </div>
+            <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
+                <ul class="nav navbar-nav navbar-right">
+                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="page-header text-center">
+                <h1>yo login pls</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div data-ng-view="">
+        </div>
+    </div>
+
+    <hr />
+
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="../../Scripts/angular-local-storage.min.js"></script>
+    <script src="../../Scripts/loading-bar.min.js"></script>
+
+
+    <script src="~/ClientJS/app.js?v=2"></script>
+    <!-- Load services -->
+    <script src="~/ClientJS/services/authInterceptorService.js?v=2"></script>
+    <script src="~/ClientJS/services/authService.js?v=2"></script>
+    <script src="~/ClientJS/services/tokensManagerService.js?v=2"></script>
+    <!-- Load controllers -->
+
+    <script src="~/ClientJS/controllers/indexController.js?v=2"></script>
+    <script src="~/ClientJS/controllers/homeController.js?v=2"></script>
+    <script src="~/ClientJS/controllers/loginController.js?v=2"></script>
+    <script src="~/ClientJS/controllers/signupController.js?v=2"></script>
+    <script src="~/ClientJS/controllers/associateController.js?v=2"></script>
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+
+</body>
+</html>
