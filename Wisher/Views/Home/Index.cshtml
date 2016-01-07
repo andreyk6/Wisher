@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html data-ng-app="AngularAuthApp">
+<html data-ng-app="AngularApp">
 <head>
     <title>Test</title>
   
@@ -30,19 +30,12 @@
         <div class="logo-wrap">
             <div class="logo-wrap__i"><a href="#home" class="logo"><img alt="logo" src="~/Content/img/logo.png"></a></div>
         </div>
-        <div class="page__slider" >
-            <div class="page__slider-content">
-                <div ng-view class="page__slider-content-inner {{ pageClass }}">
-                    <div id="start" class="start">
-                        <p class="sub-title">Помоги своим друзьям выбрать подарок для Тебя!</p><a href="#signIn" id="startButton" data-ng-hide="authentication.isAuth" class="button">начать</a>
-                    </div>
-                </div>
-            </div>
+        <div class="page__slider" data-ng-view= >
+           
         </div>
     </div>
     <footer><a href="#">Produced by Strong Soft Team</a></footer>
     <button id="logOut" class="button log-out hide" data-ng-hide="!authentication.isAuth" data-ng-click="logOut()">Log out</button>
-
 
 
     <script src="~/Scripts/angular.min.js"></script>

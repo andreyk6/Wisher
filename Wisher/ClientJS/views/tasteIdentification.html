@@ -1,7 +1,7 @@
 <div ng-init="nextQuestion()">
     <div class="taste-definition">
         <div id="progressBar" class="progress-bar">
-            <div class="progress-bar__inner" {{progress}}></div>
+            <div class="progress-bar__inner" ngStyle = "height : {{progress}} px" ></div>
         </div>
         <h1 class="taste-definition__header">Вам нравится {{title}}?</h1>
         <div class="taste-definition__images-wrap">

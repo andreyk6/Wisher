@@ -13,6 +13,8 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         gender: ""
     };
 
+    $scope.class = "two-step-form__inner";
+
     $scope.signUp = function () {
 
         authService.saveRegistration($scope.registration).then(function (response) {
@@ -33,6 +35,12 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
          });
     };
 
+    $scope.moveToNextSignUpStep = function () {
+        if ($scope.class === "two-step-form__inner") {
+            $scope.class = "two-step-form__inner show-next-form-step";
+        }
+     
+    }
     var startTimer = function () {
         var timer = $timeout(function () {
             $timeout.cancel(timer);

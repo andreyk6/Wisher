@@ -2,7 +2,7 @@
 <div class="sing-up">
   <form id="signUp" action="#" class="two-step-form">
     <h1>регистрация</h1>
-    <div class="two-step-form__inner">
+    <div ng-class="class">
       <div class="two-step-form__step">
         <div class="two-step-form__step-inner">
           <div class="form-line">
@@ -26,7 +26,7 @@
             <div class="error-notification"></div>
           </div>
           <div>
-            <button type="submit" class="two-step-form__next-step-button button" ng-click="signUpNextPage()">Далее</button>
+            <button type="submit" class="two-step-form__next-step-button button" ng-click="moveToNextSignUpStep()">Далее</button>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
             <div class="form-gender-button-wrap">
               <input id="signUpMale" name="gender" type="radio" value="male" data-ng-model="registration.gender" ng-checked="checked"/>
               <label for="signUpMale" class="form-gender-button-wrap__male">Мужчина</label>
-              <input id="signUpFemele" name="gender" type="radio" value="female"/>
+              <input id="signUpFemele" name="gender" type="radio" value="female" data-ng-model="registration.gender"/>
               <label for="signUpFemele" class="form-gender-button-wrap__female">Женщина</label>
             </div>
           </div>
