@@ -20,7 +20,7 @@ namespace Wisher.Controllers
         private readonly ApplicationDbContext _dbContext;
         private readonly HotlineRepository _hotlineRepository;
         private static List<CategoryInfo> _categories;
-        private List<CategoryInfo> _userCats;
+        private List<CategoryInfo> _userCats; 
 
         public WishController()
         {
@@ -36,7 +36,7 @@ namespace Wisher.Controllers
             if (user == null) return BadRequest();
             var categories = await _hotlineRepository.GetCategoriesAsync();
 
-            var tempUserCats = categories.Where(c => user.CatsToChose.Contains(c.Id) && c.Level == 3).ToList();
+            var tempUserCats = categories.Where(c => user.CatsToChose.Contains(c.Id)  && c.Level==3).ToList();
             List<HotlineProductModel> productModels = new List<HotlineProductModel>();
             foreach (var item in tempUserCats.Take(10))
                 productModels.Add(HotlineProductManager.GetToProducts(item));
@@ -48,7 +48,7 @@ namespace Wisher.Controllers
         private CategoryInfo[] GetTwoRandomCategories(ICollection<CategoryInfo> categories, int level)
         {
             Random rnd = new Random();
-            return categories.Where(c => c.Level == level).OrderBy(user => rnd.Next()).Take(2).ToArray();
+            return categories.Where(c=>c.Level==level).OrderBy(user => rnd.Next()).Take(2).ToArray();
         }
 
         [HttpPost]
@@ -115,7 +115,7 @@ namespace Wisher.Controllers
             {
                 name = next.Name,
                 categoryId = next.EbayCategoryIntValue,
-                progress = 100 - (user.CatsToChose.Count * 100) / _categories.Count
+                progress = 100 - (user.CatsToChose.Count*100)/_categories.Count
             });
 
         }
