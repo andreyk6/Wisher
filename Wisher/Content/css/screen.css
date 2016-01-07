@@ -161,7 +161,7 @@ form h1 { display: block; margin-bottom: 30px; font-size: 48px; }
 .registration-link:hover { color: #fff; }
 
 .taste-definition__header { color: #333; font-size: 40px; font-weight: normal; text-transform: none; margin: 1% 0; }
-.taste-definition__taste-category-wrap { width: 25%; display: inline-block; }
+.taste-definition__taste-category-wrap { width: 24%; display: inline-block; }
 .taste-definition__category-name { color: #333; font-size: 25px; font-weight: normal; margin: 1% 0; }
 .taste-definition__taste-image-wrap { border-radius: 20px; display: block; width: 100%; margin-bottom: 3%; padding-bottom: 100%; position: relative; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); overflow: hidden; box-shadow: 0 0 25px 8px #666 inset; }
 .taste-definition__taste-image-wrap:hover { box-shadow: 0 0 25px #666 inset, 0 0 25px 10px #fff; }
@@ -191,7 +191,7 @@ form h1 { display: block; margin-bottom: 30px; font-size: 48px; }
 footer { position: absolute; right: 0; padding: 0 20px; z-index: 6; height: 25px; width: 100%; bottom: 0px; text-align: right; }
 footer a { font-size: 17px; line-height: 25px; color: #fff; font-weight: bold; }
 footer a:hover { color: #ff0033; }
-@media screen and (min-width: 767px) and (max-width: 968px) {
+@media screen and (min-width: 768px) and (max-width: 968px) {
 
  .righ-side-block { padding: 0 12px; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -202,6 +202,10 @@ footer a:hover { color: #ff0033; }
  form h1 { margin-bottom: 20px; font-size: 38px; }
 
  .social-button { width: 46px; height: 46px; }
+
+ .taste-definition__header { font-size: 30px; }
+
+ .taste-definition__category-name { font-size: 15px; }
 
  .result-page__product-link-wrap { width: 23%; }
 
@@ -216,6 +220,9 @@ footer a:hover { color: #ff0033; }
  form .form-line .error-notification { font-size: 14px; }
 
  form input[type="text"], form input[type="email"], form input[type="password"] { font-size: 16px; } }
+@media screen and (max-width: 1200px) {
+
+ .row { margin: 0 1%; } }
 @media screen and (min-width: 1200px) {
 
  .page-bg__smoke img { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
@@ -227,16 +234,6 @@ footer a:hover { color: #ff0033; }
  .page-bg__smoke-img2 { left: -15%; top: -10%; }
 
  .page-bg__smoke-img3 { right: 5%; top: -10%; } }
-@media screen and (max-width: 1200px) {
-
- .row { margin: 0 1%; }
-
- .taste-definition__header { font-size: 30px; }
-
- .taste-definition__category-name { font-size: 15px; } }
-@media only screen and (max-width: 968px) and (orientation: landscape) {
-
- footer { display: none; } }
 @media screen and (max-width: 968px) {
 
  .logo-wrap { height: 150px; }
@@ -259,6 +256,12 @@ footer a:hover { color: #ff0033; }
 
  .button { width: auto; margin: 0 auto; min-width: 20%; }
 
+ .taste-definition__header { font-size: 40px; }
+
+ .taste-definition__taste-category-wrap { width: 40%; }
+
+ .taste-definition__button-wrap .button { min-width: 18%; }
+
  .result-page__top-name { float: none; width: auto; }
 
  .result-page__top-share-wrap { text-align: left; float: none; width: auto; }
@@ -272,10 +275,10 @@ footer a:hover { color: #ff0033; }
  footer { text-align: center; position: relative; }
 
  footer a { font-size: 2vw; } }
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 968px) and (orientation: landscape) {
 
- form { width: 100%; } }
-@media screen and (max-width: 767px) {
+ footer { display: none; } }
+@media screen and (max-width: 768px) {
 
  .righ-side-block { width: 100%; }
 
@@ -285,7 +288,13 @@ footer a:hover { color: #ff0033; }
 
  #countdown span { font-size: 4vw; }
 
+ form { width: 100%; }
+
  .button { display: block; width: 100%; max-width: none; }
+
+ .taste-definition__taste-category-wrap { width: 70%; }
+
+ .taste-definition__button-wrap .button { margin: 0 2%; width: 31%; display: inline-block; }
 
  .result-page__product-link-wrap { float: none; width: auto; margin: 0 5% 3%; }
 

@@ -5,18 +5,23 @@
 		font-weight: normal
 		text-transform: none
 		margin: 1% 0
-		+max-screen(1200)
+		+max-screen($notebook-breakpoint)
 			font-size: 30px
+		+max-screen($tablet-breakpoint)
+			font-size: 40px
 	&__taste-category-wrap
-		width: 25%
+		width: 24%
 		display: inline-block
-
+		+max-screen($tablet-breakpoint)
+			width: 40%
+		+max-screen($mobile-breakpoint)
+			width: 70%
 	&__category-name
 		color: #333
 		font-size: 25px
 		font-weight: normal
 		margin: 1% 0
-		+max-screen(1200)
+		+max-screen($notebook-breakpoint)
 			font-size: 15px
 	&__taste-image-wrap
 		border-radius: 20px
@@ -46,3 +51,10 @@
 		.button
 			margin: 0 1%
 			min-width: 12%
+			+max-screen($tablet-breakpoint)
+				min-width: 18%
+			+max-screen($mobile-breakpoint)
+				margin: 0 2%
+				width: 31%
+				display: inline-block
+				
