@@ -8,6 +8,35 @@
 	border: 1px solid rgb(23, 26, 28)
 	border: 1px solid rgba(23, 26, 28, 0.3)
 	box-shadow: 0 0 25px #666 inset
+	&__top
+		margin-bottom: 3%
+		+clr
+		&-name
+			float: left
+			width: 60%
+			text-align: left
+			color: #fff
+			font-size: 46px
+			text-transform: uppercase
+			line-height: 1
+			+max-screen($tablet-breakpoint)
+				float: none
+				width: auto
+		&-share-wrap
+			float: left
+			width: 40%
+			padding: 0 0 0 2%
+			text-align: right
+			+box
+			+max-screen($tablet-breakpoint)
+				text-align: left
+				float: none
+				width: auto
+		.button
+			background-image: linear-gradient(rgba(0, 102, 255, .7), rgba(0, 204, 255, .7))
+			box-shadow: 0 0 25px #333 inset
+			border: none
+			color: #fff
 	&__product + &__product
 		margin: 3% 0 0
 	&__product

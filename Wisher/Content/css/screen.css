@@ -173,6 +173,11 @@ form h1 { display: block; margin-bottom: 30px; font-size: 48px; }
 .progress-bar__inner { position: absolute; width: 100%; left: 0; bottom: 0; height: 0; -o-transition: height 1s ease-out 0.5s; transition: height 1s ease-out 0.5s; background-image: -o-linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); background-image: linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); box-shadow: 0 0 25px #333 inset; border-radius: 5px; }
 
 .result-page { max-width: 1024px; margin: 0 auto; box-sizing: border-box; padding: 20px; border-radius: 20px; background-color: rgba(23, 26, 28, 0.3); border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); box-shadow: 0 0 25px #666 inset; }
+.result-page__top { margin-bottom: 3%; *zoom: 1; }
+.result-page__top:after { content: " "; display: table; clear: both; }
+.result-page__top-name { float: left; width: 60%; text-align: left; color: #fff; font-size: 46px; text-transform: uppercase; line-height: 1; }
+.result-page__top-share-wrap { float: left; width: 40%; padding: 0 0 0 2%; text-align: right; box-sizing: border-box; }
+.result-page__top .button { background-image: -o-linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); background-image: linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); box-shadow: 0 0 25px #333 inset; border: none; color: #fff; }
 .result-page__product + .result-page__product { margin: 3% 0 0; }
 .result-page__product { overflow: hidden; background-color: #FFF; box-shadow: 0 0 25px #666; border-radius: 20px; padding: 20px; box-sizing: border-box; position: relative; z-index: 1; -o-transition: all 400ms ease-in; transition: all 400ms ease-in; }
 .result-page__product-link-wrap { float: right; width: 30%; text-align: right; padding-top: 5%; box-sizing: border-box; }
@@ -253,6 +258,10 @@ footer a:hover { color: #ff0033; }
  .two-step-form { padding: 0; }
 
  .button { width: auto; margin: 0 auto; min-width: 20%; }
+
+ .result-page__top-name { float: none; width: auto; }
+
+ .result-page__top-share-wrap { text-align: left; float: none; width: auto; }
 
  .result-page__product-link-wrap { width: 50%; padding-top: 0; padding: 0 2%; text-align: left; }
 
