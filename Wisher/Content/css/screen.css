@@ -95,7 +95,7 @@ h1 { font-weight: normal; font-size: 35px; color: #333; text-transform: uppercas
   100% { -webkit-transform: rotateZ(360deg) translate3d(0, 10%, 0) rotateZ(-360deg); transform: rotateZ(360deg) translate3d(0, 10%, 0) rotateZ(-360deg); } }
 @keyframes wave { 0% { -webkit-transform: rotateZ(0deg) translate3d(0, 10%, 0) rotateZ(0deg); transform: rotateZ(0deg) translate3d(0, 10%, 0) rotateZ(0deg); }
   100% { -webkit-transform: rotateZ(360deg) translate3d(0, 10%, 0) rotateZ(-360deg); transform: rotateZ(360deg) translate3d(0, 10%, 0) rotateZ(-360deg); } }
-body { background-image: url(./img/gifts.jpg); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; background-attachment: fixed; }
+body { background-image: url(../img/gifts.jpg); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; background-attachment: fixed; }
 
 .page-bg { position: absolute; left: 0; top: 0; overflow: hidden; z-index: 1; width: 100%; height: 100%; }
 .page-bg__smoke img { -webkit-transform: scale(0.6); -ms-transform: scale(0.6); -o-transform: scale(0.6); transform: scale(0.6); }
@@ -163,7 +163,7 @@ form h1 { display: block; margin-bottom: 30px; font-size: 48px; }
 .taste-definition__header { color: #333; font-size: 40px; font-weight: normal; text-transform: none; margin: 1% 0; }
 .taste-definition__taste-category-wrap { width: 25%; display: inline-block; }
 .taste-definition__category-name { color: #333; font-size: 25px; font-weight: normal; margin: 1% 0; }
-.taste-definition__taste-image-wrap { border-radius: 20px; display: block; width: 100%; margin-bottom: 3%; padding-bottom: 100%; cursor: pointer; position: relative; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); overflow: hidden; box-shadow: 0 0 25px 8px #666 inset; }
+.taste-definition__taste-image-wrap { border-radius: 20px; display: block; width: 100%; margin-bottom: 3%; padding-bottom: 100%; position: relative; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); overflow: hidden; box-shadow: 0 0 25px 8px #666 inset; }
 .taste-definition__taste-image-wrap:hover { box-shadow: 0 0 25px #666 inset, 0 0 25px 10px #fff; }
 .taste-definition__taste-image-wrap img { width: 100%; height: auto; position: absolute; left: 0; top: 0; z-index: -1; min-height: 100%; }
 .taste-definition__button-wrap { text-align: center; }

@@ -34,11 +34,13 @@ var gulp = require('gulp'),
 			'vendorCss': './build/css/vendor/',
 			'jadeBloks': './build/blocks/',
 			'css': './build/css/',
-			'externalCss': './../Wisher/Content/',
+			'externalCss': './../Wisher/Content/css/',
 			'js': './build/js/',
-			'fonts': './../Wisher/fonts/',
+			'fonts': './build/fonts/',
+			'externalFonts': './../Wisher/fonts/',
 			'build': './build',
-			'img': './../Wisher/Content/img/'
+			'img': './build/img/',
+			'externalImg': './../Wisher/Content/img/'
 		}
 	};
 
@@ -140,6 +142,7 @@ gulp.task('images', function() {
 			use: [pngquant()]
 		})))
 		.pipe(gulp.dest(dirs.build.img))
+		.pipe(gulp.dest(dirs.build.externalImg))
 		.pipe(connect.reload());
 });
 
