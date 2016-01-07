@@ -1,6 +1,16 @@
 .result-page
+	max-width: 1024px
+	margin: 0 auto
+	+box
+	padding: 20px
+	border-radius: 20px
+	background-color: rgba(23, 26, 28, 0.3)
+	border: 1px solid rgb(23, 26, 28)
+	border: 1px solid rgba(23, 26, 28, 0.3)
+	box-shadow: 0 0 25px #666 inset
+	&__product + &__product
+		margin: 3% 0 0
 	&__product
-		margin: 3% 0
 		overflow: hidden
 		background-color: #FFF
 		box-shadow: 0 0 25px #666
@@ -10,15 +20,38 @@
 		position: relative
 		z-index: 1
 		transition: all 400ms ease-in
+		&-link-wrap
+			float: right
+			width: 30%
+			text-align: right
+			padding-top: 5%
+			+box
+			+max-screen($notebook-breakpoint)
+				width: 23%
+			+max-screen($tablet-breakpoint)
+				width: 50%
+				padding-top: 0
+				padding: 0 2%
+				text-align: left
+			+max-screen($mobile-breakpoint)
+				float: none
+				width: auto
+				margin: 0 5% 3%
 		&-image
 			float: left
 			text-align: center
-			width: 20%
-			padding-top: 20%
+			width: 16%
+			padding-top: 16%
 			overflow: hidden
 			border-radius: 10px
 			box-shadow: 0 0 25px #666 inset
 			position: relative
+			+max-screen($tablet-breakpoint)
+				width: 50%
+				padding-top: 50%
+			+max-screen($mobile-breakpoint)
+				float: none
+				margin: 0 auto 4%
 			img
 				width: 100%
 				min-height: 100%
@@ -26,22 +59,31 @@
 				left: 0
 				top: 0
 				z-index: -1
+		&-data
+			float: left
+			padding: 0 2%
+			text-align: left
+			width: 54%
+			+box
+			+max-screen($notebook-breakpoint)
+				width: 61%
+			+max-screen($tablet-breakpoint)
+				width: 50%
+				margin: 0 0 4%
+			+max-screen($mobile-breakpoint)
+				width: auto
+				float: none
+				
 		&-name
-			margin: 0 35%
 			font-weight: 700
 			font-size: 40px
-			font-size: 3vw
-		&-data
-			float: right
-			width: 30%
-			text-align: right
+			line-height: 1
+			margin-bottom: 5px
 		&-price
 			font-weight: 700
-			font-size: 40px
-			font-size: 2.5vw
+			font-size: 30px
 			color: #f03
-		&-link
-			font-weight: 700
-			font-size: 2.4vw
-			color: #000
+		&-short-description
+			font-size: 16px
+
 

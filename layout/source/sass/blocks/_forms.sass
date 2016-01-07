@@ -1,7 +1,7 @@
 form
 	display: block
 	margin: 0 auto
-	width: 450px
+	max-width: 450px
 	padding-bottom: 30px
 	+max-screen(768)
 		width: 100%
@@ -151,10 +151,12 @@ form
 	border: 1px solid rgb(23, 26, 28)
 	border: 1px solid rgba(23, 26, 28, 0.3)
 	border-radius: 20px
-	line-height: 46px
-	padding: 0 40px
-	height: 46px
+	line-height: 16px
+	padding: 15px 40px
+	min-height: 46px
 	transition: all 0.9s
+	text-align: center
+	cursor: pointer
 	box-sizing: border-box
 	&:hover
 		background: rgb(23, 26, 28)

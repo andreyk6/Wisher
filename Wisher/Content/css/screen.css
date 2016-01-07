@@ -117,7 +117,7 @@ body { background-image: url(../img/gifts.jpg); background-repeat: no-repeat; ba
 #countdown div { display: inline-block; padding: 0 34px; font-weight: 800; font-size: 50px; font-size: 8.5vw; box-sizing: border-box; text-align: center; -o-transition: all 400ms ease-in; transition: all 400ms ease-in; }
 #countdown span { display: block; font-size: 50px; font-size: 3vw; line-height: 50px; letter-spacing: initial; font-weight: 100; text-transform: uppercase; -o-transition: all 400ms ease-in; transition: all 400ms ease-in; }
 
-form { display: block; margin: 0 auto; width: 450px; padding-bottom: 30px; }
+form { display: block; margin: 0 auto; max-width: 450px; padding-bottom: 30px; }
 form .form-line { margin: 15px 0 30px; position: relative; }
 form .form-line .error-notification { display: none; position: absolute; bottom: -18px; width: 100%; left: 0; color: #f03; line-height: 1; font-size: 16px; }
 form .form-line.error .error-notification { display: block; }
@@ -148,7 +148,7 @@ form h1 { display: block; margin-bottom: 30px; font-size: 48px; }
 .form-gender-button-wrap input + label:hover { box-shadow: 0 0 25px #666 inset, 0 0 10px #fff; z-index: 1; }
 .form-gender-button-wrap input:checked + label { z-index: 2; background-color: rgba(23, 26, 28, 0.8); box-shadow: 0 0 25px #666 inset, 0 0 25px #fff; }
 
-.button { display: inline-block; text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #161a1b; background: transparent; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); border-radius: 20px; line-height: 46px; padding: 0 40px; height: 46px; -o-transition: all 0.9s; transition: all 0.9s; box-sizing: border-box; }
+.button { display: inline-block; text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #161a1b; background: transparent; border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); border-radius: 20px; line-height: 16px; padding: 15px 40px; min-height: 46px; -o-transition: all 0.9s; transition: all 0.9s; text-align: center; cursor: pointer; box-sizing: border-box; }
 .button:hover { background: #171a1c; color: #fff; border: 1px solid #171a1c; -o-transition: all 0.5s; transition: all 0.5s; box-shadow: 0 0 25px #fff; }
 
 .social { font-size: 0; text-align: center; margin: 0 0 10px; }
@@ -172,13 +172,16 @@ form h1 { display: block; margin-bottom: 30px; font-size: 48px; }
 .progress-bar { position: absolute; z-index: 6; top: 0; bottom: 25px; left: 1%; width: 4%; background-color: transparent; box-shadow: 0 0 25px #333 inset; border-radius: 5px; overflow: hidden; }
 .progress-bar__inner { position: absolute; width: 100%; left: 0; bottom: 0; height: 0; -o-transition: height 1s ease-out 0.5s; transition: height 1s ease-out 0.5s; background-image: -o-linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); background-image: linear-gradient(rgba(0, 102, 255, 0.7), rgba(0, 204, 255, 0.7)); box-shadow: 0 0 25px #333 inset; border-radius: 5px; }
 
-.result-page__product { margin: 3% 0; overflow: hidden; background-color: #FFF; box-shadow: 0 0 25px #666; border-radius: 20px; padding: 20px; box-sizing: border-box; position: relative; z-index: 1; -o-transition: all 400ms ease-in; transition: all 400ms ease-in; }
-.result-page__product-image { float: left; text-align: center; width: 20%; padding-top: 20%; overflow: hidden; border-radius: 10px; box-shadow: 0 0 25px #666 inset; position: relative; }
+.result-page { max-width: 1024px; margin: 0 auto; box-sizing: border-box; padding: 20px; border-radius: 20px; background-color: rgba(23, 26, 28, 0.3); border: 1px solid #171a1c; border: 1px solid rgba(23, 26, 28, 0.3); box-shadow: 0 0 25px #666 inset; }
+.result-page__product + .result-page__product { margin: 3% 0 0; }
+.result-page__product { overflow: hidden; background-color: #FFF; box-shadow: 0 0 25px #666; border-radius: 20px; padding: 20px; box-sizing: border-box; position: relative; z-index: 1; -o-transition: all 400ms ease-in; transition: all 400ms ease-in; }
+.result-page__product-link-wrap { float: right; width: 30%; text-align: right; padding-top: 5%; box-sizing: border-box; }
+.result-page__product-image { float: left; text-align: center; width: 16%; padding-top: 16%; overflow: hidden; border-radius: 10px; box-shadow: 0 0 25px #666 inset; position: relative; }
 .result-page__product-image img { width: 100%; min-height: 100%; position: absolute; left: 0; top: 0; z-index: -1; }
-.result-page__product-name { margin: 0 35%; font-weight: 700; font-size: 40px; font-size: 3vw; }
-.result-page__product-data { float: right; width: 30%; text-align: right; }
-.result-page__product-price { font-weight: 700; font-size: 40px; font-size: 2.5vw; color: #f03; }
-.result-page__product-link { font-weight: 700; font-size: 2.4vw; color: #000; }
+.result-page__product-data { float: left; padding: 0 2%; text-align: left; width: 54%; box-sizing: border-box; }
+.result-page__product-name { font-weight: 700; font-size: 40px; line-height: 1; margin-bottom: 5px; }
+.result-page__product-price { font-weight: 700; font-size: 30px; color: #f03; }
+.result-page__product-short-description { font-size: 16px; }
 
 footer { position: absolute; right: 0; padding: 0 20px; z-index: 6; height: 25px; width: 100%; bottom: 0px; text-align: right; }
 footer a { font-size: 17px; line-height: 25px; color: #fff; font-weight: bold; }
@@ -193,7 +196,11 @@ footer a:hover { color: #ff0033; }
 
  form h1 { margin-bottom: 20px; font-size: 38px; }
 
- .social-button { width: 46px; height: 46px; } }
+ .social-button { width: 46px; height: 46px; }
+
+ .result-page__product-link-wrap { width: 23%; }
+
+ .result-page__product-data { width: 61%; } }
 @media screen and (min-width: 1367px) {
 
  form label { display: block; } }
@@ -247,6 +254,12 @@ footer a:hover { color: #ff0033; }
 
  .button { width: auto; margin: 0 auto; min-width: 20%; }
 
+ .result-page__product-link-wrap { width: 50%; padding-top: 0; padding: 0 2%; text-align: left; }
+
+ .result-page__product-image { width: 50%; padding-top: 50%; }
+
+ .result-page__product-data { width: 50%; margin: 0 0 4%; }
+
  footer { text-align: center; position: relative; }
 
  footer a { font-size: 2vw; } }
@@ -264,6 +277,12 @@ footer a:hover { color: #ff0033; }
  #countdown span { font-size: 4vw; }
 
  .button { display: block; width: 100%; max-width: none; }
+
+ .result-page__product-link-wrap { float: none; width: auto; margin: 0 5% 3%; }
+
+ .result-page__product-image { float: none; margin: 0 auto 4%; }
+
+ .result-page__product-data { width: auto; float: none; }
 
  footer a { font-size: 4vw; } }
 @media screen and (max-width: 480px) {
