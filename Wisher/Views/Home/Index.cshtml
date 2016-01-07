@@ -1,9 +1,10 @@
 ﻿<!DOCTYPE html>
-<html data-ng-app="AngularApp">
+<html ng-app="AngularApp">
 <head>
     <title>Test</title>
   
     <link href="~/Content/css/screen.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 </head>
 <body>
    
@@ -30,7 +31,7 @@
         <div class="logo-wrap">
             <div class="logo-wrap__i"><a href="#home" class="logo"><img alt="logo" src="~/Content/img/logo.png"></a></div>
         </div>
-        <div class="page__slider" data-ng-view= >
+        <div class="page__slider" data-ng-view = "" >
            
         </div>
     </div>
@@ -38,8 +39,8 @@
     <button id="logOut" class="button log-out hide" data-ng-hide="!authentication.isAuth" data-ng-click="logOut()">Log out</button>
 
 
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-route.min.js"></script>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
     <script src="../../Scripts/angular-local-storage.min.js"></script>
 
 
